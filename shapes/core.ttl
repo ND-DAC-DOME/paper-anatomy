@@ -1,0 +1,165 @@
+@prefix sh:      <http://www.w3.org/ns/shacl#> .
+@prefix xsd:     <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdf:     <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix schema:  <https://schema.org/> .
+@prefix fabio:   <http://purl.org/spar/fabio/> .
+@prefix doco:    <http://purl.org/spar/doco/> .
+@prefix deo:     <http://purl.org/spar/deo/> .
+@prefix po:      <http://www.essepuntato.it/2008/12/pattern#> .
+@prefix oa:      <http://www.w3.org/ns/oa#> .
+@prefix prov:    <http://www.w3.org/ns/prov#> .
+@prefix frbr:    <http://purl.org/vocab/frbr/core#> .
+@prefix pax:     <https://w3id.org/paper-anatomy/vocab#> .
+@prefix paxs:     <https://w3id.org/paper-anatomy/shapes#> .
+
+##################################################################
+# CORE profile — structural requirements. Severity: sh:Violation
+# (default). A graph failing these is not a valid paper-structure
+# KG. Scoring concerns (IoU, tolerances, reading-order distance)
+# deliberately live in the evaluation engine, NOT here.
+##################################################################
+
+paxs:PaperExpressionShape a sh:NodeShape ;
+    sh:targetClass fabio:JournalArticle ;
+    sh:property [ sh:path dcterms:title ;
+        sh:minCount 1 ; sh:maxCount 1 ; sh:datatype xsd:string ;
+        sh:message "The article expression must have exactly one dcterms:title." ] ;
+    sh:property [ sh:path fabio:hasPageCount ;
+        sh:minCount 1 ; sh:maxCount 1 ; sh:datatype xsd:integer ; sh:minInclusive 1 ;
+        sh:message "The article expression must declare a positive fabio:hasPageCount." ] ;
+    sh:property [ sh:path frbr:embodiment ;
+        sh:minCount 1 ; sh:maxCount 1 ; sh:nodeKind sh:IRI ;
+        sh:message "The article expression must link exactly one PDF manifestation via frbr:embodiment." ] ;
+    sh:property [ sh:path po:contains ;
+        sh:minCount 1 ; sh:nodeKind sh:IRI ;
+        sh:message "The article expression must contain at least one matter/section node." ] .
+
+paxs:ManifestationShape a sh:NodeShape ;
+    sh:targetClass fabio:DigitalManifestation ;
+    sh:property [ sh:path frbr:embodimentOf ;
+        sh:minCount 1 ; sh:maxCount 1 ; sh:nodeKind sh:IRI ;
+        sh:message "A manifestation must state what expression it embodies." ] ;
+    sh:property [ sh:path frbr:part ;
+        sh:minCount 1 ; sh:nodeKind sh:IRI ;
+        sh:message "A manifestation must list its pages via frbr:part." ] .
+
+paxs:PageShape a sh:NodeShape ;
+    sh:targetClass fabio:Page ;
+    sh:property [ sh:path schema:position ;
+        sh:minCount 1 ; sh:maxCount 1 ; sh:datatype xsd:integer ; sh:minInclusive 1 ;
+        sh:message "A page must have exactly one positive schema:position (file sequence)." ] ;
+    sh:property [ sh:path schema:image ;
+        sh:minCount 1 ; sh:maxCount 1 ; sh:nodeKind sh:IRI ;
+        sh:message "A page must reference exactly one page-image asset." ] ;
+    sh:property [ sh:path pax:pageImageWidth ;
+        sh:maxCount 1 ; sh:datatype xsd:integer ; sh:minExclusive 0 ;
+        sh:message "pageImageWidth, when present, must be a positive integer." ] ;
+    sh:property [ sh:path pax:pageImageHeight ;
+        sh:maxCount 1 ; sh:datatype xsd:integer ; sh:minExclusive 0 ;
+        sh:message "pageImageHeight, when present, must be a positive integer." ] ;
+    sh:property [ sh:path pax:printedPageLabel ;
+        sh:maxCount 1 ; sh:datatype xsd:string ;
+        sh:message "At most one printed page label, as a string." ] ;
+    sh:property [ sh:path pax:printedPageNumber ;
+        sh:maxCount 1 ; sh:datatype xsd:integer ;
+        sh:message "At most one derived printed page number, as an integer." ] .
+
+paxs:SectionShape a sh:NodeShape ;
+    sh:targetClass doco:Section ;
+    sh:property [ sh:path dcterms:title ;
+        sh:minCount 1 ; sh:maxCount 1 ; sh:datatype xsd:string ;
+        sh:message "A section must have exactly one title." ] ;
+    sh:property [ sh:path pax:level ;
+        sh:minCount 1 ; sh:maxCount 1 ; sh:in ( "title" "label" "section" "subsection" ) ;
+        sh:message "pax:level must be one of: title, label, section, subsection." ] ;
+    sh:property [ sh:path pax:matter ;
+        sh:minCount 1 ; sh:maxCount 1 ; sh:in ( "front" "body" "back" ) ;
+        sh:message "pax:matter must be one of: front, body, back." ] ;
+    sh:property [ sh:path pax:pageStart ;
+        sh:minCount 1 ; sh:maxCount 1 ; sh:datatype xsd:integer ; sh:minInclusive 1 ;
+        sh:message "pax:pageStart must be a positive integer." ] ;
+    sh:property [ sh:path pax:pageEnd ;
+        sh:minCount 1 ; sh:maxCount 1 ; sh:datatype xsd:integer ; sh:minInclusive 1 ;
+        sh:message "pax:pageEnd must be a positive integer." ] .
+
+paxs:DocumentElementShape a sh:NodeShape ;
+    sh:targetClass doco:Paragraph , doco:Title , doco:SectionTitle , doco:Figure ,
+                   doco:Table , doco:Formula , doco:Footnote , doco:List , deo:Caption ,
+                   pax:PageHeader , pax:PageFooter , pax:PageNumberMark ,
+                   pax:CodeBlock , pax:OtherElement ;
+    sh:property [ sh:path schema:position ;
+        sh:minCount 1 ; sh:maxCount 1 ; sh:datatype xsd:integer ; sh:minInclusive 1 ;
+        sh:message "Every element must have exactly one reading-order position." ] ;
+    sh:property [ sh:path pax:onPage ;
+        sh:minCount 1 ; sh:maxCount 1 ; sh:nodeKind sh:IRI ; sh:class fabio:Page ;
+        sh:message "Every element must sit on exactly one fabio:Page." ] ;
+    sh:property [ sh:path pax:region ;
+        sh:node paxs:RegionShape ;
+        sh:message "Element regions must be valid ResourceSelections." ] .
+
+paxs:RegionShape a sh:NodeShape ;
+    sh:targetClass oa:ResourceSelection ;
+    sh:property [ sh:path oa:hasSource ;
+        sh:minCount 1 ; sh:maxCount 1 ; sh:nodeKind sh:IRI ;
+        sh:message "A region must have exactly one source (the page image)." ] ;
+    sh:property [ sh:path oa:hasSelector ;
+        sh:minCount 1 ; sh:maxCount 1 ;
+        sh:node paxs:FragmentSelectorShape ;
+        sh:message "A region must have exactly one FragmentSelector." ] .
+
+paxs:FragmentSelectorShape a sh:NodeShape ;
+    sh:property [ sh:path rdf:value ;
+        sh:minCount 1 ; sh:maxCount 1 ;
+        sh:pattern "^xywh=\\d+,\\d+,[1-9]\\d*,[1-9]\\d*$" ;
+        sh:message "Selector value must be xywh=x,y,w,h with nonnegative origin and positive dimensions." ] ;
+    sh:property [ sh:path dcterms:conformsTo ;
+        sh:minCount 1 ; sh:hasValue <http://www.w3.org/TR/media-frags/> ;
+        sh:message "Selector must declare conformance to W3C Media Fragments." ] .
+
+paxs:BoxShape a sh:NodeShape ;
+    sh:targetClass doco:FigureBox , doco:TableBox ;
+    sh:property [ sh:path po:contains ;
+        sh:minCount 2 ; sh:nodeKind sh:IRI ;
+        sh:message "A figure/table box groups at least the figure/table and its caption." ] ;
+    sh:property [ sh:path dcterms:hasPart ;
+        sh:minCount 2 ; sh:nodeKind sh:IRI ;
+        sh:message "A box must also assert dcterms:hasPart (published DoCO pattern)." ] .
+
+# chartData: enforce the rdf:JSON datatype at the instance level — the OWL
+# vocabulary deliberately has no range axiom (rdf:JSON is outside the OWL 2
+# datatype map); SHACL gives enforceable validation without contaminating
+# the DL profile.
+paxs:ChartDataShape a sh:NodeShape ;
+    sh:targetSubjectsOf pax:chartData ;
+    sh:property [ sh:path pax:chartData ;
+        sh:datatype rdf:JSON ;
+        sh:maxCount 1 ;
+        sh:message "chartData must be a single rdf:JSON literal." ] .
+
+paxs:DatasetShape a sh:NodeShape ;
+    sh:targetClass schema:Dataset ;
+    sh:property [ sh:path prov:wasGeneratedBy ;
+        sh:minCount 1 ; sh:nodeKind sh:IRI ;
+        sh:message "The KG dataset must record the activity that generated it." ] ;
+    sh:property [ sh:path prov:wasDerivedFrom ;
+        sh:minCount 1 ; sh:nodeKind sh:IRI ;
+        sh:message "The KG dataset must be derived from at least one source manifestation." ] ;
+    sh:property [ sh:path prov:used ;
+        sh:maxCount 0 ;
+        sh:message "prov:used is Activity-to-Entity; it must NOT appear on the dataset (use prov:wasDerivedFrom)." ] ;
+    sh:property [ sh:path dcterms:license ;
+        sh:minCount 1 ; sh:maxCount 1 ; sh:nodeKind sh:IRI ;
+        sh:message "The dataset (not the article) carries exactly one license." ] ;
+    sh:property [ sh:path schema:about ;
+        sh:minCount 1 ; sh:nodeKind sh:IRI ;
+        sh:message "The dataset must state which article it is about." ] .
+
+paxs:ProvenanceActivityShape a sh:NodeShape ;
+    sh:targetClass prov:Activity ;
+    sh:property [ sh:path prov:used ;
+        sh:minCount 1 ; sh:nodeKind sh:IRI ;
+        sh:message "An extraction activity must record the manifestation it used." ] ;
+    sh:property [ sh:path prov:wasAssociatedWith ;
+        sh:minCount 1 ; sh:nodeKind sh:IRI ;
+        sh:message "An extraction activity must name its software agents." ] .

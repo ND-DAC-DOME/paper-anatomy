@@ -1,0 +1,4162 @@
+{
+  "@context": {
+    "@version": 1.1,
+    "doco": "http://purl.org/spar/doco/",
+    "deo": "http://purl.org/spar/deo/",
+    "fabio": "http://purl.org/spar/fabio/",
+    "po": "http://www.essepuntato.it/2008/12/pattern#",
+    "oa": "http://www.w3.org/ns/oa#",
+    "prov": "http://www.w3.org/ns/prov#",
+    "dcterms": "http://purl.org/dc/terms/",
+    "schema": "https://schema.org/",
+    "xsd": "http://www.w3.org/2001/XMLSchema#",
+    "pax": "https://w3id.org/paper-anatomy/vocab#",
+    "frbr": "http://purl.org/vocab/frbr/core#",
+    "supplement": {
+      "@id": "frbr:supplement",
+      "@type": "@id",
+      "@container": "@set"
+    },
+    "supplementOf": {
+      "@id": "frbr:supplementOf",
+      "@type": "@id"
+    },
+    "contains": {
+      "@id": "po:contains",
+      "@type": "@id",
+      "@container": "@set"
+    },
+    "title": "dcterms:title",
+    "description": "dcterms:description",
+    "identifier": "dcterms:identifier",
+    "license": {
+      "@id": "dcterms:license",
+      "@type": "@id"
+    },
+    "source": {
+      "@id": "dcterms:source",
+      "@type": "@id"
+    },
+    "text": "schema:text",
+    "position": {
+      "@id": "schema:position",
+      "@type": "xsd:integer"
+    },
+    "image": {
+      "@id": "schema:image",
+      "@type": "@id"
+    },
+    "pageCount": {
+      "@id": "fabio:hasPageCount",
+      "@type": "xsd:integer"
+    },
+    "region": {
+      "@id": "pax:region",
+      "@container": "@set"
+    },
+    "hasSource": {
+      "@id": "oa:hasSource",
+      "@type": "@id"
+    },
+    "hasSelector": {
+      "@id": "oa:hasSelector"
+    },
+    "conformsTo": {
+      "@id": "dcterms:conformsTo",
+      "@type": "@id"
+    },
+    "value": "rdf:value",
+    "rdf": "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
+    "figureType": {
+      "@id": "pax:figureType",
+      "@type": "@id"
+    },
+    "chartData": {
+      "@id": "pax:chartData",
+      "@type": "@json"
+    },
+    "rawType": "pax:rawType",
+    "printedPageNumber": {
+      "@id": "pax:printedPageNumber",
+      "@type": "xsd:integer"
+    },
+    "printedPagePosition": "pax:printedPagePosition",
+    "onPage": {
+      "@id": "pax:onPage",
+      "@type": "@id"
+    },
+    "wasGeneratedBy": {
+      "@id": "prov:wasGeneratedBy",
+      "@type": "@id"
+    },
+    "wasAssociatedWith": {
+      "@id": "prov:wasAssociatedWith",
+      "@type": "@id",
+      "@container": "@set"
+    },
+    "startedAtTime": {
+      "@id": "prov:startedAtTime",
+      "@type": "xsd:dateTime"
+    },
+    "softwareVersion": "schema:softwareVersion",
+    "name": "schema:name",
+    "printedPageLabel": "pax:printedPageLabel",
+    "pageImageWidth": {
+      "@id": "pax:pageImageWidth",
+      "@type": "xsd:integer"
+    },
+    "pageImageHeight": {
+      "@id": "pax:pageImageHeight",
+      "@type": "xsd:integer"
+    },
+    "hasPart": {
+      "@id": "dcterms:hasPart",
+      "@type": "@id",
+      "@container": "@set"
+    },
+    "embodiment": {
+      "@id": "frbr:embodiment",
+      "@type": "@id"
+    },
+    "embodimentOf": {
+      "@id": "frbr:embodimentOf",
+      "@type": "@id"
+    },
+    "part": {
+      "@id": "frbr:part",
+      "@type": "@id",
+      "@container": "@set"
+    },
+    "about": {
+      "@id": "schema:about",
+      "@type": "@id"
+    },
+    "used": {
+      "@id": "prov:used",
+      "@type": "@id"
+    },
+    "wasDerivedFrom": {
+      "@id": "prov:wasDerivedFrom",
+      "@type": "@id",
+      "@container": "@set"
+    }
+  },
+  "@graph": [
+    {
+      "@id": "https://w3id.org/alexandria/paper/mercadier2011/run/e88f86e",
+      "@type": [
+        "schema:Dataset",
+        "prov:Entity"
+      ],
+      "name": "Extracted document-structure knowledge graph",
+      "about": "https://w3id.org/alexandria/paper/mercadier2011",
+      "wasDerivedFrom": [
+        "https://w3id.org/alexandria/paper/mercadier2011/manifestation/pdf"
+      ],
+      "wasGeneratedBy": [
+        "https://w3id.org/alexandria/paper/mercadier2011/run/e88f86e/prov/activity"
+      ],
+      "license": "https://creativecommons.org/licenses/by/4.0/"
+    },
+    {
+      "@id": "https://w3id.org/alexandria/paper/mercadier2011",
+      "@type": [
+        "fabio:JournalArticle",
+        "schema:ScholarlyArticle"
+      ],
+      "title": "Origin of uranium deposits revealed by their rare earth element signature",
+      "pageCount": 6,
+      "embodiment": "https://w3id.org/alexandria/paper/mercadier2011/manifestation/pdf",
+      "contains": [
+        "https://w3id.org/alexandria/paper/mercadier2011/run/e88f86e/front-matter",
+        "https://w3id.org/alexandria/paper/mercadier2011/run/e88f86e/body-matter",
+        "https://w3id.org/alexandria/paper/mercadier2011/run/e88f86e/back-matter"
+      ],
+      "supplement": [
+        "https://w3id.org/alexandria/paper/mercadier2011/supplement/1"
+      ]
+    },
+    {
+      "@id": "https://w3id.org/alexandria/paper/mercadier2011/manifestation/pdf",
+      "@type": "fabio:DigitalManifestation",
+      "name": "Terra-Nova-2011-Mercadier-Originofuraniumdepositsr-evealed-by-their-rare-earth-element-signature.pdf",
+      "embodimentOf": "https://w3id.org/alexandria/paper/mercadier2011",
+      "part": [
+        "https://w3id.org/alexandria/paper/mercadier2011/run/e88f86e/page/1",
+        "https://w3id.org/alexandria/paper/mercadier2011/run/e88f86e/page/2",
+        "https://w3id.org/alexandria/paper/mercadier2011/run/e88f86e/page/3",
+        "https://w3id.org/alexandria/paper/mercadier2011/run/e88f86e/page/4",
+        "https://w3id.org/alexandria/paper/mercadier2011/run/e88f86e/page/5",
+        "https://w3id.org/alexandria/paper/mercadier2011/run/e88f86e/page/6"
+      ]
+    },
+    {
+      "@id": "https://w3id.org/alexandria/paper/mercadier2011/run/e88f86e/front-matter",
+      "@type": "doco:FrontMatter",
+      "contains": [
+        "https://w3id.org/alexandria/paper/mercadier2011/run/e88f86e/section/1",
+        "https://w3id.org/alexandria/paper/mercadier2011/run/e88f86e/section/2"
+      ]
+    },
+    {
+      "@id": "https://w3id.org/alexandria/paper/mercadier2011/run/e88f86e/body-matter",
+      "@type": "doco:BodyMatter",
+      "contains": [
+        "https://w3id.org/alexandria/paper/mercadier2011/run/e88f86e/section/3",
+        "https://w3id.org/alexandria/paper/mercadier2011/run/e88f86e/section/4",
+        "https://w3id.org/alexandria/paper/mercadier2011/run/e88f86e/section/5",
+        "https://w3id.org/alexandria/paper/mercadier2011/run/e88f86e/section/8"
+      ]
+    },
+    {
+      "@id": "https://w3id.org/alexandria/paper/mercadier2011/run/e88f86e/back-matter",
+      "@type": "doco:BackMatter",
+      "contains": [
+        "https://w3id.org/alexandria/paper/mercadier2011/run/e88f86e/section/9"
+      ]
+    },
+    {
+      "@id": "https://w3id.org/alexandria/paper/mercadier2011/run/e88f86e/section/1",
+      "@type": [
+        "doco:Section"
+      ],
+      "title": "Origin of uranium deposits revealed by their rare earth element signature",
+      "pax:level": "title",
+      "pax:matter": "front",
+      "pax:pageStart": 1,
+      "pax:pageEnd": 1,
+      "contains": [
+        "https://w3id.org/alexandria/paper/mercadier2011/run/e88f86e/element/1",
+        "https://w3id.org/alexandria/paper/mercadier2011/run/e88f86e/element/2",
+        "https://w3id.org/alexandria/paper/mercadier2011/run/e88f86e/element/3"
+      ]
+    },
+    {
+      "@id": "https://w3id.org/alexandria/paper/mercadier2011/run/e88f86e/section/2",
+      "@type": [
+        "doco:Section",
+        "doco:Abstract"
+      ],
+      "title": "ABSTRACT",
+      "pax:level": "section",
+      "pax:matter": "front",
+      "pax:pageStart": 1,
+      "pax:pageEnd": 1,
+      "contains": [
+        "https://w3id.org/alexandria/paper/mercadier2011/run/e88f86e/element/4",
+        "https://w3id.org/alexandria/paper/mercadier2011/run/e88f86e/element/5",
+        "https://w3id.org/alexandria/paper/mercadier2011/run/e88f86e/element/6",
+        "https://w3id.org/alexandria/paper/mercadier2011/run/e88f86e/element/7"
+      ]
+    },
+    {
+      "@id": "https://w3id.org/alexandria/paper/mercadier2011/run/e88f86e/section/3",
+      "@type": [
+        "doco:Section",
+        "deo:Introduction"
+      ],
+      "title": "Introduction",
+      "pax:level": "section",
+      "pax:matter": "body",
+      "pax:pageStart": 1,
+      "pax:pageEnd": 1,
+      "contains": [
+        "https://w3id.org/alexandria/paper/mercadier2011/run/e88f86e/element/8",
+        "https://w3id.org/alexandria/paper/mercadier2011/run/e88f86e/element/9",
+        "https://w3id.org/alexandria/paper/mercadier2011/run/e88f86e/element/10",
+        "https://w3id.org/alexandria/paper/mercadier2011/run/e88f86e/element/11"
+      ]
+    },
+    {
+      "@id": "https://w3id.org/alexandria/paper/mercadier2011/run/e88f86e/section/4",
+      "@type": [
+        "doco:Section"
+      ],
+      "title": "Previous developments and considerations",
+      "pax:level": "section",
+      "pax:matter": "body",
+      "pax:pageStart": 1,
+      "pax:pageEnd": 2,
+      "contains": [
+        "https://w3id.org/alexandria/paper/mercadier2011/run/e88f86e/element/12",
+        "https://w3id.org/alexandria/paper/mercadier2011/run/e88f86e/element/13",
+        "https://w3id.org/alexandria/paper/mercadier2011/run/e88f86e/element/14"
+      ]
+    },
+    {
+      "@id": "https://w3id.org/alexandria/paper/mercadier2011/run/e88f86e/section/5",
+      "@type": [
+        "doco:Section",
+        "deo:Results"
+      ],
+      "title": "Results",
+      "pax:level": "section",
+      "pax:matter": "body",
+      "pax:pageStart": 2,
+      "pax:pageEnd": 5,
+      "contains": [
+        "https://w3id.org/alexandria/paper/mercadier2011/run/e88f86e/section/6",
+        "https://w3id.org/alexandria/paper/mercadier2011/run/e88f86e/section/7",
+        "https://w3id.org/alexandria/paper/mercadier2011/run/e88f86e/element/15",
+        "https://w3id.org/alexandria/paper/mercadier2011/run/e88f86e/element/16"
+      ]
+    },
+    {
+      "@id": "https://w3id.org/alexandria/paper/mercadier2011/run/e88f86e/section/6",
+      "@type": [
+        "doco:Section"
+      ],
+      "title": "Controls on REE incorporation in uranium oxides",
+      "pax:level": "subsection",
+      "pax:matter": "body",
+      "pax:pageStart": 2,
+      "pax:pageEnd": 4,
+      "contains": [
+        "https://w3id.org/alexandria/paper/mercadier2011/run/e88f86e/element/17",
+        "https://w3id.org/alexandria/paper/mercadier2011/run/e88f86e/element/18",
+        "https://w3id.org/alexandria/paper/mercadier2011/run/e88f86e/box/19",
+        "https://w3id.org/alexandria/paper/mercadier2011/run/e88f86e/box/21",
+        "https://w3id.org/alexandria/paper/mercadier2011/run/e88f86e/element/23",
+        "https://w3id.org/alexandria/paper/mercadier2011/run/e88f86e/box/24",
+        "https://w3id.org/alexandria/paper/mercadier2011/run/e88f86e/box/26",
+        "https://w3id.org/alexandria/paper/mercadier2011/run/e88f86e/element/28",
+        "https://w3id.org/alexandria/paper/mercadier2011/run/e88f86e/element/29"
+      ]
+    },
+    {
+      "@id": "https://w3id.org/alexandria/paper/mercadier2011/run/e88f86e/section/7",
+      "@type": [
+        "doco:Section"
+      ],
+      "title": "Development perspectives for forensic purpose",
+      "pax:level": "subsection",
+      "pax:matter": "body",
+      "pax:pageStart": 4,
+      "pax:pageEnd": 5,
+      "contains": [
+        "https://w3id.org/alexandria/paper/mercadier2011/run/e88f86e/element/30",
+        "https://w3id.org/alexandria/paper/mercadier2011/run/e88f86e/element/31",
+        "https://w3id.org/alexandria/paper/mercadier2011/run/e88f86e/box/32",
+        "https://w3id.org/alexandria/paper/mercadier2011/run/e88f86e/element/34"
+      ]
+    },
+    {
+      "@id": "https://w3id.org/alexandria/paper/mercadier2011/run/e88f86e/section/8",
+      "@type": [
+        "doco:Section",
+        "deo:Conclusion"
+      ],
+      "title": "Conclusions",
+      "pax:level": "section",
+      "pax:matter": "body",
+      "pax:pageStart": 5,
+      "pax:pageEnd": 6,
+      "contains": [
+        "https://w3id.org/alexandria/paper/mercadier2011/run/e88f86e/element/35",
+        "https://w3id.org/alexandria/paper/mercadier2011/run/e88f86e/element/36",
+        "https://w3id.org/alexandria/paper/mercadier2011/run/e88f86e/element/37",
+        "https://w3id.org/alexandria/paper/mercadier2011/run/e88f86e/element/38",
+        "https://w3id.org/alexandria/paper/mercadier2011/run/e88f86e/element/39"
+      ]
+    },
+    {
+      "@id": "https://w3id.org/alexandria/paper/mercadier2011/run/e88f86e/section/9",
+      "@type": [
+        "doco:Section",
+        "deo:SupplementaryInformationDescription"
+      ],
+      "title": "Supporting Information",
+      "pax:level": "section",
+      "pax:matter": "back",
+      "pax:pageStart": 6,
+      "pax:pageEnd": 6,
+      "contains": [
+        "https://w3id.org/alexandria/paper/mercadier2011/run/e88f86e/element/40",
+        "https://w3id.org/alexandria/paper/mercadier2011/run/e88f86e/element/41",
+        "https://w3id.org/alexandria/paper/mercadier2011/run/e88f86e/element/42",
+        "https://w3id.org/alexandria/paper/mercadier2011/run/e88f86e/element/43",
+        "https://w3id.org/alexandria/paper/mercadier2011/run/e88f86e/element/44",
+        "https://w3id.org/alexandria/paper/mercadier2011/run/e88f86e/element/45"
+      ]
+    },
+    {
+      "@id": "https://w3id.org/alexandria/paper/mercadier2011/run/e88f86e/box/19",
+      "@type": "doco:FigureBox",
+      "contains": [
+        "https://w3id.org/alexandria/paper/mercadier2011/run/e88f86e/element/19",
+        "https://w3id.org/alexandria/paper/mercadier2011/run/e88f86e/element/20"
+      ],
+      "hasPart": [
+        "https://w3id.org/alexandria/paper/mercadier2011/run/e88f86e/element/19",
+        "https://w3id.org/alexandria/paper/mercadier2011/run/e88f86e/element/20"
+      ]
+    },
+    {
+      "@id": "https://w3id.org/alexandria/paper/mercadier2011/run/e88f86e/box/21",
+      "@type": "doco:FigureBox",
+      "contains": [
+        "https://w3id.org/alexandria/paper/mercadier2011/run/e88f86e/element/21",
+        "https://w3id.org/alexandria/paper/mercadier2011/run/e88f86e/element/22"
+      ],
+      "hasPart": [
+        "https://w3id.org/alexandria/paper/mercadier2011/run/e88f86e/element/21",
+        "https://w3id.org/alexandria/paper/mercadier2011/run/e88f86e/element/22"
+      ]
+    },
+    {
+      "@id": "https://w3id.org/alexandria/paper/mercadier2011/run/e88f86e/box/24",
+      "@type": "doco:FigureBox",
+      "contains": [
+        "https://w3id.org/alexandria/paper/mercadier2011/run/e88f86e/element/24",
+        "https://w3id.org/alexandria/paper/mercadier2011/run/e88f86e/element/25"
+      ],
+      "hasPart": [
+        "https://w3id.org/alexandria/paper/mercadier2011/run/e88f86e/element/24",
+        "https://w3id.org/alexandria/paper/mercadier2011/run/e88f86e/element/25"
+      ]
+    },
+    {
+      "@id": "https://w3id.org/alexandria/paper/mercadier2011/run/e88f86e/box/26",
+      "@type": "doco:FigureBox",
+      "contains": [
+        "https://w3id.org/alexandria/paper/mercadier2011/run/e88f86e/element/26",
+        "https://w3id.org/alexandria/paper/mercadier2011/run/e88f86e/element/27"
+      ],
+      "hasPart": [
+        "https://w3id.org/alexandria/paper/mercadier2011/run/e88f86e/element/26",
+        "https://w3id.org/alexandria/paper/mercadier2011/run/e88f86e/element/27"
+      ]
+    },
+    {
+      "@id": "https://w3id.org/alexandria/paper/mercadier2011/run/e88f86e/box/32",
+      "@type": "doco:FigureBox",
+      "contains": [
+        "https://w3id.org/alexandria/paper/mercadier2011/run/e88f86e/element/32",
+        "https://w3id.org/alexandria/paper/mercadier2011/run/e88f86e/element/33"
+      ],
+      "hasPart": [
+        "https://w3id.org/alexandria/paper/mercadier2011/run/e88f86e/element/32",
+        "https://w3id.org/alexandria/paper/mercadier2011/run/e88f86e/element/33"
+      ]
+    },
+    {
+      "@id": "https://w3id.org/alexandria/paper/mercadier2011/run/e88f86e/element/1",
+      "@type": "doco:Title",
+      "position": 1,
+      "onPage": "https://w3id.org/alexandria/paper/mercadier2011/run/e88f86e/page/1",
+      "text": "Origin of uranium deposits revealed by their rare earth element signature",
+      "region": [
+        {
+          "@type": "oa:ResourceSelection",
+          "hasSource": "https://w3id.org/alexandria/paper/mercadier2011/run/e88f86e/asset/page_images/page_001.png",
+          "hasSelector": {
+            "@type": "oa:FragmentSelector",
+            "conformsTo": "http://www.w3.org/TR/media-frags/",
+            "value": "xywh=111,128,972,83"
+          }
+        }
+      ]
+    },
+    {
+      "@id": "https://w3id.org/alexandria/paper/mercadier2011/run/e88f86e/element/2",
+      "@type": "doco:Paragraph",
+      "position": 2,
+      "onPage": "https://w3id.org/alexandria/paper/mercadier2011/run/e88f86e/page/1",
+      "region": [
+        {
+          "@type": "oa:ResourceSelection",
+          "hasSource": "https://w3id.org/alexandria/paper/mercadier2011/run/e88f86e/asset/page_images/page_001.png",
+          "hasSelector": {
+            "@type": "oa:FragmentSelector",
+            "conformsTo": "http://www.w3.org/TR/media-frags/",
+            "value": "xywh=111,230,978,63"
+          }
+        }
+      ]
+    },
+    {
+      "@id": "https://w3id.org/alexandria/paper/mercadier2011/run/e88f86e/element/3",
+      "@type": "doco:Paragraph",
+      "position": 3,
+      "onPage": "https://w3id.org/alexandria/paper/mercadier2011/run/e88f86e/page/1",
+      "region": [
+        {
+          "@type": "oa:ResourceSelection",
+          "hasSource": "https://w3id.org/alexandria/paper/mercadier2011/run/e88f86e/asset/page_images/page_001.png",
+          "hasSelector": {
+            "@type": "oa:FragmentSelector",
+            "conformsTo": "http://www.w3.org/TR/media-frags/",
+            "value": "xywh=111,295,975,39"
+          }
+        }
+      ]
+    },
+    {
+      "@id": "https://w3id.org/alexandria/paper/mercadier2011/run/e88f86e/element/4",
+      "@type": "doco:SectionTitle",
+      "position": 4,
+      "onPage": "https://w3id.org/alexandria/paper/mercadier2011/run/e88f86e/page/1",
+      "text": "ABSTRACT",
+      "region": [
+        {
+          "@type": "oa:ResourceSelection",
+          "hasSource": "https://w3id.org/alexandria/paper/mercadier2011/run/e88f86e/asset/page_images/page_001.png",
+          "hasSelector": {
+            "@type": "oa:FragmentSelector",
+            "conformsTo": "http://www.w3.org/TR/media-frags/",
+            "value": "xywh=111,366,102,21"
+          }
+        }
+      ]
+    },
+    {
+      "@id": "https://w3id.org/alexandria/paper/mercadier2011/run/e88f86e/element/5",
+      "@type": "doco:Paragraph",
+      "position": 5,
+      "onPage": "https://w3id.org/alexandria/paper/mercadier2011/run/e88f86e/page/1",
+      "region": [
+        {
+          "@type": "oa:ResourceSelection",
+          "hasSource": "https://w3id.org/alexandria/paper/mercadier2011/run/e88f86e/asset/page_images/page_001.png",
+          "hasSelector": {
+            "@type": "oa:FragmentSelector",
+            "conformsTo": "http://www.w3.org/TR/media-frags/",
+            "value": "xywh=111,402,472,216"
+          }
+        }
+      ]
+    },
+    {
+      "@id": "https://w3id.org/alexandria/paper/mercadier2011/run/e88f86e/element/6",
+      "@type": "doco:Paragraph",
+      "position": 6,
+      "onPage": "https://w3id.org/alexandria/paper/mercadier2011/run/e88f86e/page/1",
+      "region": [
+        {
+          "@type": "oa:ResourceSelection",
+          "hasSource": "https://w3id.org/alexandria/paper/mercadier2011/run/e88f86e/asset/page_images/page_001.png",
+          "hasSelector": {
+            "@type": "oa:FragmentSelector",
+            "conformsTo": "http://www.w3.org/TR/media-frags/",
+            "value": "xywh=606,400,483,174"
+          }
+        }
+      ]
+    },
+    {
+      "@id": "https://w3id.org/alexandria/paper/mercadier2011/run/e88f86e/element/7",
+      "@type": "doco:Paragraph",
+      "position": 7,
+      "onPage": "https://w3id.org/alexandria/paper/mercadier2011/run/e88f86e/page/1",
+      "region": [
+        {
+          "@type": "oa:ResourceSelection",
+          "hasSource": "https://w3id.org/alexandria/paper/mercadier2011/run/e88f86e/asset/page_images/page_001.png",
+          "hasSelector": {
+            "@type": "oa:FragmentSelector",
+            "conformsTo": "http://www.w3.org/TR/media-frags/",
+            "value": "xywh=607,595,235,21"
+          }
+        }
+      ]
+    },
+    {
+      "@id": "https://w3id.org/alexandria/paper/mercadier2011/run/e88f86e/element/8",
+      "@type": "doco:SectionTitle",
+      "position": 8,
+      "onPage": "https://w3id.org/alexandria/paper/mercadier2011/run/e88f86e/page/1",
+      "text": "Introduction",
+      "region": [
+        {
+          "@type": "oa:ResourceSelection",
+          "hasSource": "https://w3id.org/alexandria/paper/mercadier2011/run/e88f86e/asset/page_images/page_001.png",
+          "hasSelector": {
+            "@type": "oa:FragmentSelector",
+            "conformsTo": "http://www.w3.org/TR/media-frags/",
+            "value": "xywh=111,692,106,22"
+          }
+        }
+      ]
+    },
+    {
+      "@id": "https://w3id.org/alexandria/paper/mercadier2011/run/e88f86e/element/9",
+      "@type": "doco:Paragraph",
+      "position": 9,
+      "onPage": "https://w3id.org/alexandria/paper/mercadier2011/run/e88f86e/page/1",
+      "region": [
+        {
+          "@type": "oa:ResourceSelection",
+          "hasSource": "https://w3id.org/alexandria/paper/mercadier2011/run/e88f86e/asset/page_images/page_001.png",
+          "hasSelector": {
+            "@type": "oa:FragmentSelector",
+            "conformsTo": "http://www.w3.org/TR/media-frags/",
+            "value": "xywh=111,727,306,498"
+          }
+        }
+      ]
+    },
+    {
+      "@id": "https://w3id.org/alexandria/paper/mercadier2011/run/e88f86e/element/10",
+      "@type": "doco:Paragraph",
+      "position": 10,
+      "onPage": "https://w3id.org/alexandria/paper/mercadier2011/run/e88f86e/page/1",
+      "region": [
+        {
+          "@type": "oa:ResourceSelection",
+          "hasSource": "https://w3id.org/alexandria/paper/mercadier2011/run/e88f86e/asset/page_images/page_001.png",
+          "hasSelector": {
+            "@type": "oa:FragmentSelector",
+            "conformsTo": "http://www.w3.org/TR/media-frags/",
+            "value": "xywh=111,1227,306,107"
+          }
+        }
+      ]
+    },
+    {
+      "@id": "https://w3id.org/alexandria/paper/mercadier2011/run/e88f86e/element/11",
+      "@type": "doco:Paragraph",
+      "position": 11,
+      "onPage": "https://w3id.org/alexandria/paper/mercadier2011/run/e88f86e/page/1",
+      "region": [
+        {
+          "@type": "oa:ResourceSelection",
+          "hasSource": "https://w3id.org/alexandria/paper/mercadier2011/run/e88f86e/asset/page_images/page_001.png",
+          "hasSelector": {
+            "@type": "oa:FragmentSelector",
+            "conformsTo": "http://www.w3.org/TR/media-frags/",
+            "value": "xywh=445,684,307,690"
+          }
+        }
+      ]
+    },
+    {
+      "@id": "https://w3id.org/alexandria/paper/mercadier2011/run/e88f86e/element/12",
+      "@type": "doco:SectionTitle",
+      "position": 12,
+      "onPage": "https://w3id.org/alexandria/paper/mercadier2011/run/e88f86e/page/1",
+      "text": "Previous developments and considerations",
+      "region": [
+        {
+          "@type": "oa:ResourceSelection",
+          "hasSource": "https://w3id.org/alexandria/paper/mercadier2011/run/e88f86e/asset/page_images/page_001.png",
+          "hasSelector": {
+            "@type": "oa:FragmentSelector",
+            "conformsTo": "http://www.w3.org/TR/media-frags/",
+            "value": "xywh=447,1412,239,42"
+          }
+        }
+      ]
+    },
+    {
+      "@id": "https://w3id.org/alexandria/paper/mercadier2011/run/e88f86e/element/13",
+      "@type": "doco:Paragraph",
+      "position": 13,
+      "onPage": "https://w3id.org/alexandria/paper/mercadier2011/run/e88f86e/page/1",
+      "region": [
+        {
+          "@type": "oa:ResourceSelection",
+          "hasSource": "https://w3id.org/alexandria/paper/mercadier2011/run/e88f86e/asset/page_images/page_001.png",
+          "hasSelector": {
+            "@type": "oa:FragmentSelector",
+            "conformsTo": "http://www.w3.org/TR/media-frags/",
+            "value": "xywh=782,1007,307,502"
+          }
+        }
+      ]
+    },
+    {
+      "@id": "https://w3id.org/alexandria/paper/mercadier2011/run/e88f86e/element/14",
+      "@type": "doco:Paragraph",
+      "position": 14,
+      "onPage": "https://w3id.org/alexandria/paper/mercadier2011/run/e88f86e/page/2",
+      "region": [
+        {
+          "@type": "oa:ResourceSelection",
+          "hasSource": "https://w3id.org/alexandria/paper/mercadier2011/run/e88f86e/asset/page_images/page_002.png",
+          "hasSelector": {
+            "@type": "oa:FragmentSelector",
+            "conformsTo": "http://www.w3.org/TR/media-frags/",
+            "value": "xywh=146,158,308,155"
+          }
+        }
+      ]
+    },
+    {
+      "@id": "https://w3id.org/alexandria/paper/mercadier2011/run/e88f86e/element/15",
+      "@type": "doco:SectionTitle",
+      "position": 15,
+      "onPage": "https://w3id.org/alexandria/paper/mercadier2011/run/e88f86e/page/2",
+      "text": "Results",
+      "region": [
+        {
+          "@type": "oa:ResourceSelection",
+          "hasSource": "https://w3id.org/alexandria/paper/mercadier2011/run/e88f86e/asset/page_images/page_002.png",
+          "hasSelector": {
+            "@type": "oa:FragmentSelector",
+            "conformsTo": "http://www.w3.org/TR/media-frags/",
+            "value": "xywh=146,344,63,22"
+          }
+        }
+      ]
+    },
+    {
+      "@id": "https://w3id.org/alexandria/paper/mercadier2011/run/e88f86e/element/16",
+      "@type": "doco:Paragraph",
+      "position": 16,
+      "onPage": "https://w3id.org/alexandria/paper/mercadier2011/run/e88f86e/page/2",
+      "region": [
+        {
+          "@type": "oa:ResourceSelection",
+          "hasSource": "https://w3id.org/alexandria/paper/mercadier2011/run/e88f86e/asset/page_images/page_002.png",
+          "hasSelector": {
+            "@type": "oa:FragmentSelector",
+            "conformsTo": "http://www.w3.org/TR/media-frags/",
+            "value": "xywh=481,270,310,350"
+          }
+        }
+      ]
+    },
+    {
+      "@id": "https://w3id.org/alexandria/paper/mercadier2011/run/e88f86e/element/17",
+      "@type": "doco:SectionTitle",
+      "position": 17,
+      "onPage": "https://w3id.org/alexandria/paper/mercadier2011/run/e88f86e/page/2",
+      "text": "Controls on REE incorporation in uranium oxides",
+      "region": [
+        {
+          "@type": "oa:ResourceSelection",
+          "hasSource": "https://w3id.org/alexandria/paper/mercadier2011/run/e88f86e/asset/page_images/page_002.png",
+          "hasSelector": {
+            "@type": "oa:FragmentSelector",
+            "conformsTo": "http://www.w3.org/TR/media-frags/",
+            "value": "xywh=481,649,286,45"
+          }
+        }
+      ]
+    },
+    {
+      "@id": "https://w3id.org/alexandria/paper/mercadier2011/run/e88f86e/element/18",
+      "@type": "doco:Paragraph",
+      "position": 18,
+      "onPage": "https://w3id.org/alexandria/paper/mercadier2011/run/e88f86e/page/2",
+      "region": [
+        {
+          "@type": "oa:ResourceSelection",
+          "hasSource": "https://w3id.org/alexandria/paper/mercadier2011/run/e88f86e/asset/page_images/page_002.png",
+          "hasSelector": {
+            "@type": "oa:FragmentSelector",
+            "conformsTo": "http://www.w3.org/TR/media-frags/",
+            "value": "xywh=481,704,309,175"
+          }
+        }
+      ]
+    },
+    {
+      "@id": "https://w3id.org/alexandria/paper/mercadier2011/run/e88f86e/element/19",
+      "@type": "doco:Figure",
+      "position": 19,
+      "onPage": "https://w3id.org/alexandria/paper/mercadier2011/run/e88f86e/page/2",
+      "figureType": "pax:mapFigure",
+      "description": "This map shows the global distribution of various uranium deposits, categorized by their geological formation type. Different symbols are used to represent deposit types like magmatic, synmetamorphic, unconformity-related, volcanic-related, vein-type, and roll-front deposits.",
+      "pax:parsedContent": "<table><tr><td>Location</td><td>Type</td><td>Count</td></tr><tr><td>Athabasca</td><td>Magnetic</td><td>1</td></tr><tr><td>Moore L</td><td>Magnetic</td><td>1</td></tr><tr><td>Mistamisk</td><td>Unconformity-related</td><td>1</td></tr><tr><td>Luthi</td><td>Unconformity-related</td><td>1</td></tr><tr><td>Kola</td><td>Unconformity-related</td><td>1</td></tr><tr><td>Streltsovskoye</td><td>Volcanic-related</td><td>1</td></tr><tr><td>Kazakhstan</td><td>Volcanic-related</td><td>1</td></tr><tr><td>Kawanga</td><td>Volcanic-related</td><td>1</td></tr><tr><td>Kambolgie</td><td>Volcanic-related</td><td>1</td></tr><tr><td>Unconformity-related</td><td>Volcanic-related</td><td>1</td></tr><tr><td>Vein-type</td><td>Volcanic-related</td><td>1</td></tr><tr><td>Roll-front</td><td>Volcanic-related</td><td>1</td></tr></table>",
+      "region": [
+        {
+          "@type": "oa:ResourceSelection",
+          "hasSource": "https://w3id.org/alexandria/paper/mercadier2011/run/e88f86e/asset/page_images/page_002.png",
+          "hasSelector": {
+            "@type": "oa:FragmentSelector",
+            "conformsTo": "http://www.w3.org/TR/media-frags/",
+            "value": "xywh=144,907,646,485"
+          }
+        }
+      ]
+    },
+    {
+      "@id": "https://w3id.org/alexandria/paper/mercadier2011/run/e88f86e/element/20",
+      "@type": "deo:Caption",
+      "position": 20,
+      "onPage": "https://w3id.org/alexandria/paper/mercadier2011/run/e88f86e/page/2",
+      "region": [
+        {
+          "@type": "oa:ResourceSelection",
+          "hasSource": "https://w3id.org/alexandria/paper/mercadier2011/run/e88f86e/asset/page_images/page_002.png",
+          "hasSelector": {
+            "@type": "oa:FragmentSelector",
+            "conformsTo": "http://www.w3.org/TR/media-frags/",
+            "value": "xywh=144,1405,646,106"
+          }
+        }
+      ]
+    },
+    {
+      "@id": "https://w3id.org/alexandria/paper/mercadier2011/run/e88f86e/element/21",
+      "@type": "doco:Figure",
+      "position": 21,
+      "onPage": "https://w3id.org/alexandria/paper/mercadier2011/run/e88f86e/page/2",
+      "figureType": "pax:micrograph",
+      "description": "The figure shows two backscatter electron microscope (BSEM) images of zircon grains. The images illustrate zoning and alteration features within the zircons, with ages of different zones indicated.",
+      "pax:parsedContent": "The image displays two separate scientific diagrams, labeled (A) and (B), each depicting a cross-sectional view of a geological formation. Both diagrams are in grayscale, with varying shades indicating different materials or geological features.\n\nIn diagram (A), the top portion of the image shows a detailed cross-section of a geological formation with various layers and structures. The layers are labeled with numbers 1 through 9, and the diagram includes annotations such as \"McArthur river,\" \"Unconformity-related,\" and \"Overgrowth.\" The core of the formation is marked with a number 1, and the alteration zone is indicated with a number 2. The diagram also includes a scale bar at the bottom, showing a measurement of 500 µm.\n\nDiagram (B) presents a similar cross-section but with a different set of annotations. The layers are labeled with numbers 1 through 9, and the diagram includes annotations such as \"Luthi Magmatic,\" \"Core,\" and \"Alteration band.\" The core is marked with a number 1, and the alteration band is indicated with a number 2. The scale bar at the bottom shows a measurement of 30 µm.\n\nBoth diagrams include a legend with the text \"Pb depleted, Ca-Si enriched,\" suggesting that the formation has undergone some form of metal enrichment. The diagrams are likely used to illustrate the geological processes and structures within the formation, such as the presence of different rock types and the extent of alteration or metal enrichment.",
+      "region": [
+        {
+          "@type": "oa:ResourceSelection",
+          "hasSource": "https://w3id.org/alexandria/paper/mercadier2011/run/e88f86e/asset/page_images/page_002.png",
+          "hasSelector": {
+            "@type": "oa:FragmentSelector",
+            "conformsTo": "http://www.w3.org/TR/media-frags/",
+            "value": "xywh=822,160,304,582"
+          }
+        }
+      ]
+    },
+    {
+      "@id": "https://w3id.org/alexandria/paper/mercadier2011/run/e88f86e/element/22",
+      "@type": "deo:Caption",
+      "position": 22,
+      "onPage": "https://w3id.org/alexandria/paper/mercadier2011/run/e88f86e/page/2",
+      "region": [
+        {
+          "@type": "oa:ResourceSelection",
+          "hasSource": "https://w3id.org/alexandria/paper/mercadier2011/run/e88f86e/asset/page_images/page_002.png",
+          "hasSelector": {
+            "@type": "oa:FragmentSelector",
+            "conformsTo": "http://www.w3.org/TR/media-frags/",
+            "value": "xywh=818,755,309,312"
+          }
+        }
+      ]
+    },
+    {
+      "@id": "https://w3id.org/alexandria/paper/mercadier2011/run/e88f86e/element/23",
+      "@type": "doco:Paragraph",
+      "position": 23,
+      "onPage": "https://w3id.org/alexandria/paper/mercadier2011/run/e88f86e/page/2",
+      "region": [
+        {
+          "@type": "oa:ResourceSelection",
+          "hasSource": "https://w3id.org/alexandria/paper/mercadier2011/run/e88f86e/asset/page_images/page_002.png",
+          "hasSelector": {
+            "@type": "oa:FragmentSelector",
+            "conformsTo": "http://www.w3.org/TR/media-frags/",
+            "value": "xywh=818,1116,308,393"
+          }
+        }
+      ]
+    },
+    {
+      "@id": "https://w3id.org/alexandria/paper/mercadier2011/run/e88f86e/element/24",
+      "@type": "doco:Figure",
+      "position": 24,
+      "onPage": "https://w3id.org/alexandria/paper/mercadier2011/run/e88f86e/page/3",
+      "figureType": "pax:lineGraph",
+      "description": "The figure shows rare earth element (REE) patterns for different types of ore deposits, including intrusive, synmetamorphic, unconformity-related, vein-type, roll-front, and volcanic-related deposits. It also displays the fluid type, temperature, and source for each deposit type.",
+      "chartData": [
+        {
+          "chart_title": "Intrusive",
+          "Chart_Type": "Line Graph",
+          "Orientation": "Landscape",
+          "chart_aspect_ratio": 1.3,
+          "x_axis_label": "",
+          "y_axis_label": "",
+          "x_axis_min": null,
+          "x_axis_max": null,
+          "Left_Y_axis_min": 1,
+          "Left_Y_axis_max": 100000,
+          "Right_Y_axis_min": null,
+          "Right_Y_axis_max": null,
+          "right_y_axis_label": "",
+          "y_axis_interval": null,
+          "x_axis_interval": null,
+          "x_axis_ticks": [
+            "La",
+            "Ce",
+            "Pr",
+            "Nd",
+            "Sm",
+            "Eu",
+            "Gd",
+            "Tb",
+            "Dy",
+            "Ho",
+            "Er",
+            "Tm",
+            "Yb",
+            "Lu"
+          ],
+          "y_axis_ticks": [
+            1,
+            10,
+            100,
+            1000,
+            10000,
+            100000
+          ],
+          "data": [
+            {
+              "series": "Luthi",
+              "x": [
+                "La",
+                "Ce",
+                "Pr",
+                "Nd",
+                "Sm",
+                "Eu",
+                "Gd",
+                "Tb",
+                "Dy",
+                "Ho",
+                "Er",
+                "Tm",
+                "Yb",
+                "Lu"
+              ],
+              "y": [
+                8000,
+                18000,
+                20000,
+                18000,
+                3000,
+                1000,
+                15000,
+                2000,
+                12000,
+                2000,
+                10000,
+                1500,
+                8000,
+                1000
+              ],
+              "color": "black",
+              "line_style": "solid",
+              "marker_type": "triangle",
+              "marker_fill": "filled",
+              "marker_size": "medium"
+            },
+            {
+              "series": "Moore Lake 1",
+              "x": [
+                "La",
+                "Ce",
+                "Pr",
+                "Nd",
+                "Sm",
+                "Eu",
+                "Gd",
+                "Tb",
+                "Dy",
+                "Ho",
+                "Er",
+                "Tm",
+                "Yb",
+                "Lu"
+              ],
+              "y": [
+                6000,
+                12000,
+                15000,
+                12000,
+                2500,
+                800,
+                12000,
+                1500,
+                10000,
+                1800,
+                8000,
+                1200,
+                6000,
+                800
+              ],
+              "color": "darkslategray",
+              "line_style": "solid",
+              "marker_type": "triangle",
+              "marker_fill": "filled",
+              "marker_size": "medium"
+            },
+            {
+              "series": "Moore Lake 2",
+              "x": [
+                "La",
+                "Ce",
+                "Pr",
+                "Nd",
+                "Sm",
+                "Eu",
+                "Gd",
+                "Tb",
+                "Dy",
+                "Ho",
+                "Er",
+                "Tm",
+                "Yb",
+                "Lu"
+              ],
+              "y": [
+                4000,
+                10000,
+                12000,
+                10000,
+                2000,
+                600,
+                10000,
+                1200,
+                8000,
+                1500,
+                6000,
+                1000,
+                5000,
+                600
+              ],
+              "color": "dimgray",
+              "line_style": "solid",
+              "marker_type": "triangle",
+              "marker_fill": "filled",
+              "marker_size": "medium"
+            },
+            {
+              "series": "Moore Lake 3",
+              "x": [
+                "La",
+                "Ce",
+                "Pr",
+                "Nd",
+                "Sm",
+                "Eu",
+                "Gd",
+                "Tb",
+                "Dy",
+                "Ho",
+                "Er",
+                "Tm",
+                "Yb",
+                "Lu"
+              ],
+              "y": [
+                3000,
+                8000,
+                10000,
+                8000,
+                1800,
+                500,
+                8000,
+                1000,
+                6000,
+                1200,
+                5000,
+                800,
+                4000,
+                500
+              ],
+              "color": "gray",
+              "line_style": "solid",
+              "marker_type": "triangle",
+              "marker_fill": "filled",
+              "marker_size": "medium"
+            },
+            {
+              "series": "Rössing 1",
+              "x": [
+                "La",
+                "Ce",
+                "Pr",
+                "Nd",
+                "Sm",
+                "Eu",
+                "Gd",
+                "Tb",
+                "Dy",
+                "Ho",
+                "Er",
+                "Tm",
+                "Yb",
+                "Lu"
+              ],
+              "y": [
+                2000,
+                8000,
+                10000,
+                8000,
+                1500,
+                500,
+                8000,
+                1000,
+                8000,
+                1200,
+                6000,
+                800,
+                5000,
+                600
+              ],
+              "color": "black",
+              "line_style": "solid",
+              "marker_type": "triangle",
+              "marker_fill": "hollow",
+              "marker_size": "medium"
+            },
+            {
+              "series": "Rössing 2",
+              "x": [
+                "La",
+                "Ce",
+                "Pr",
+                "Nd",
+                "Sm",
+                "Eu",
+                "Gd",
+                "Tb",
+                "Dy",
+                "Ho",
+                "Er",
+                "Tm",
+                "Yb",
+                "Lu"
+              ],
+              "y": [
+                1500,
+                6000,
+                8000,
+                6000,
+                1200,
+                400,
+                6000,
+                800,
+                6000,
+                1000,
+                5000,
+                600,
+                4000,
+                500
+              ],
+              "color": "darkslategray",
+              "line_style": "solid",
+              "marker_type": "triangle",
+              "marker_fill": "hollow",
+              "marker_size": "medium"
+            },
+            {
+              "series": "Rössing 3",
+              "x": [
+                "La",
+                "Ce",
+                "Pr",
+                "Nd",
+                "Sm",
+                "Eu",
+                "Gd",
+                "Tb",
+                "Dy",
+                "Ho",
+                "Er",
+                "Tm",
+                "Yb",
+                "Lu"
+              ],
+              "y": [
+                1000,
+                5000,
+                6000,
+                5000,
+                1000,
+                300,
+                5000,
+                600,
+                5000,
+                800,
+                4000,
+                500,
+                3000,
+                400
+              ],
+              "color": "dimgray",
+              "line_style": "solid",
+              "marker_type": "triangle",
+              "marker_fill": "hollow",
+              "marker_size": "medium"
+            },
+            {
+              "series": "Kola",
+              "x": [
+                "La",
+                "Ce",
+                "Pr",
+                "Nd",
+                "Sm",
+                "Eu",
+                "Gd",
+                "Tb",
+                "Dy",
+                "Ho",
+                "Er",
+                "Tm",
+                "Yb",
+                "Lu"
+              ],
+              "y": [
+                800,
+                4000,
+                5000,
+                4000,
+                800,
+                250,
+                4000,
+                500,
+                4000,
+                600,
+                3000,
+                400,
+                2500,
+                300
+              ],
+              "color": "gray",
+              "line_style": "solid",
+              "marker_type": "triangle",
+              "marker_fill": "hollow",
+              "marker_size": "medium"
+            }
+          ]
+        },
+        {
+          "chart_title": "Synmetamorphic",
+          "Chart_Type": "Line Graph",
+          "Orientation": "Landscape",
+          "chart_aspect_ratio": 1.3,
+          "x_axis_label": "",
+          "y_axis_label": "",
+          "x_axis_min": null,
+          "x_axis_max": null,
+          "Left_Y_axis_min": 1,
+          "Left_Y_axis_max": 100000,
+          "Right_Y_axis_min": null,
+          "Right_Y_axis_max": null,
+          "right_y_axis_label": "",
+          "y_axis_interval": null,
+          "x_axis_interval": null,
+          "x_axis_ticks": [
+            "La",
+            "Ce",
+            "Pr",
+            "Nd",
+            "Sm",
+            "Eu",
+            "Gd",
+            "Tb",
+            "Dy",
+            "Ho",
+            "Er",
+            "Tm",
+            "Yb",
+            "Lu"
+          ],
+          "y_axis_ticks": [
+            1,
+            10,
+            100,
+            1000,
+            10000,
+            100000
+          ],
+          "data": [
+            {
+              "series": "Mistamisk 1",
+              "x": [
+                "La",
+                "Ce",
+                "Pr",
+                "Nd",
+                "Sm",
+                "Eu",
+                "Gd",
+                "Tb",
+                "Dy",
+                "Ho",
+                "Er",
+                "Tm",
+                "Yb",
+                "Lu"
+              ],
+              "y": [
+                200,
+                300,
+                800,
+                2000,
+                3000,
+                2000,
+                4000,
+                800,
+                5000,
+                1000,
+                3000,
+                500,
+                2000,
+                300
+              ],
+              "color": "black",
+              "line_style": "solid",
+              "marker_type": "diamond",
+              "marker_fill": "filled",
+              "marker_size": "medium"
+            },
+            {
+              "series": "Mistamisk 2",
+              "x": [
+                "La",
+                "Ce",
+                "Pr",
+                "Nd",
+                "Sm",
+                "Eu",
+                "Gd",
+                "Tb",
+                "Dy",
+                "Ho",
+                "Er",
+                "Tm",
+                "Yb",
+                "Lu"
+              ],
+              "y": [
+                180,
+                250,
+                700,
+                1800,
+                2500,
+                1800,
+                3500,
+                700,
+                4500,
+                900,
+                2500,
+                450,
+                1800,
+                250
+              ],
+              "color": "dimgray",
+              "line_style": "solid",
+              "marker_type": "diamond",
+              "marker_fill": "filled",
+              "marker_size": "medium"
+            },
+            {
+              "series": "Mistamisk 3",
+              "x": [
+                "La",
+                "Ce",
+                "Pr",
+                "Nd",
+                "Sm",
+                "Eu",
+                "Gd",
+                "Tb",
+                "Dy",
+                "Ho",
+                "Er",
+                "Tm",
+                "Yb",
+                "Lu"
+              ],
+              "y": [
+                150,
+                200,
+                600,
+                1500,
+                2000,
+                1500,
+                3000,
+                600,
+                4000,
+                800,
+                2000,
+                400,
+                1500,
+                200
+              ],
+              "color": "gray",
+              "line_style": "solid",
+              "marker_type": "diamond",
+              "marker_fill": "filled",
+              "marker_size": "medium"
+            },
+            {
+              "series": "Kawanga 1",
+              "x": [
+                "La",
+                "Ce",
+                "Pr",
+                "Nd",
+                "Sm",
+                "Eu",
+                "Gd",
+                "Tb",
+                "Dy",
+                "Ho",
+                "Er",
+                "Tm",
+                "Yb",
+                "Lu"
+              ],
+              "y": [
+                150,
+                200,
+                400,
+                800,
+                1000,
+                500,
+                1200,
+                200,
+                1000,
+                200,
+                800,
+                150,
+                500,
+                80
+              ],
+              "color": "black",
+              "line_style": "solid",
+              "marker_type": "diamond",
+              "marker_fill": "hollow",
+              "marker_size": "medium"
+            },
+            {
+              "series": "Kawanga 2",
+              "x": [
+                "La",
+                "Ce",
+                "Pr",
+                "Nd",
+                "Sm",
+                "Eu",
+                "Gd",
+                "Tb",
+                "Dy",
+                "Ho",
+                "Er",
+                "Tm",
+                "Yb",
+                "Lu"
+              ],
+              "y": [
+                120,
+                180,
+                350,
+                700,
+                800,
+                400,
+                1000,
+                180,
+                800,
+                180,
+                600,
+                120,
+                400,
+                60
+              ],
+              "color": "darkslategray",
+              "line_style": "solid",
+              "marker_type": "diamond",
+              "marker_fill": "hollow",
+              "marker_size": "medium"
+            },
+            {
+              "series": "Kawanga 3",
+              "x": [
+                "La",
+                "Ce",
+                "Pr",
+                "Nd",
+                "Sm",
+                "Eu",
+                "Gd",
+                "Tb",
+                "Dy",
+                "Ho",
+                "Er",
+                "Tm",
+                "Yb",
+                "Lu"
+              ],
+              "y": [
+                100,
+                150,
+                300,
+                600,
+                600,
+                300,
+                800,
+                150,
+                600,
+                150,
+                500,
+                100,
+                300,
+                50
+              ],
+              "color": "dimgray",
+              "line_style": "solid",
+              "marker_type": "diamond",
+              "marker_fill": "hollow",
+              "marker_size": "medium"
+            },
+            {
+              "series": "Kawanga 4",
+              "x": [
+                "La",
+                "Ce",
+                "Pr",
+                "Nd",
+                "Sm",
+                "Eu",
+                "Gd",
+                "Tb",
+                "Dy",
+                "Ho",
+                "Er",
+                "Tm",
+                "Yb",
+                "Lu"
+              ],
+              "y": [
+                80,
+                120,
+                250,
+                500,
+                500,
+                200,
+                600,
+                120,
+                500,
+                120,
+                400,
+                80,
+                200,
+                40
+              ],
+              "color": "gray",
+              "line_style": "solid",
+              "marker_type": "diamond",
+              "marker_fill": "hollow",
+              "marker_size": "medium"
+            }
+          ]
+        },
+        {
+          "chart_title": "Unconformity-related Unconformity-hosted",
+          "Chart_Type": "Line Graph",
+          "Orientation": "Landscape",
+          "chart_aspect_ratio": 1.3,
+          "x_axis_label": "",
+          "y_axis_label": "",
+          "x_axis_min": null,
+          "x_axis_max": null,
+          "Left_Y_axis_min": 1,
+          "Left_Y_axis_max": 10000,
+          "Right_Y_axis_min": null,
+          "Right_Y_axis_max": null,
+          "right_y_axis_label": "",
+          "y_axis_interval": null,
+          "x_axis_interval": null,
+          "x_axis_ticks": [
+            "La",
+            "Ce",
+            "Pr",
+            "Nd",
+            "Sm",
+            "Eu",
+            "Gd",
+            "Tb",
+            "Dy",
+            "Ho",
+            "Er",
+            "Tm",
+            "Yb",
+            "Lu"
+          ],
+          "y_axis_ticks": [
+            1,
+            10,
+            100,
+            1000,
+            10000
+          ],
+          "data": [
+            {
+              "series": "Cigar Lake 1",
+              "x": [
+                "La",
+                "Ce",
+                "Pr",
+                "Nd",
+                "Sm",
+                "Eu",
+                "Gd",
+                "Tb",
+                "Dy",
+                "Ho",
+                "Er",
+                "Tm",
+                "Yb",
+                "Lu"
+              ],
+              "y": [
+                30,
+                100,
+                200,
+                400,
+                1000,
+                1500,
+                2000,
+                1000,
+                1500,
+                800,
+                1000,
+                500,
+                800,
+                300
+              ],
+              "color": "black",
+              "line_style": "solid",
+              "marker_type": "square",
+              "marker_fill": "hollow",
+              "marker_size": "medium"
+            },
+            {
+              "series": "Cigar Lake 2",
+              "x": [
+                "La",
+                "Ce",
+                "Pr",
+                "Nd",
+                "Sm",
+                "Eu",
+                "Gd",
+                "Tb",
+                "Dy",
+                "Ho",
+                "Er",
+                "Tm",
+                "Yb",
+                "Lu"
+              ],
+              "y": [
+                25,
+                80,
+                150,
+                300,
+                800,
+                1200,
+                1500,
+                800,
+                1200,
+                600,
+                800,
+                400,
+                600,
+                250
+              ],
+              "color": "dimgray",
+              "line_style": "solid",
+              "marker_type": "square",
+              "marker_fill": "hollow",
+              "marker_size": "medium"
+            },
+            {
+              "series": "Cigar Lake 3",
+              "x": [
+                "La",
+                "Ce",
+                "Pr",
+                "Nd",
+                "Sm",
+                "Eu",
+                "Gd",
+                "Tb",
+                "Dy",
+                "Ho",
+                "Er",
+                "Tm",
+                "Yb",
+                "Lu"
+              ],
+              "y": [
+                20,
+                60,
+                120,
+                250,
+                600,
+                1000,
+                1200,
+                600,
+                1000,
+                500,
+                600,
+                300,
+                500,
+                200
+              ],
+              "color": "gray",
+              "line_style": "solid",
+              "marker_type": "square",
+              "marker_fill": "hollow",
+              "marker_size": "medium"
+            },
+            {
+              "series": "McArthur River",
+              "x": [
+                "La",
+                "Ce",
+                "Pr",
+                "Nd",
+                "Sm",
+                "Eu",
+                "Gd",
+                "Tb",
+                "Dy",
+                "Ho",
+                "Er",
+                "Tm",
+                "Yb",
+                "Lu"
+              ],
+              "y": [
+                8,
+                20,
+                30,
+                10,
+                100,
+                200,
+                300,
+                150,
+                200,
+                100,
+                120,
+                60,
+                80,
+                40
+              ],
+              "color": "black",
+              "line_style": "solid",
+              "marker_type": "square",
+              "marker_fill": "filled",
+              "marker_size": "medium"
+            },
+            {
+              "series": "Series 5",
+              "x": [
+                "La",
+                "Ce",
+                "Pr",
+                "Nd",
+                "Sm",
+                "Eu",
+                "Gd",
+                "Tb",
+                "Dy",
+                "Ho",
+                "Er",
+                "Tm",
+                "Yb",
+                "Lu"
+              ],
+              "y": [
+                6,
+                15,
+                20,
+                8,
+                80,
+                150,
+                200,
+                100,
+                150,
+                80,
+                100,
+                50,
+                60,
+                30
+              ],
+              "color": "dimgray",
+              "line_style": "solid",
+              "marker_type": "square",
+              "marker_fill": "filled",
+              "marker_size": "medium"
+            },
+            {
+              "series": "Sue",
+              "x": [
+                "La",
+                "Ce",
+                "Pr",
+                "Nd",
+                "Sm",
+                "Eu",
+                "Gd",
+                "Tb",
+                "Dy",
+                "Ho",
+                "Er",
+                "Tm",
+                "Yb",
+                "Lu"
+              ],
+              "y": [
+                5,
+                10,
+                15,
+                5,
+                30,
+                50,
+                80,
+                40,
+                50,
+                30,
+                35,
+                20,
+                25,
+                15
+              ],
+              "color": "gray",
+              "line_style": "solid",
+              "marker_type": "square",
+              "marker_fill": "filled",
+              "marker_size": "medium"
+            }
+          ]
+        },
+        {
+          "chart_title": "Unconformity-related Basement-hosted",
+          "Chart_Type": "Line Graph",
+          "Orientation": "Landscape",
+          "chart_aspect_ratio": 1.3,
+          "x_axis_label": "",
+          "y_axis_label": "",
+          "x_axis_min": null,
+          "x_axis_max": null,
+          "Left_Y_axis_min": 1,
+          "Left_Y_axis_max": 10000,
+          "Right_Y_axis_min": null,
+          "Right_Y_axis_max": null,
+          "right_y_axis_label": "",
+          "y_axis_interval": null,
+          "x_axis_interval": null,
+          "x_axis_ticks": [
+            "La",
+            "Ce",
+            "Pr",
+            "Nd",
+            "Sm",
+            "Eu",
+            "Gd",
+            "Tb",
+            "Dy",
+            "Ho",
+            "Er",
+            "Tm",
+            "Yb",
+            "Lu"
+          ],
+          "y_axis_ticks": [
+            1,
+            10,
+            100,
+            1000,
+            10000
+          ],
+          "data": [
+            {
+              "series": "Koongarra Eagle Point",
+              "x": [
+                "La",
+                "Ce",
+                "Pr",
+                "Nd",
+                "Sm",
+                "Eu",
+                "Gd",
+                "Tb",
+                "Dy",
+                "Ho",
+                "Er",
+                "Tm",
+                "Yb",
+                "Lu"
+              ],
+              "y": [
+                100,
+                200,
+                300,
+                800,
+                1500,
+                2000,
+                3000,
+                1000,
+                2000,
+                800,
+                1000,
+                300,
+                500,
+                150
+              ],
+              "color": "black",
+              "line_style": "solid",
+              "marker_type": "square",
+              "marker_fill": "hollow",
+              "marker_size": "medium"
+            },
+            {
+              "series": "Millennium",
+              "x": [
+                "La",
+                "Ce",
+                "Pr",
+                "Nd",
+                "Sm",
+                "Eu",
+                "Gd",
+                "Tb",
+                "Dy",
+                "Ho",
+                "Er",
+                "Tm",
+                "Yb",
+                "Lu"
+              ],
+              "y": [
+                50,
+                100,
+                150,
+                400,
+                800,
+                1000,
+                1500,
+                500,
+                1000,
+                400,
+                500,
+                150,
+                250,
+                80
+              ],
+              "color": "dimgray",
+              "line_style": "solid",
+              "marker_type": "square",
+              "marker_fill": "hollow",
+              "marker_size": "medium"
+            },
+            {
+              "series": "Series 3",
+              "x": [
+                "La",
+                "Ce",
+                "Pr",
+                "Nd",
+                "Sm",
+                "Eu",
+                "Gd",
+                "Tb",
+                "Dy",
+                "Ho",
+                "Er",
+                "Tm",
+                "Yb",
+                "Lu"
+              ],
+              "y": [
+                40,
+                80,
+                120,
+                300,
+                600,
+                800,
+                1200,
+                400,
+                800,
+                300,
+                400,
+                120,
+                200,
+                60
+              ],
+              "color": "gray",
+              "line_style": "solid",
+              "marker_type": "square",
+              "marker_fill": "hollow",
+              "marker_size": "medium"
+            },
+            {
+              "series": "Nabarlek",
+              "x": [
+                "La",
+                "Ce",
+                "Pr",
+                "Nd",
+                "Sm",
+                "Eu",
+                "Gd",
+                "Tb",
+                "Dy",
+                "Ho",
+                "Er",
+                "Tm",
+                "Yb",
+                "Lu"
+              ],
+              "y": [
+                20,
+                40,
+                60,
+                150,
+                300,
+                400,
+                600,
+                200,
+                400,
+                150,
+                200,
+                60,
+                100,
+                30
+              ],
+              "color": "black",
+              "line_style": "solid",
+              "marker_type": "square",
+              "marker_fill": "filled",
+              "marker_size": "medium"
+            },
+            {
+              "series": "Series 5",
+              "x": [
+                "La",
+                "Ce",
+                "Pr",
+                "Nd",
+                "Sm",
+                "Eu",
+                "Gd",
+                "Tb",
+                "Dy",
+                "Ho",
+                "Er",
+                "Tm",
+                "Yb",
+                "Lu"
+              ],
+              "y": [
+                15,
+                30,
+                50,
+                120,
+                250,
+                300,
+                500,
+                150,
+                300,
+                120,
+                150,
+                50,
+                80,
+                25
+              ],
+              "color": "dimgray",
+              "line_style": "solid",
+              "marker_type": "square",
+              "marker_fill": "filled",
+              "marker_size": "medium"
+            },
+            {
+              "series": "Series 6",
+              "x": [
+                "La",
+                "Ce",
+                "Pr",
+                "Nd",
+                "Sm",
+                "Eu",
+                "Gd",
+                "Tb",
+                "Dy",
+                "Ho",
+                "Er",
+                "Tm",
+                "Yb",
+                "Lu"
+              ],
+              "y": [
+                10,
+                20,
+                40,
+                100,
+                200,
+                250,
+                400,
+                120,
+                250,
+                100,
+                120,
+                40,
+                60,
+                20
+              ],
+              "color": "gray",
+              "line_style": "solid",
+              "marker_type": "square",
+              "marker_fill": "filled",
+              "marker_size": "medium"
+            }
+          ]
+        },
+        {
+          "chart_title": "Vein-type",
+          "Chart_Type": "Line Graph",
+          "Orientation": "Landscape",
+          "chart_aspect_ratio": 1.3,
+          "x_axis_label": "",
+          "y_axis_label": "",
+          "x_axis_min": null,
+          "x_axis_max": null,
+          "Left_Y_axis_min": 1,
+          "Left_Y_axis_max": 10000,
+          "Right_Y_axis_min": null,
+          "Right_Y_axis_max": null,
+          "right_y_axis_label": "",
+          "y_axis_interval": null,
+          "x_axis_interval": null,
+          "x_axis_ticks": [
+            "La",
+            "Ce",
+            "Pr",
+            "Nd",
+            "Sm",
+            "Eu",
+            "Gd",
+            "Tb",
+            "Dy",
+            "Ho",
+            "Er",
+            "Tm",
+            "Yb",
+            "Lu"
+          ],
+          "y_axis_ticks": [
+            1,
+            10,
+            100,
+            1000,
+            10000
+          ],
+          "data": [
+            {
+              "series": "Bois Noirs",
+              "x": [
+                "La",
+                "Ce",
+                "Pr",
+                "Nd",
+                "Sm",
+                "Eu",
+                "Gd",
+                "Tb",
+                "Dy",
+                "Ho",
+                "Er",
+                "Tm",
+                "Yb",
+                "Lu"
+              ],
+              "y": [
+                8000,
+                6000,
+                3000,
+                2000,
+                200,
+                100,
+                800,
+                200,
+                500,
+                200,
+                300,
+                200,
+                200,
+                200
+              ],
+              "color": "black",
+              "line_style": "solid",
+              "marker_type": "circle",
+              "marker_fill": "hollow",
+              "marker_size": "medium"
+            },
+            {
+              "series": "Commanderie",
+              "x": [
+                "La",
+                "Ce",
+                "Pr",
+                "Nd",
+                "Sm",
+                "Eu",
+                "Gd",
+                "Tb",
+                "Dy",
+                "Ho",
+                "Er",
+                "Tm",
+                "Yb",
+                "Lu"
+              ],
+              "y": [
+                4000,
+                3000,
+                1500,
+                1000,
+                100,
+                50,
+                400,
+                100,
+                250,
+                100,
+                150,
+                100,
+                100,
+                100
+              ],
+              "color": "dimgray",
+              "line_style": "solid",
+              "marker_type": "circle",
+              "marker_fill": "hollow",
+              "marker_size": "medium"
+            },
+            {
+              "series": "Series 3",
+              "x": [
+                "La",
+                "Ce",
+                "Pr",
+                "Nd",
+                "Sm",
+                "Eu",
+                "Gd",
+                "Tb",
+                "Dy",
+                "Ho",
+                "Er",
+                "Tm",
+                "Yb",
+                "Lu"
+              ],
+              "y": [
+                2000,
+                1500,
+                800,
+                500,
+                50,
+                25,
+                200,
+                50,
+                120,
+                50,
+                80,
+                50,
+                50,
+                50
+              ],
+              "color": "gray",
+              "line_style": "solid",
+              "marker_type": "circle",
+              "marker_fill": "hollow",
+              "marker_size": "medium"
+            },
+            {
+              "series": "Ecarpière",
+              "x": [
+                "La",
+                "Ce",
+                "Pr",
+                "Nd",
+                "Sm",
+                "Eu",
+                "Gd",
+                "Tb",
+                "Dy",
+                "Ho",
+                "Er",
+                "Tm",
+                "Yb",
+                "Lu"
+              ],
+              "y": [
+                1500,
+                1000,
+                500,
+                300,
+                30,
+                15,
+                100,
+                30,
+                80,
+                30,
+                50,
+                30,
+                20,
+                20
+              ],
+              "color": "black",
+              "line_style": "solid",
+              "marker_type": "circle",
+              "marker_fill": "filled",
+              "marker_size": "medium"
+            },
+            {
+              "series": "Series 5",
+              "x": [
+                "La",
+                "Ce",
+                "Pr",
+                "Nd",
+                "Sm",
+                "Eu",
+                "Gd",
+                "Tb",
+                "Dy",
+                "Ho",
+                "Er",
+                "Tm",
+                "Yb",
+                "Lu"
+              ],
+              "y": [
+                800,
+                600,
+                300,
+                200,
+                20,
+                10,
+                60,
+                20,
+                50,
+                20,
+                30,
+                20,
+                15,
+                15
+              ],
+              "color": "dimgray",
+              "line_style": "solid",
+              "marker_type": "circle",
+              "marker_fill": "filled",
+              "marker_size": "medium"
+            },
+            {
+              "series": "Series 6",
+              "x": [
+                "La",
+                "Ce",
+                "Pr",
+                "Nd",
+                "Sm",
+                "Eu",
+                "Gd",
+                "Tb",
+                "Dy",
+                "Ho",
+                "Er",
+                "Tm",
+                "Yb",
+                "Lu"
+              ],
+              "y": [
+                400,
+                300,
+                150,
+                100,
+                10,
+                5,
+                30,
+                10,
+                25,
+                10,
+                15,
+                10,
+                8,
+                8
+              ],
+              "color": "gray",
+              "line_style": "solid",
+              "marker_type": "circle",
+              "marker_fill": "filled",
+              "marker_size": "medium"
+            }
+          ]
+        },
+        {
+          "chart_title": "Roll-front",
+          "Chart_Type": "Line Graph",
+          "Orientation": "Landscape",
+          "chart_aspect_ratio": 1.3,
+          "x_axis_label": "La Ce Pr Nd Sm Eu Gd Tb Dy Ho Er Tm Yb Lu",
+          "y_axis_label": "",
+          "x_axis_min": null,
+          "x_axis_max": null,
+          "Left_Y_axis_min": 1,
+          "Left_Y_axis_max": 10000,
+          "Right_Y_axis_min": null,
+          "Right_Y_axis_max": null,
+          "right_y_axis_label": "",
+          "y_axis_interval": null,
+          "x_axis_interval": null,
+          "x_axis_ticks": [
+            "La",
+            "Ce",
+            "Pr",
+            "Nd",
+            "Sm",
+            "Eu",
+            "Gd",
+            "Tb",
+            "Dy",
+            "Ho",
+            "Er",
+            "Tm",
+            "Yb",
+            "Lu"
+          ],
+          "y_axis_ticks": [
+            1,
+            10,
+            100,
+            1000,
+            10000
+          ],
+          "data": [
+            {
+              "series": "Kazakhstan 1",
+              "x": [
+                "La",
+                "Ce",
+                "Pr",
+                "Nd",
+                "Sm",
+                "Eu",
+                "Gd",
+                "Tb",
+                "Dy",
+                "Ho",
+                "Er",
+                "Tm",
+                "Yb",
+                "Lu"
+              ],
+              "y": [
+                300,
+                200,
+                100,
+                80,
+                30,
+                15,
+                50,
+                20,
+                30,
+                25,
+                20,
+                20,
+                20,
+                20
+              ],
+              "color": "black",
+              "line_style": "solid",
+              "marker_type": "tick",
+              "marker_fill": "filled",
+              "marker_size": "medium"
+            },
+            {
+              "series": "Kazakhstan 2",
+              "x": [
+                "La",
+                "Ce",
+                "Pr",
+                "Nd",
+                "Sm",
+                "Eu",
+                "Gd",
+                "Tb",
+                "Dy",
+                "Ho",
+                "Er",
+                "Tm",
+                "Yb",
+                "Lu"
+              ],
+              "y": [
+                100,
+                80,
+                50,
+                40,
+                20,
+                10,
+                25,
+                10,
+                15,
+                12,
+                10,
+                10,
+                10,
+                10
+              ],
+              "color": "dimgray",
+              "line_style": "solid",
+              "marker_type": "tick",
+              "marker_fill": "filled",
+              "marker_size": "medium"
+            }
+          ]
+        },
+        {
+          "chart_title": "Volcanic-related",
+          "Chart_Type": "Line Graph",
+          "Orientation": "Landscape",
+          "chart_aspect_ratio": 1.3,
+          "x_axis_label": "La Ce Pr Nd Sm Eu Gd Tb Dy Ho Er Tm Yb Lu",
+          "y_axis_label": "",
+          "x_axis_min": null,
+          "x_axis_max": null,
+          "Left_Y_axis_min": 1,
+          "Left_Y_axis_max": 10000,
+          "Right_Y_axis_min": null,
+          "Right_Y_axis_max": null,
+          "right_y_axis_label": "",
+          "y_axis_interval": null,
+          "x_axis_interval": null,
+          "x_axis_ticks": [
+            "La",
+            "Ce",
+            "Pr",
+            "Nd",
+            "Sm",
+            "Eu",
+            "Gd",
+            "Tb",
+            "Dy",
+            "Ho",
+            "Er",
+            "Tm",
+            "Yb",
+            "Lu"
+          ],
+          "y_axis_ticks": [
+            1,
+            10,
+            100,
+            1000,
+            10000
+          ],
+          "data": [
+            {
+              "series": "Streltsovskoye 1",
+              "x": [
+                "La",
+                "Ce",
+                "Pr",
+                "Nd",
+                "Sm",
+                "Eu",
+                "Gd",
+                "Tb",
+                "Dy",
+                "Ho",
+                "Er",
+                "Tm",
+                "Yb",
+                "Lu"
+              ],
+              "y": [
+                4,
+                1.5,
+                2,
+                1,
+                600,
+                200,
+                150,
+                8,
+                5,
+                4,
+                3,
+                5,
+                4,
+                3
+              ],
+              "color": "black",
+              "line_style": "solid",
+              "marker_type": "star",
+              "marker_fill": "filled",
+              "marker_size": "medium"
+            },
+            {
+              "series": "Streltsovskoye 2",
+              "x": [
+                "La",
+                "Ce",
+                "Pr",
+                "Nd",
+                "Sm",
+                "Eu",
+                "Gd",
+                "Tb",
+                "Dy",
+                "Ho",
+                "Er",
+                "Tm",
+                "Yb",
+                "Lu"
+              ],
+              "y": [
+                2,
+                1,
+                1.5,
+                0.8,
+                400,
+                150,
+                100,
+                7,
+                4,
+                3,
+                2.5,
+                4,
+                3,
+                2.5
+              ],
+              "color": "dimgray",
+              "line_style": "solid",
+              "marker_type": "star",
+              "marker_fill": "filled",
+              "marker_size": "medium"
+            }
+          ]
+        }
+      ],
+      "region": [
+        {
+          "@type": "oa:ResourceSelection",
+          "hasSource": "https://w3id.org/alexandria/paper/mercadier2011/run/e88f86e/asset/page_images/page_003.png",
+          "hasSelector": {
+            "@type": "oa:FragmentSelector",
+            "conformsTo": "http://www.w3.org/TR/media-frags/",
+            "value": "xywh=252,160,688,849"
+          }
+        }
+      ]
+    },
+    {
+      "@id": "https://w3id.org/alexandria/paper/mercadier2011/run/e88f86e/element/25",
+      "@type": "deo:Caption",
+      "position": 25,
+      "onPage": "https://w3id.org/alexandria/paper/mercadier2011/run/e88f86e/page/3",
+      "region": [
+        {
+          "@type": "oa:ResourceSelection",
+          "hasSource": "https://w3id.org/alexandria/paper/mercadier2011/run/e88f86e/asset/page_images/page_003.png",
+          "hasSelector": {
+            "@type": "oa:FragmentSelector",
+            "conformsTo": "http://www.w3.org/TR/media-frags/",
+            "value": "xywh=109,1027,984,127"
+          }
+        }
+      ]
+    },
+    {
+      "@id": "https://w3id.org/alexandria/paper/mercadier2011/run/e88f86e/element/26",
+      "@type": "doco:Figure",
+      "position": 26,
+      "onPage": "https://w3id.org/alexandria/paper/mercadier2011/run/e88f86e/page/4",
+      "figureType": "pax:scatterPlot",
+      "description": "The figure is a scatter plot showing the relationship between the total rare earth element concentration (ΣREE) and the normalized ratio of light rare earth elements to heavy rare earth elements (ΣLREE/ΣHREE)N for different fluid and phase compositions. It illustrates the variation in REE content and fractionation related to temperature, salinity, and source mineralogy.",
+      "chartData": {
+        "chart_title": "Untitled",
+        "Chart_Type": "Scatter Plot",
+        "Orientation": "Landscape",
+        "chart_aspect_ratio": 1.6,
+        "x_axis_label": "(ΣLREE/ΣHREE)N",
+        "y_axis_label": "ΣREE",
+        "x_axis_min": 0.1,
+        "x_axis_max": 1000,
+        "Left_Y_axis_min": 10,
+        "Left_Y_axis_max": 100000,
+        "Right_Y_axis_min": null,
+        "Right_Y_axis_max": null,
+        "right_y_axis_label": "",
+        "y_axis_interval": null,
+        "x_axis_interval": null,
+        "x_axis_ticks": [
+          0.1,
+          1,
+          10,
+          100,
+          1000
+        ],
+        "y_axis_ticks": [
+          10,
+          100,
+          1000,
+          10000,
+          100000
+        ],
+        "data": [
+          {
+            "series": "Hollow Triangles",
+            "x": 0.6,
+            "y": 12000,
+            "color": "blue",
+            "line_style": "none",
+            "marker_type": "triangle",
+            "marker_fill": "hollow",
+            "marker_size": "medium"
+          },
+          {
+            "series": "Hollow Triangles",
+            "x": 0.8,
+            "y": 15000,
+            "color": "blue",
+            "line_style": "none",
+            "marker_type": "triangle",
+            "marker_fill": "hollow",
+            "marker_size": "medium"
+          },
+          {
+            "series": "Hollow Triangles",
+            "x": 1.2,
+            "y": 25000,
+            "color": "blue",
+            "line_style": "none",
+            "marker_type": "triangle",
+            "marker_fill": "hollow",
+            "marker_size": "medium"
+          },
+          {
+            "series": "Hollow Triangles",
+            "x": 1.8,
+            "y": 30000,
+            "color": "blue",
+            "line_style": "none",
+            "marker_type": "triangle",
+            "marker_fill": "hollow",
+            "marker_size": "medium"
+          },
+          {
+            "series": "Grey Triangles",
+            "x": 0.7,
+            "y": 18000,
+            "color": "cyan",
+            "line_style": "none",
+            "marker_type": "triangle",
+            "marker_fill": "filled",
+            "marker_size": "medium"
+          },
+          {
+            "series": "Grey Triangles",
+            "x": 1.1,
+            "y": 11000,
+            "color": "cyan",
+            "line_style": "none",
+            "marker_type": "triangle",
+            "marker_fill": "filled",
+            "marker_size": "medium"
+          },
+          {
+            "series": "Black Triangles",
+            "x": 0.9,
+            "y": 11000,
+            "color": "green",
+            "line_style": "none",
+            "marker_type": "triangle",
+            "marker_fill": "filled",
+            "marker_size": "medium"
+          },
+          {
+            "series": "Black Triangles",
+            "x": 1.5,
+            "y": 12000,
+            "color": "green",
+            "line_style": "none",
+            "marker_type": "triangle",
+            "marker_fill": "filled",
+            "marker_size": "medium"
+          },
+          {
+            "series": "Black Diamond",
+            "x": 1.0,
+            "y": 10000,
+            "color": "magenta",
+            "line_style": "none",
+            "marker_type": "diamond",
+            "marker_fill": "filled",
+            "marker_size": "medium"
+          },
+          {
+            "series": "Hollow Squares",
+            "x": 0.15,
+            "y": 500,
+            "color": "red",
+            "line_style": "none",
+            "marker_type": "square",
+            "marker_fill": "hollow",
+            "marker_size": "medium"
+          },
+          {
+            "series": "Hollow Squares",
+            "x": 0.25,
+            "y": 400,
+            "color": "red",
+            "line_style": "none",
+            "marker_type": "square",
+            "marker_fill": "hollow",
+            "marker_size": "medium"
+          },
+          {
+            "series": "Hollow Squares",
+            "x": 0.8,
+            "y": 1100,
+            "color": "red",
+            "line_style": "none",
+            "marker_type": "square",
+            "marker_fill": "hollow",
+            "marker_size": "medium"
+          },
+          {
+            "series": "Hollow Squares",
+            "x": 1.1,
+            "y": 1500,
+            "color": "red",
+            "line_style": "none",
+            "marker_type": "square",
+            "marker_fill": "hollow",
+            "marker_size": "medium"
+          },
+          {
+            "series": "Grey Squares",
+            "x": 0.18,
+            "y": 800,
+            "color": "orange",
+            "line_style": "none",
+            "marker_type": "square",
+            "marker_fill": "filled",
+            "marker_size": "medium"
+          },
+          {
+            "series": "Grey Squares",
+            "x": 0.22,
+            "y": 600,
+            "color": "orange",
+            "line_style": "none",
+            "marker_type": "square",
+            "marker_fill": "filled",
+            "marker_size": "medium"
+          },
+          {
+            "series": "Grey Squares",
+            "x": 0.4,
+            "y": 1200,
+            "color": "orange",
+            "line_style": "none",
+            "marker_type": "square",
+            "marker_fill": "filled",
+            "marker_size": "medium"
+          },
+          {
+            "series": "Grey Squares",
+            "x": 0.5,
+            "y": 1400,
+            "color": "orange",
+            "line_style": "none",
+            "marker_type": "square",
+            "marker_fill": "filled",
+            "marker_size": "medium"
+          },
+          {
+            "series": "Grey Squares",
+            "x": 1.2,
+            "y": 800,
+            "color": "orange",
+            "line_style": "none",
+            "marker_type": "square",
+            "marker_fill": "filled",
+            "marker_size": "medium"
+          },
+          {
+            "series": "Black Squares",
+            "x": 0.2,
+            "y": 1200,
+            "color": "purple",
+            "line_style": "none",
+            "marker_type": "square",
+            "marker_fill": "filled",
+            "marker_size": "medium"
+          },
+          {
+            "series": "Black Squares",
+            "x": 0.3,
+            "y": 1000,
+            "color": "purple",
+            "line_style": "none",
+            "marker_type": "square",
+            "marker_fill": "filled",
+            "marker_size": "medium"
+          },
+          {
+            "series": "Black Squares",
+            "x": 0.45,
+            "y": 900,
+            "color": "purple",
+            "line_style": "none",
+            "marker_type": "square",
+            "marker_fill": "filled",
+            "marker_size": "medium"
+          },
+          {
+            "series": "Black Squares",
+            "x": 0.6,
+            "y": 1100,
+            "color": "purple",
+            "line_style": "none",
+            "marker_type": "square",
+            "marker_fill": "filled",
+            "marker_size": "medium"
+          },
+          {
+            "series": "Black Squares",
+            "x": 0.7,
+            "y": 1000,
+            "color": "purple",
+            "line_style": "none",
+            "marker_type": "square",
+            "marker_fill": "filled",
+            "marker_size": "medium"
+          },
+          {
+            "series": "Black Squares",
+            "x": 0.75,
+            "y": 1300,
+            "color": "purple",
+            "line_style": "none",
+            "marker_type": "square",
+            "marker_fill": "filled",
+            "marker_size": "medium"
+          },
+          {
+            "series": "Black Squares",
+            "x": 0.85,
+            "y": 900,
+            "color": "purple",
+            "line_style": "none",
+            "marker_type": "square",
+            "marker_fill": "filled",
+            "marker_size": "medium"
+          },
+          {
+            "series": "Black Squares",
+            "x": 0.9,
+            "y": 1200,
+            "color": "purple",
+            "line_style": "none",
+            "marker_type": "square",
+            "marker_fill": "filled",
+            "marker_size": "medium"
+          },
+          {
+            "series": "Hollow Diamonds",
+            "x": 2.8,
+            "y": 2000,
+            "color": "brown",
+            "line_style": "none",
+            "marker_type": "diamond",
+            "marker_fill": "hollow",
+            "marker_size": "medium"
+          },
+          {
+            "series": "Hollow Diamonds",
+            "x": 3.2,
+            "y": 1800,
+            "color": "brown",
+            "line_style": "none",
+            "marker_type": "diamond",
+            "marker_fill": "hollow",
+            "marker_size": "medium"
+          },
+          {
+            "series": "Hollow Diamonds",
+            "x": 3.5,
+            "y": 2500,
+            "color": "brown",
+            "line_style": "none",
+            "marker_type": "diamond",
+            "marker_fill": "hollow",
+            "marker_size": "medium"
+          },
+          {
+            "series": "Hollow Circles",
+            "x": 20,
+            "y": 8000,
+            "color": "pink",
+            "line_style": "none",
+            "marker_type": "circle",
+            "marker_fill": "hollow",
+            "marker_size": "medium"
+          },
+          {
+            "series": "Hollow Circles",
+            "x": 25,
+            "y": 8200,
+            "color": "pink",
+            "line_style": "none",
+            "marker_type": "circle",
+            "marker_fill": "hollow",
+            "marker_size": "medium"
+          },
+          {
+            "series": "Hollow Circles",
+            "x": 30,
+            "y": 8000,
+            "color": "pink",
+            "line_style": "none",
+            "marker_type": "circle",
+            "marker_fill": "hollow",
+            "marker_size": "medium"
+          },
+          {
+            "series": "Hollow Circles",
+            "x": 35,
+            "y": 7800,
+            "color": "pink",
+            "line_style": "none",
+            "marker_type": "circle",
+            "marker_fill": "hollow",
+            "marker_size": "medium"
+          },
+          {
+            "series": "Black Circles",
+            "x": 110,
+            "y": 4000,
+            "color": "lime",
+            "line_style": "none",
+            "marker_type": "circle",
+            "marker_fill": "filled",
+            "marker_size": "medium"
+          },
+          {
+            "series": "Black Circles",
+            "x": 120,
+            "y": 6000,
+            "color": "lime",
+            "line_style": "none",
+            "marker_type": "circle",
+            "marker_fill": "filled",
+            "marker_size": "medium"
+          },
+          {
+            "series": "Grey Circles",
+            "x": 80,
+            "y": 800,
+            "color": "teal",
+            "line_style": "none",
+            "marker_type": "circle",
+            "marker_fill": "filled",
+            "marker_size": "medium"
+          },
+          {
+            "series": "Grey Circles",
+            "x": 100,
+            "y": 1000,
+            "color": "teal",
+            "line_style": "none",
+            "marker_type": "circle",
+            "marker_fill": "filled",
+            "marker_size": "medium"
+          },
+          {
+            "series": "Crosses",
+            "x": 40,
+            "y": 100,
+            "color": "navy",
+            "line_style": "none",
+            "marker_type": "cross",
+            "marker_fill": "filled",
+            "marker_size": "medium"
+          },
+          {
+            "series": "Crosses",
+            "x": 45,
+            "y": 120,
+            "color": "navy",
+            "line_style": "none",
+            "marker_type": "cross",
+            "marker_fill": "filled",
+            "marker_size": "medium"
+          },
+          {
+            "series": "Crosses",
+            "x": 50,
+            "y": 90,
+            "color": "navy",
+            "line_style": "none",
+            "marker_type": "cross",
+            "marker_fill": "filled",
+            "marker_size": "medium"
+          },
+          {
+            "series": "Crosses",
+            "x": 55,
+            "y": 110,
+            "color": "navy",
+            "line_style": "none",
+            "marker_type": "cross",
+            "marker_fill": "filled",
+            "marker_size": "medium"
+          },
+          {
+            "series": "Horizontal Line Marker",
+            "x": 20,
+            "y": 1000,
+            "color": "maroon",
+            "line_style": "none",
+            "marker_type": "minus",
+            "marker_fill": "filled",
+            "marker_size": "medium"
+          },
+          {
+            "series": "Reference Line",
+            "x": 0.1,
+            "y": 10000,
+            "color": "grey",
+            "line_style": "dashed",
+            "marker_type": "none"
+          },
+          {
+            "series": "Reference Line",
+            "x": 1000,
+            "y": 10000,
+            "color": "grey",
+            "line_style": "dashed",
+            "marker_type": "none"
+          },
+          {
+            "series": "APS Trend Line",
+            "x": 0.2,
+            "y": 500,
+            "color": "black",
+            "line_style": "solid",
+            "marker_type": "none"
+          },
+          {
+            "series": "APS Trend Line",
+            "x": 3.0,
+            "y": 2000,
+            "color": "black",
+            "line_style": "solid",
+            "marker_type": "none"
+          }
+        ]
+      },
+      "region": [
+        {
+          "@type": "oa:ResourceSelection",
+          "hasSource": "https://w3id.org/alexandria/paper/mercadier2011/run/e88f86e/asset/page_images/page_004.png",
+          "hasSelector": {
+            "@type": "oa:FragmentSelector",
+            "conformsTo": "http://www.w3.org/TR/media-frags/",
+            "value": "xywh=216,160,504,301"
+          }
+        }
+      ]
+    },
+    {
+      "@id": "https://w3id.org/alexandria/paper/mercadier2011/run/e88f86e/element/27",
+      "@type": "deo:Caption",
+      "position": 27,
+      "onPage": "https://w3id.org/alexandria/paper/mercadier2011/run/e88f86e/page/4",
+      "region": [
+        {
+          "@type": "oa:ResourceSelection",
+          "hasSource": "https://w3id.org/alexandria/paper/mercadier2011/run/e88f86e/asset/page_images/page_004.png",
+          "hasSelector": {
+            "@type": "oa:FragmentSelector",
+            "conformsTo": "http://www.w3.org/TR/media-frags/",
+            "value": "xywh=146,483,645,269"
+          }
+        }
+      ]
+    },
+    {
+      "@id": "https://w3id.org/alexandria/paper/mercadier2011/run/e88f86e/element/28",
+      "@type": "doco:Paragraph",
+      "position": 28,
+      "onPage": "https://w3id.org/alexandria/paper/mercadier2011/run/e88f86e/page/4",
+      "region": [
+        {
+          "@type": "oa:ResourceSelection",
+          "hasSource": "https://w3id.org/alexandria/paper/mercadier2011/run/e88f86e/asset/page_images/page_004.png",
+          "hasSelector": {
+            "@type": "oa:FragmentSelector",
+            "conformsTo": "http://www.w3.org/TR/media-frags/",
+            "value": "xywh=146,762,307,417"
+          }
+        }
+      ]
+    },
+    {
+      "@id": "https://w3id.org/alexandria/paper/mercadier2011/run/e88f86e/element/29",
+      "@type": "doco:Paragraph",
+      "position": 29,
+      "onPage": "https://w3id.org/alexandria/paper/mercadier2011/run/e88f86e/page/4",
+      "region": [
+        {
+          "@type": "oa:ResourceSelection",
+          "hasSource": "https://w3id.org/alexandria/paper/mercadier2011/run/e88f86e/asset/page_images/page_004.png",
+          "hasSelector": {
+            "@type": "oa:FragmentSelector",
+            "conformsTo": "http://www.w3.org/TR/media-frags/",
+            "value": "xywh=818,732,308,211"
+          }
+        }
+      ]
+    },
+    {
+      "@id": "https://w3id.org/alexandria/paper/mercadier2011/run/e88f86e/element/30",
+      "@type": "doco:SectionTitle",
+      "position": 30,
+      "onPage": "https://w3id.org/alexandria/paper/mercadier2011/run/e88f86e/page/4",
+      "text": "Development perspectives for forensic purpose",
+      "region": [
+        {
+          "@type": "oa:ResourceSelection",
+          "hasSource": "https://w3id.org/alexandria/paper/mercadier2011/run/e88f86e/asset/page_images/page_004.png",
+          "hasSelector": {
+            "@type": "oa:FragmentSelector",
+            "conformsTo": "http://www.w3.org/TR/media-frags/",
+            "value": "xywh=818,974,262,45"
+          }
+        }
+      ]
+    },
+    {
+      "@id": "https://w3id.org/alexandria/paper/mercadier2011/run/e88f86e/element/31",
+      "@type": "doco:Paragraph",
+      "position": 31,
+      "onPage": "https://w3id.org/alexandria/paper/mercadier2011/run/e88f86e/page/4",
+      "region": [
+        {
+          "@type": "oa:ResourceSelection",
+          "hasSource": "https://w3id.org/alexandria/paper/mercadier2011/run/e88f86e/asset/page_images/page_004.png",
+          "hasSelector": {
+            "@type": "oa:FragmentSelector",
+            "conformsTo": "http://www.w3.org/TR/media-frags/",
+            "value": "xywh=818,1031,308,476"
+          }
+        }
+      ]
+    },
+    {
+      "@id": "https://w3id.org/alexandria/paper/mercadier2011/run/e88f86e/element/32",
+      "@type": "doco:Figure",
+      "position": 32,
+      "onPage": "https://w3id.org/alexandria/paper/mercadier2011/run/e88f86e/page/5",
+      "figureType": "pax:lineGraph",
+      "description": "The figure shows two line graphs comparing the concentration of rare earth elements normalized to chondrite in different rock and fluid samples. The top graph displays data for rock samples (Monazite, APS, G-2 granite, Casto granite-IB, Tuff-YNP), while the bottom graph shows data for thermal spring fluids (Thermal springs-YNP, Thermal springs-IB).",
+      "chartData": [
+        {
+          "chart_title": "Untitled",
+          "Chart_Type": "Line Graph",
+          "Orientation": "Landscape",
+          "chart_aspect_ratio": 1.8,
+          "x_axis_label": "",
+          "y_axis_label": "Sample/chondrite",
+          "x_axis_min": null,
+          "x_axis_max": null,
+          "Left_Y_axis_min": 1,
+          "Left_Y_axis_max": 1000000,
+          "Right_Y_axis_min": null,
+          "Right_Y_axis_max": null,
+          "right_y_axis_label": "",
+          "y_axis_interval": null,
+          "x_axis_interval": null,
+          "x_axis_ticks": [
+            "La",
+            "Ce",
+            "Pr",
+            "Nd",
+            "Sm",
+            "Eu",
+            "Gd",
+            "Tb",
+            "Dy",
+            "Ho",
+            "Er",
+            "Tm",
+            "Yb",
+            "Lu"
+          ],
+          "y_axis_ticks": [
+            1,
+            10,
+            100,
+            1000,
+            10000,
+            100000,
+            1000000
+          ],
+          "data": [
+            {
+              "series": "Monazite",
+              "color": "black",
+              "line_style": "solid",
+              "marker_type": "none",
+              "marker_fill": "none",
+              "marker_size": "none",
+              "points": [
+                {
+                  "x": "La",
+                  "y": 600000
+                },
+                {
+                  "x": "Ce",
+                  "y": 400000
+                },
+                {
+                  "x": "Pr",
+                  "y": 300000
+                },
+                {
+                  "x": "Nd",
+                  "y": 200000
+                },
+                {
+                  "x": "Sm",
+                  "y": 100000
+                },
+                {
+                  "x": "Eu",
+                  "y": 200
+                },
+                {
+                  "x": "Gd",
+                  "y": 45000
+                },
+                {
+                  "x": "Tb",
+                  "y": 35000
+                },
+                {
+                  "x": "Dy",
+                  "y": 25000
+                },
+                {
+                  "x": "Ho",
+                  "y": 20000
+                },
+                {
+                  "x": "Er",
+                  "y": 15000
+                },
+                {
+                  "x": "Tm",
+                  "y": 12000
+                },
+                {
+                  "x": "Yb",
+                  "y": 10000
+                },
+                {
+                  "x": "Lu",
+                  "y": 8000
+                }
+              ]
+            },
+            {
+              "series": "APS",
+              "color": "grey",
+              "line_style": "solid",
+              "marker_type": "none",
+              "marker_fill": "none",
+              "marker_size": "none",
+              "points": [
+                {
+                  "x": "La",
+                  "y": 150000
+                },
+                {
+                  "x": "Ce",
+                  "y": 100000
+                },
+                {
+                  "x": "Pr",
+                  "y": 70000
+                },
+                {
+                  "x": "Nd",
+                  "y": 50000
+                },
+                {
+                  "x": "Sm",
+                  "y": 20000
+                },
+                {
+                  "x": "Eu",
+                  "y": 4000
+                },
+                {
+                  "x": "Gd",
+                  "y": 2000
+                },
+                {
+                  "x": "Tb",
+                  "y": 1000
+                },
+                {
+                  "x": "Dy",
+                  "y": 500
+                },
+                {
+                  "x": "Ho",
+                  "y": 300
+                },
+                {
+                  "x": "Er",
+                  "y": 200
+                },
+                {
+                  "x": "Tm",
+                  "y": 100
+                },
+                {
+                  "x": "Yb",
+                  "y": 50
+                },
+                {
+                  "x": "Lu",
+                  "y": 30
+                }
+              ]
+            },
+            {
+              "series": "G-2 granite",
+              "color": "black",
+              "line_style": "solid",
+              "marker_type": "square",
+              "marker_fill": "hollow",
+              "marker_size": "medium",
+              "points": [
+                {
+                  "x": "La",
+                  "y": 300
+                },
+                {
+                  "x": "Ce",
+                  "y": 200
+                },
+                {
+                  "x": "Pr",
+                  "y": 150
+                },
+                {
+                  "x": "Nd",
+                  "y": 110
+                },
+                {
+                  "x": "Sm",
+                  "y": 50
+                },
+                {
+                  "x": "Eu",
+                  "y": 25
+                },
+                {
+                  "x": "Gd",
+                  "y": 30
+                },
+                {
+                  "x": "Tb",
+                  "y": 20
+                },
+                {
+                  "x": "Dy",
+                  "y": 15
+                },
+                {
+                  "x": "Ho",
+                  "y": 8
+                },
+                {
+                  "x": "Er",
+                  "y": 12
+                },
+                {
+                  "x": "Tm",
+                  "y": 8
+                },
+                {
+                  "x": "Yb",
+                  "y": 5
+                },
+                {
+                  "x": "Lu",
+                  "y": 4
+                }
+              ]
+            },
+            {
+              "series": "Casto granite-IB",
+              "color": "black",
+              "line_style": "solid",
+              "marker_type": "circle",
+              "marker_fill": "hollow",
+              "marker_size": "medium",
+              "points": [
+                {
+                  "x": "La",
+                  "y": 150
+                },
+                {
+                  "x": "Ce",
+                  "y": 100
+                },
+                {
+                  "x": "Pr",
+                  "y": 80
+                },
+                {
+                  "x": "Nd",
+                  "y": 60
+                },
+                {
+                  "x": "Sm",
+                  "y": 40
+                },
+                {
+                  "x": "Eu",
+                  "y": 8
+                },
+                {
+                  "x": "Gd",
+                  "y": 15
+                },
+                {
+                  "x": "Tb",
+                  "y": 12
+                },
+                {
+                  "x": "Dy",
+                  "y": 10
+                },
+                {
+                  "x": "Ho",
+                  "y": 9
+                },
+                {
+                  "x": "Er",
+                  "y": 8
+                },
+                {
+                  "x": "Tm",
+                  "y": 15
+                },
+                {
+                  "x": "Yb",
+                  "y": 20
+                },
+                {
+                  "x": "Lu",
+                  "y": 18
+                }
+              ]
+            },
+            {
+              "series": "Tuff-YNP",
+              "color": "black",
+              "line_style": "solid",
+              "marker_type": "triangle",
+              "marker_fill": "hollow",
+              "marker_size": "medium",
+              "points": [
+                {
+                  "x": "La",
+                  "y": 400
+                },
+                {
+                  "x": "Ce",
+                  "y": 300
+                },
+                {
+                  "x": "Pr",
+                  "y": 200
+                },
+                {
+                  "x": "Nd",
+                  "y": 150
+                },
+                {
+                  "x": "Sm",
+                  "y": 60
+                },
+                {
+                  "x": "Eu",
+                  "y": 10
+                },
+                {
+                  "x": "Gd",
+                  "y": 40
+                },
+                {
+                  "x": "Tb",
+                  "y": 30
+                },
+                {
+                  "x": "Dy",
+                  "y": 25
+                },
+                {
+                  "x": "Ho",
+                  "y": 20
+                },
+                {
+                  "x": "Er",
+                  "y": 18
+                },
+                {
+                  "x": "Tm",
+                  "y": 15
+                },
+                {
+                  "x": "Yb",
+                  "y": 25
+                },
+                {
+                  "x": "Lu",
+                  "y": 20
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "chart_title": "Untitled",
+          "Chart_Type": "Line Graph",
+          "Orientation": "Landscape",
+          "chart_aspect_ratio": 1.8,
+          "x_axis_label": "",
+          "y_axis_label": "Fluid/chondrite",
+          "x_axis_min": null,
+          "x_axis_max": null,
+          "Left_Y_axis_min": 0.0001,
+          "Left_Y_axis_max": 0.1,
+          "Right_Y_axis_min": null,
+          "Right_Y_axis_max": null,
+          "right_y_axis_label": "",
+          "y_axis_interval": null,
+          "x_axis_interval": null,
+          "x_axis_ticks": [
+            "La",
+            "Ce",
+            "Pr",
+            "Nd",
+            "Sm",
+            "Eu",
+            "Gd",
+            "Tb",
+            "Dy",
+            "Ho",
+            "Er",
+            "Tm",
+            "Yb",
+            "Lu"
+          ],
+          "y_axis_ticks": [
+            0.0001,
+            0.001,
+            0.01,
+            0.1
+          ],
+          "data": [
+            {
+              "series": "Thermal springs-YNP",
+              "color": "black",
+              "line_style": "solid",
+              "marker_type": "triangle",
+              "marker_fill": "hollow",
+              "marker_size": "medium",
+              "points": [
+                {
+                  "x": "La",
+                  "y": 0.003
+                },
+                {
+                  "x": "Ce",
+                  "y": 0.0025
+                },
+                {
+                  "x": "Pr",
+                  "y": 0.0012
+                },
+                {
+                  "x": "Nd",
+                  "y": 0.0013
+                },
+                {
+                  "x": "Sm",
+                  "y": 0.0006
+                },
+                {
+                  "x": "Eu",
+                  "y": 0.0002
+                },
+                {
+                  "x": "Gd",
+                  "y": 0.0004
+                },
+                {
+                  "x": "Tb",
+                  "y": 0.0003
+                },
+                {
+                  "x": "Dy",
+                  "y": 0.00025
+                },
+                {
+                  "x": "Ho",
+                  "y": 0.00015
+                },
+                {
+                  "x": "Er",
+                  "y": 0.00012
+                },
+                {
+                  "x": "Tm",
+                  "y": 0.0001
+                },
+                {
+                  "x": "Yb",
+                  "y": 8e-05
+                }
+              ]
+            },
+            {
+              "series": "Thermal springs-IB",
+              "color": "black",
+              "line_style": "solid",
+              "marker_type": "circle",
+              "marker_fill": "hollow",
+              "marker_size": "medium",
+              "points": [
+                {
+                  "x": "La",
+                  "y": 0.025
+                },
+                {
+                  "x": "Ce",
+                  "y": 0.02
+                },
+                {
+                  "x": "Pr",
+                  "y": 0.015
+                },
+                {
+                  "x": "Nd",
+                  "y": 0.012
+                },
+                {
+                  "x": "Sm",
+                  "y": 0.008
+                },
+                {
+                  "x": "Eu",
+                  "y": 0.0012
+                },
+                {
+                  "x": "Gd",
+                  "y": 0.004
+                },
+                {
+                  "x": "Tb",
+                  "y": 0.0035
+                },
+                {
+                  "x": "Dy",
+                  "y": 0.003
+                },
+                {
+                  "x": "Ho",
+                  "y": 0.0028
+                },
+                {
+                  "x": "Er",
+                  "y": 0.0025
+                },
+                {
+                  "x": "Tm",
+                  "y": 0.0022
+                },
+                {
+                  "x": "Yb",
+                  "y": 0.002
+                },
+                {
+                  "x": "Lu",
+                  "y": 0.0022
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "region": [
+        {
+          "@type": "oa:ResourceSelection",
+          "hasSource": "https://w3id.org/alexandria/paper/mercadier2011/run/e88f86e/asset/page_images/page_005.png",
+          "hasSelector": {
+            "@type": "oa:FragmentSelector",
+            "conformsTo": "http://www.w3.org/TR/media-frags/",
+            "value": "xywh=245,163,376,554"
+          }
+        }
+      ]
+    },
+    {
+      "@id": "https://w3id.org/alexandria/paper/mercadier2011/run/e88f86e/element/33",
+      "@type": "deo:Caption",
+      "position": 33,
+      "onPage": "https://w3id.org/alexandria/paper/mercadier2011/run/e88f86e/page/5",
+      "region": [
+        {
+          "@type": "oa:ResourceSelection",
+          "hasSource": "https://w3id.org/alexandria/paper/mercadier2011/run/e88f86e/asset/page_images/page_005.png",
+          "hasSelector": {
+            "@type": "oa:FragmentSelector",
+            "conformsTo": "http://www.w3.org/TR/media-frags/",
+            "value": "xywh=109,734,641,293"
+          }
+        }
+      ]
+    },
+    {
+      "@id": "https://w3id.org/alexandria/paper/mercadier2011/run/e88f86e/element/34",
+      "@type": "doco:Paragraph",
+      "position": 34,
+      "onPage": "https://w3id.org/alexandria/paper/mercadier2011/run/e88f86e/page/5",
+      "region": [
+        {
+          "@type": "oa:ResourceSelection",
+          "hasSource": "https://w3id.org/alexandria/paper/mercadier2011/run/e88f86e/asset/page_images/page_005.png",
+          "hasSelector": {
+            "@type": "oa:FragmentSelector",
+            "conformsTo": "http://www.w3.org/TR/media-frags/",
+            "value": "xywh=110,1047,307,91"
+          }
+        }
+      ]
+    },
+    {
+      "@id": "https://w3id.org/alexandria/paper/mercadier2011/run/e88f86e/element/35",
+      "@type": "doco:SectionTitle",
+      "position": 35,
+      "onPage": "https://w3id.org/alexandria/paper/mercadier2011/run/e88f86e/page/5",
+      "text": "Conclusions",
+      "region": [
+        {
+          "@type": "oa:ResourceSelection",
+          "hasSource": "https://w3id.org/alexandria/paper/mercadier2011/run/e88f86e/asset/page_images/page_005.png",
+          "hasSelector": {
+            "@type": "oa:FragmentSelector",
+            "conformsTo": "http://www.w3.org/TR/media-frags/",
+            "value": "xywh=111,1167,101,24"
+          }
+        }
+      ]
+    },
+    {
+      "@id": "https://w3id.org/alexandria/paper/mercadier2011/run/e88f86e/element/36",
+      "@type": "doco:Paragraph",
+      "position": 36,
+      "onPage": "https://w3id.org/alexandria/paper/mercadier2011/run/e88f86e/page/5",
+      "region": [
+        {
+          "@type": "oa:ResourceSelection",
+          "hasSource": "https://w3id.org/alexandria/paper/mercadier2011/run/e88f86e/asset/page_images/page_005.png",
+          "hasSelector": {
+            "@type": "oa:FragmentSelector",
+            "conformsTo": "http://www.w3.org/TR/media-frags/",
+            "value": "xywh=111,1202,307,304"
+          }
+        }
+      ]
+    },
+    {
+      "@id": "https://w3id.org/alexandria/paper/mercadier2011/run/e88f86e/element/37",
+      "@type": "doco:Paragraph",
+      "position": 37,
+      "onPage": "https://w3id.org/alexandria/paper/mercadier2011/run/e88f86e/page/5",
+      "region": [
+        {
+          "@type": "oa:ResourceSelection",
+          "hasSource": "https://w3id.org/alexandria/paper/mercadier2011/run/e88f86e/asset/page_images/page_005.png",
+          "hasSelector": {
+            "@type": "oa:FragmentSelector",
+            "conformsTo": "http://www.w3.org/TR/media-frags/",
+            "value": "xywh=776,156,317,1346"
+          }
+        }
+      ]
+    },
+    {
+      "@id": "https://w3id.org/alexandria/paper/mercadier2011/run/e88f86e/element/38",
+      "@type": "doco:Paragraph",
+      "position": 38,
+      "onPage": "https://w3id.org/alexandria/paper/mercadier2011/run/e88f86e/page/6",
+      "region": [
+        {
+          "@type": "oa:ResourceSelection",
+          "hasSource": "https://w3id.org/alexandria/paper/mercadier2011/run/e88f86e/asset/page_images/page_006.png",
+          "hasSelector": {
+            "@type": "oa:FragmentSelector",
+            "conformsTo": "http://www.w3.org/TR/media-frags/",
+            "value": "xywh=144,156,309,776"
+          }
+        }
+      ]
+    },
+    {
+      "@id": "https://w3id.org/alexandria/paper/mercadier2011/run/e88f86e/element/39",
+      "@type": "doco:Paragraph",
+      "position": 39,
+      "onPage": "https://w3id.org/alexandria/paper/mercadier2011/run/e88f86e/page/6",
+      "region": [
+        {
+          "@type": "oa:ResourceSelection",
+          "hasSource": "https://w3id.org/alexandria/paper/mercadier2011/run/e88f86e/asset/page_images/page_006.png",
+          "hasSelector": {
+            "@type": "oa:FragmentSelector",
+            "conformsTo": "http://www.w3.org/TR/media-frags/",
+            "value": "xywh=480,156,310,718"
+          }
+        }
+      ]
+    },
+    {
+      "@id": "https://w3id.org/alexandria/paper/mercadier2011/run/e88f86e/element/40",
+      "@type": "doco:SectionTitle",
+      "position": 40,
+      "onPage": "https://w3id.org/alexandria/paper/mercadier2011/run/e88f86e/page/6",
+      "text": "Supporting Information",
+      "region": [
+        {
+          "@type": "oa:ResourceSelection",
+          "hasSource": "https://w3id.org/alexandria/paper/mercadier2011/run/e88f86e/asset/page_images/page_006.png",
+          "hasSelector": {
+            "@type": "oa:FragmentSelector",
+            "conformsTo": "http://www.w3.org/TR/media-frags/",
+            "value": "xywh=819,156,205,25"
+          }
+        }
+      ]
+    },
+    {
+      "@id": "https://w3id.org/alexandria/paper/mercadier2011/run/e88f86e/element/41",
+      "@type": "doco:Paragraph",
+      "position": 41,
+      "onPage": "https://w3id.org/alexandria/paper/mercadier2011/run/e88f86e/page/6",
+      "region": [
+        {
+          "@type": "oa:ResourceSelection",
+          "hasSource": "https://w3id.org/alexandria/paper/mercadier2011/run/e88f86e/asset/page_images/page_006.png",
+          "hasSelector": {
+            "@type": "oa:FragmentSelector",
+            "conformsTo": "http://www.w3.org/TR/media-frags/",
+            "value": "xywh=818,189,308,68"
+          }
+        }
+      ]
+    },
+    {
+      "@id": "https://w3id.org/alexandria/paper/mercadier2011/run/e88f86e/element/42",
+      "@type": "doco:Paragraph",
+      "position": 42,
+      "onPage": "https://w3id.org/alexandria/paper/mercadier2011/run/e88f86e/page/6",
+      "region": [
+        {
+          "@type": "oa:ResourceSelection",
+          "hasSource": "https://w3id.org/alexandria/paper/mercadier2011/run/e88f86e/asset/page_images/page_006.png",
+          "hasSelector": {
+            "@type": "oa:FragmentSelector",
+            "conformsTo": "http://www.w3.org/TR/media-frags/",
+            "value": "xywh=818,258,308,65"
+          }
+        }
+      ]
+    },
+    {
+      "@id": "https://w3id.org/alexandria/paper/mercadier2011/run/e88f86e/element/43",
+      "@type": "doco:Paragraph",
+      "position": 43,
+      "onPage": "https://w3id.org/alexandria/paper/mercadier2011/run/e88f86e/page/6",
+      "region": [
+        {
+          "@type": "oa:ResourceSelection",
+          "hasSource": "https://w3id.org/alexandria/paper/mercadier2011/run/e88f86e/asset/page_images/page_006.png",
+          "hasSelector": {
+            "@type": "oa:FragmentSelector",
+            "conformsTo": "http://www.w3.org/TR/media-frags/",
+            "value": "xywh=818,323,308,89"
+          }
+        }
+      ]
+    },
+    {
+      "@id": "https://w3id.org/alexandria/paper/mercadier2011/run/e88f86e/element/44",
+      "@type": "doco:Paragraph",
+      "position": 44,
+      "onPage": "https://w3id.org/alexandria/paper/mercadier2011/run/e88f86e/page/6",
+      "region": [
+        {
+          "@type": "oa:ResourceSelection",
+          "hasSource": "https://w3id.org/alexandria/paper/mercadier2011/run/e88f86e/asset/page_images/page_006.png",
+          "hasSelector": {
+            "@type": "oa:FragmentSelector",
+            "conformsTo": "http://www.w3.org/TR/media-frags/",
+            "value": "xywh=818,412,308,262"
+          }
+        }
+      ]
+    },
+    {
+      "@id": "https://w3id.org/alexandria/paper/mercadier2011/run/e88f86e/element/45",
+      "@type": "doco:Paragraph",
+      "position": 45,
+      "onPage": "https://w3id.org/alexandria/paper/mercadier2011/run/e88f86e/page/6",
+      "region": [
+        {
+          "@type": "oa:ResourceSelection",
+          "hasSource": "https://w3id.org/alexandria/paper/mercadier2011/run/e88f86e/asset/page_images/page_006.png",
+          "hasSelector": {
+            "@type": "oa:FragmentSelector",
+            "conformsTo": "http://www.w3.org/TR/media-frags/",
+            "value": "xywh=818,674,308,150"
+          }
+        }
+      ]
+    },
+    {
+      "@id": "https://w3id.org/alexandria/paper/mercadier2011/run/e88f86e/page/1",
+      "@type": "fabio:Page",
+      "position": 1,
+      "image": "https://w3id.org/alexandria/paper/mercadier2011/run/e88f86e/asset/page_images/page_001.png",
+      "pageImageWidth": 1241,
+      "pageImageHeight": 1648,
+      "printedPageLabel": "264",
+      "printedPageNumber": 264,
+      "printedPagePosition": "bottom"
+    },
+    {
+      "@id": "https://w3id.org/alexandria/paper/mercadier2011/run/e88f86e/page/2",
+      "@type": "fabio:Page",
+      "position": 2,
+      "image": "https://w3id.org/alexandria/paper/mercadier2011/run/e88f86e/asset/page_images/page_002.png",
+      "pageImageWidth": 1241,
+      "pageImageHeight": 1648,
+      "printedPageLabel": "265",
+      "printedPageNumber": 265,
+      "printedPagePosition": "bottom"
+    },
+    {
+      "@id": "https://w3id.org/alexandria/paper/mercadier2011/run/e88f86e/page/3",
+      "@type": "fabio:Page",
+      "position": 3,
+      "image": "https://w3id.org/alexandria/paper/mercadier2011/run/e88f86e/asset/page_images/page_003.png",
+      "pageImageWidth": 1241,
+      "pageImageHeight": 1648,
+      "printedPageLabel": "266",
+      "printedPageNumber": 266,
+      "printedPagePosition": "bottom"
+    },
+    {
+      "@id": "https://w3id.org/alexandria/paper/mercadier2011/run/e88f86e/page/4",
+      "@type": "fabio:Page",
+      "position": 4,
+      "image": "https://w3id.org/alexandria/paper/mercadier2011/run/e88f86e/asset/page_images/page_004.png",
+      "pageImageWidth": 1241,
+      "pageImageHeight": 1648,
+      "printedPageLabel": "267",
+      "printedPageNumber": 267,
+      "printedPagePosition": "bottom"
+    },
+    {
+      "@id": "https://w3id.org/alexandria/paper/mercadier2011/run/e88f86e/page/5",
+      "@type": "fabio:Page",
+      "position": 5,
+      "image": "https://w3id.org/alexandria/paper/mercadier2011/run/e88f86e/asset/page_images/page_005.png",
+      "pageImageWidth": 1241,
+      "pageImageHeight": 1648,
+      "printedPageLabel": "268",
+      "printedPageNumber": 268,
+      "printedPagePosition": "bottom"
+    },
+    {
+      "@id": "https://w3id.org/alexandria/paper/mercadier2011/run/e88f86e/page/6",
+      "@type": "fabio:Page",
+      "position": 6,
+      "image": "https://w3id.org/alexandria/paper/mercadier2011/run/e88f86e/asset/page_images/page_006.png",
+      "pageImageWidth": 1241,
+      "pageImageHeight": 1648,
+      "printedPageLabel": "269",
+      "printedPageNumber": 269,
+      "printedPagePosition": "bottom"
+    },
+    {
+      "@id": "https://w3id.org/alexandria/paper/mercadier2011/run/e88f86e/prov/agent/deepseek-ocr",
+      "@type": "prov:SoftwareAgent",
+      "name": "DeepSeek-OCR",
+      "softwareVersion": "deepseek-ai/DeepSeek-OCR",
+      "description": "OCR, layout detection, element bounding boxes"
+    },
+    {
+      "@id": "https://w3id.org/alexandria/paper/mercadier2011/run/e88f86e/prov/agent/claude-heading",
+      "@type": "prov:SoftwareAgent",
+      "name": "Claude Sonnet 4",
+      "softwareVersion": "claude-sonnet-4-20250514 (temperature=0)",
+      "description": "Heading classification: matter + level"
+    },
+    {
+      "@id": "https://w3id.org/alexandria/paper/mercadier2011/run/e88f86e/prov/agent/gemini-figure",
+      "@type": "prov:SoftwareAgent",
+      "name": "Gemini 2.0 Flash",
+      "softwareVersion": "gemini-2.0-flash",
+      "description": "Figure type classification + description"
+    },
+    {
+      "@id": "https://w3id.org/alexandria/paper/mercadier2011/run/e88f86e/prov/agent/gemini-chart",
+      "@type": "prov:SoftwareAgent",
+      "name": "Gemini 2.5 Pro",
+      "softwareVersion": "gemini-2.5-pro",
+      "description": "Chart data extraction"
+    },
+    {
+      "@id": "https://w3id.org/alexandria/paper/mercadier2011/run/e88f86e/prov/agent/qwen-pagenum",
+      "@type": "prov:SoftwareAgent",
+      "name": "Qwen 2.5 VL",
+      "softwareVersion": "qwen2.5vl:latest (openwebui.crc.nd.edu)",
+      "description": "Printed page number detection"
+    },
+    {
+      "@id": "https://w3id.org/alexandria/paper/mercadier2011/supplement/1",
+      "@type": [
+        "fabio:SupplementaryInformationFile",
+        "schema:CreativeWork"
+      ],
+      "title": "Supporting Information: Table S1, Table S2, Figure S1 (analytical details and REE analyses)",
+      "description": "Supplementary material artifact referenced by the main text; not yet processed by the pipeline.",
+      "supplementOf": "https://w3id.org/alexandria/paper/mercadier2011"
+    },
+    {
+      "@id": "https://w3id.org/alexandria/paper/mercadier2011/run/e88f86e/prov/activity",
+      "@type": "prov:Activity",
+      "name": "batch_process.py pipeline run",
+      "wasAssociatedWith": [
+        "https://w3id.org/alexandria/paper/mercadier2011/run/e88f86e/prov/agent/deepseek-ocr",
+        "https://w3id.org/alexandria/paper/mercadier2011/run/e88f86e/prov/agent/claude-heading",
+        "https://w3id.org/alexandria/paper/mercadier2011/run/e88f86e/prov/agent/gemini-figure",
+        "https://w3id.org/alexandria/paper/mercadier2011/run/e88f86e/prov/agent/gemini-chart",
+        "https://w3id.org/alexandria/paper/mercadier2011/run/e88f86e/prov/agent/qwen-pagenum"
+      ],
+      "used": "https://w3id.org/alexandria/paper/mercadier2011/manifestation/pdf",
+      "softwareVersion": "deepseek-ocr-experiments@e88f86e"
+    }
+  ]
+}

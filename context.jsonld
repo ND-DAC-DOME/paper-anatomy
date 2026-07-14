@@ -1,0 +1,144 @@
+{
+  "@context": {
+    "@version": 1.1,
+    "doco": "http://purl.org/spar/doco/",
+    "deo": "http://purl.org/spar/deo/",
+    "fabio": "http://purl.org/spar/fabio/",
+    "po": "http://www.essepuntato.it/2008/12/pattern#",
+    "oa": "http://www.w3.org/ns/oa#",
+    "prov": "http://www.w3.org/ns/prov#",
+    "dcterms": "http://purl.org/dc/terms/",
+    "schema": "https://schema.org/",
+    "xsd": "http://www.w3.org/2001/XMLSchema#",
+    "pax": "https://w3id.org/paper-anatomy/vocab#",
+    "frbr": "http://purl.org/vocab/frbr/core#",
+    "supplement": {
+      "@id": "frbr:supplement",
+      "@type": "@id",
+      "@container": "@set"
+    },
+    "supplementOf": {
+      "@id": "frbr:supplementOf",
+      "@type": "@id"
+    },
+    "contains": {
+      "@id": "po:contains",
+      "@type": "@id",
+      "@container": "@set"
+    },
+    "title": "dcterms:title",
+    "description": "dcterms:description",
+    "identifier": "dcterms:identifier",
+    "license": {
+      "@id": "dcterms:license",
+      "@type": "@id"
+    },
+    "source": {
+      "@id": "dcterms:source",
+      "@type": "@id"
+    },
+    "text": "schema:text",
+    "position": {
+      "@id": "schema:position",
+      "@type": "xsd:integer"
+    },
+    "image": {
+      "@id": "schema:image",
+      "@type": "@id"
+    },
+    "pageCount": {
+      "@id": "fabio:hasPageCount",
+      "@type": "xsd:integer"
+    },
+    "region": {
+      "@id": "pax:region",
+      "@container": "@set"
+    },
+    "hasSource": {
+      "@id": "oa:hasSource",
+      "@type": "@id"
+    },
+    "hasSelector": {
+      "@id": "oa:hasSelector"
+    },
+    "conformsTo": {
+      "@id": "dcterms:conformsTo",
+      "@type": "@id"
+    },
+    "value": "rdf:value",
+    "rdf": "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
+    "figureType": {
+      "@id": "pax:figureType",
+      "@type": "@id"
+    },
+    "chartData": {
+      "@id": "pax:chartData",
+      "@type": "@json"
+    },
+    "rawType": "pax:rawType",
+    "printedPageNumber": {
+      "@id": "pax:printedPageNumber",
+      "@type": "xsd:integer"
+    },
+    "printedPagePosition": "pax:printedPagePosition",
+    "onPage": {
+      "@id": "pax:onPage",
+      "@type": "@id"
+    },
+    "wasGeneratedBy": {
+      "@id": "prov:wasGeneratedBy",
+      "@type": "@id"
+    },
+    "wasAssociatedWith": {
+      "@id": "prov:wasAssociatedWith",
+      "@type": "@id",
+      "@container": "@set"
+    },
+    "startedAtTime": {
+      "@id": "prov:startedAtTime",
+      "@type": "xsd:dateTime"
+    },
+    "softwareVersion": "schema:softwareVersion",
+    "name": "schema:name",
+    "printedPageLabel": "pax:printedPageLabel",
+    "pageImageWidth": {
+      "@id": "pax:pageImageWidth",
+      "@type": "xsd:integer"
+    },
+    "pageImageHeight": {
+      "@id": "pax:pageImageHeight",
+      "@type": "xsd:integer"
+    },
+    "hasPart": {
+      "@id": "dcterms:hasPart",
+      "@type": "@id",
+      "@container": "@set"
+    },
+    "embodiment": {
+      "@id": "frbr:embodiment",
+      "@type": "@id"
+    },
+    "embodimentOf": {
+      "@id": "frbr:embodimentOf",
+      "@type": "@id"
+    },
+    "part": {
+      "@id": "frbr:part",
+      "@type": "@id",
+      "@container": "@set"
+    },
+    "about": {
+      "@id": "schema:about",
+      "@type": "@id"
+    },
+    "used": {
+      "@id": "prov:used",
+      "@type": "@id"
+    },
+    "wasDerivedFrom": {
+      "@id": "prov:wasDerivedFrom",
+      "@type": "@id",
+      "@container": "@set"
+    }
+  }
+}

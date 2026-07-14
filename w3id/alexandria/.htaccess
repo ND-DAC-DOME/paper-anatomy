@@ -1,0 +1,7 @@
+# w3id.org/alexandria — instance-data namespace of the Alexandria application
+# DRAFT for the perma-id/w3id.org PR. Instance IRIs (papers, runs, elements)
+# minted by the application resolve here; point at the deployed resolver once
+# Alexandria exposes one. Placeholder: the ND-DAC-DOME organization.
+Options +FollowSymLinks
+RewriteEngine on
+RewriteRule ^(.*)$ https://github.com/ND-DAC-DOME [R=303,L]
