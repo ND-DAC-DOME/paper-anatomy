@@ -17,6 +17,10 @@ Layers (subset of the CI pipeline recommended in review):
      diagnostic (Info reported). Includes the materialized-projection
      consistency rules (pax:matter / pageStart / pageEnd vs containment).
 
+  6. README term counts: the "N classes, N object properties, N datatype
+     properties … (N concepts)" sentence in README.md must match what
+     pax.ttl actually declares — documentation drift fails CI.
+
 Dependencies are intentionally not project dependencies; run with:
     uv run --with rdflib --with pyshacl python kg/validate.py
 """
@@ -140,6 +144,29 @@ def main():
                 check(len(items) == 0, f"{len(items)} violation(s): {summary}")
             else:
                 print(f"  · {len(items)} {sev.lower()}(s): {summary}")
+
+    # ---- 6. README stated term counts ----
+    print("[6] README term counts match pax.ttl")
+    def pax_count(rdf_type):
+        return sum(1 for s in vocab.subjects(RDF.type, rdf_type)
+                   if str(s).startswith(str(PAX)))
+    actual = {
+        "classes": pax_count(OWL.Class),
+        "object properties": pax_count(OWL.ObjectProperty),
+        "datatype properties": pax_count(OWL.DatatypeProperty),
+        "concepts": pax_count(SKOS.Concept),
+    }
+    readme = (KG_DIR / "README.md").read_text()
+    m = re.search(r"(\d+) classes, (\d+) object properties, (\d+) datatype "
+                  r"properties.*?\((\d+) concepts\)", readme)
+    if not m:
+        check(False, "README no longer contains the term-count sentence — "
+                     "update this check alongside the wording")
+    else:
+        stated = dict(zip(actual.keys(), map(int, m.groups())))
+        for key in actual:
+            check(stated[key] == actual[key],
+                  f"{key}: README says {stated[key]}, pax.ttl declares {actual[key]}")
 
     print()
     if failures:

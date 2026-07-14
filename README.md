@@ -159,7 +159,7 @@ Workflow: run candidate pipeline → export to this schema (via the deepseek-ocr
 
 | File | Purpose |
 |---|---|
-| `pax.ttl` | **Formal definition of the `pax:` vocabulary** (OWL/Turtle) — v0.2.0 after three external ontologist review passes: 5 classes, 3 object properties, 10 datatype properties + a SKOS figure-type scheme (14 concepts) |
+| `pax.ttl` | **Formal definition of the `pax:` vocabulary** (OWL/Turtle) — v0.2.0 after three external ontologist review passes: 5 classes, 3 object properties, 12 datatype properties + a SKOS figure-type scheme (14 concepts) |
 | `context.jsonld` | Reusable JSON-LD 1.1 `@context` (all prefixes + term shortcuts) |
 | `shapes/` | **SHACL profiles**: `core.ttl` (structural conformance — Violations fail), `recommended.ttl` (interoperability + materialized-projection consistency: `pax:matter`/`pageStart`/`pageEnd` must agree with typing and containment — Warnings), `diagnostic.ttl` (data-quality signals like text-less paragraphs — Info). Conformance only; scoring (IoU, tolerances, ordering distance) lives in the evaluation engine |
 | `validate.py` | **Fast CI layer** (`uv run --with rdflib --with pyshacl python validate.py`): vocabulary parses, example round-trips as RDF, exact term-coverage bijection, regions well-formed and within page bounds, and the three SHACL profiles |
