@@ -48,6 +48,15 @@ def page_positions(nodes: dict) -> dict:
             if "fabio:Page" in types_of(n) and "position" in n}
 
 
+def page_dims(nodes: dict) -> dict:
+    """page IRI -> (width, height) of the declared pixel space, when stated."""
+    out = {}
+    for i, n in nodes.items():
+        if "fabio:Page" in types_of(n) and n.get("pageImageWidth") and n.get("pageImageHeight"):
+            out[i] = (n["pageImageWidth"], n["pageImageHeight"])
+    return out
+
+
 def primary_type(node) -> str:
     """The structural type used for matching (first doco:/deo:/pax: type)."""
     for t in types_of(node):
@@ -66,13 +75,26 @@ def bbox_of(node):
 
 def elements(nodes: dict) -> dict:
     """Document elements: everything with a reading-order position on a page
-    (the DocumentElementShape contract). Returns id -> descriptor."""
-    pages = page_positions(nodes)
+    (the DocumentElementShape contract). Returns id -> descriptor.
+
+    Boxes are normalized into the page's declared pixel space
+    (pax:pageImageWidth/Height) — coordinates are only comparable relative to
+    the space they were measured in, and two pipelines (or two runs) routinely
+    render at different DPI. Pages that declare no dimensions keep raw pixels
+    and are flagged: `unnormalized`.
+    """
+    pages, dims = page_positions(nodes), page_dims(nodes)
     out = {}
     for i, n in nodes.items():
         if "position" in n and n.get("onPage") in pages:
-            out[i] = {"type": primary_type(n), "page": pages[n["onPage"]],
-                      "pos": n["position"], "bbox": bbox_of(n), "node": n}
+            box, page_iri = bbox_of(n), n["onPage"]
+            wh = dims.get(page_iri)
+            if box and wh:
+                x, y, w, h = box
+                box = (x / wh[0], y / wh[1], w / wh[0], h / wh[1])
+            out[i] = {"type": primary_type(n), "page": pages[page_iri],
+                      "pos": n["position"], "bbox": box, "node": n,
+                      "unnormalized": bool(box) and not wh}
     return out
 
 
@@ -85,7 +107,11 @@ def iou(a, b) -> float:
     iy = max(0, min(ay + ah, by + bh) - max(ay, by))
     inter = ix * iy
     union = aw * ah + bw * bh - inter
-    return inter / union if union else 0.0
+    if not union:
+        return 0.0
+    # clamp: IoU is bounded by 1 mathematically; normalized (float) coordinates
+    # can otherwise return 1.0000000000000002 for identical boxes
+    return min(1.0, inter / union)
 
 
 # ---------------------------------------------------------------- matching
@@ -330,7 +356,14 @@ def evaluate(ref_path: Path, cand_path: Path, threshold: float = 0.5) -> dict:
 
     # 2. localization
     ious = [iou(ref_el[r]["bbox"], cand_el[c]["bbox"]) for r, c in matches.items()]
-    localization = {"mean_iou": sum(ious) / len(ious) if ious else None, "pairs": len(ious)}
+    unnorm = sum(1 for e in list(ref_el.values()) + list(cand_el.values()) if e["unnormalized"])
+    localization = {"mean_iou": sum(ious) / len(ious) if ious else None, "pairs": len(ious),
+                    "coordinate_space": "page-relative (normalized by pax:pageImageWidth/Height)"
+                    if not unnorm else
+                    f"MIXED — {unnorm} element(s) on pages declaring no dimensions: "
+                    "their IoU is computed in raw pixels and is only meaningful if both "
+                    "graphs were rendered at the same resolution",
+                    "unnormalized_elements": unnorm}
 
     # 3. reading order
     pairs = sorted(matches.items(), key=lambda rc: ref_el[rc[0]]["pos"])

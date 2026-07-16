@@ -26,6 +26,14 @@ E = "https://w3id.org/alexandria/paper/mercadier2011/run/e88f86e"
 
 failures = []
 
+# IoU is computed on page-normalized (float) coordinates, so "perfect" means
+# perfect within float precision, never bit-exact equality.
+EPS = 1e-9
+
+
+def perfect(v):
+    return v is not None and abs(v - 1.0) < EPS
+
 
 def check(ok, msg):
     print(("  ✓ " if ok else "  ✗ ") + msg)
@@ -69,7 +77,7 @@ def test_identity():
     print("[1] identity: reference vs itself must be perfect everywhere")
     r = run()
     check(r["detection"]["precision"] == 1 and r["detection"]["recall"] == 1, "detection P=R=1")
-    check(r["localization"]["mean_iou"] == 1, "mean IoU = 1")
+    check(perfect(r["localization"]["mean_iou"]), "mean IoU = 1 (within float precision)")
     check(r["reading_order"]["kendall_tau"] == 1, "Kendall τ = 1")
     check(r["hierarchy"]["tree_edit_distance"] == 0, "tree edit distance = 0")
     check(r["rhetorical"]["role_accuracy"] == 1 and r["rhetorical"]["matter_accuracy"] == 1
@@ -98,7 +106,7 @@ def test_missing_element():
     r = run(m)
     check(r["detection"]["recall"] < 1, f"recall {r['detection']['recall']:.3f} < 1")
     check(r["detection"]["precision"] == 1, "precision stays 1")
-    check(r["localization"]["mean_iou"] == 1, "IoU of surviving matches stays 1")
+    check(perfect(r["localization"]["mean_iou"]), "IoU of surviving matches stays 1")
 
 
 def test_spurious_element():
@@ -129,6 +137,31 @@ def test_small_bbox_shift():
     check(r["reading_order"]["kendall_tau"] == 1, "reading order blind to the shift")
 
 
+def test_different_page_resolution():
+    """The decisive cross-pipeline case: the SAME layout rendered at a different
+    DPI. Coordinates live in the pixel space each page declares
+    (pax:pageImageWidth/Height), so a candidate rendered at 2× must score
+    identically — comparing raw xywh across pixel spaces is meaningless.
+    Found in real data: two paper-atomizer runs of one paper rendered pages at
+    900×1350 and 1275×1650."""
+    print("[5b] same layout at 2× page resolution → must still match perfectly")
+    def m(kg, nodes):
+        for n in kg["@graph"]:
+            if "fabio:Page" in (n.get("@type") or []):
+                n["pageImageWidth"] *= 2
+                n["pageImageHeight"] *= 2
+            for r in n.get("region", []):
+                v = r["hasSelector"]["value"]
+                x, y, w, h = map(int, v[5:].split(","))
+                r["hasSelector"]["value"] = f"xywh={x*2},{y*2},{w*2},{h*2}"
+    r = run(m)
+    check(r["detection"]["recall"] == 1 and r["detection"]["precision"] == 1,
+          f"detection P={r['detection']['precision']:.3f} R={r['detection']['recall']:.3f} "
+          "(scale-invariant)")
+    check(perfect(r["localization"]["mean_iou"]),
+          f"mean IoU={r['localization']['mean_iou']:.6f} == 1 (normalized to page space)")
+
+
 def test_large_bbox_shift():
     print("[5] bbox moved across the page → match lost below IoU threshold")
     def m(kg, nodes):
@@ -149,7 +182,7 @@ def test_swapped_reading_order():
     r = run(m)
     check(r["reading_order"]["kendall_tau"] < 1,
           f"τ {r['reading_order']['kendall_tau']:.3f} < 1")
-    check(r["detection"]["recall"] == 1 and r["localization"]["mean_iou"] == 1,
+    check(r["detection"]["recall"] == 1 and perfect(r["localization"]["mean_iou"]),
           "detection and IoU unaffected")
 
 
@@ -248,7 +281,8 @@ def test_chart_missing_rows():
 
 def main():
     for fn in (test_zss_known_cases, test_identity, test_missing_element,
-               test_spurious_element, test_small_bbox_shift, test_large_bbox_shift,
+               test_spurious_element, test_small_bbox_shift,
+               test_different_page_resolution, test_large_bbox_shift,
                test_swapped_reading_order, test_dropped_rhetorical_type,
                test_wrong_matter, test_flattened_subsection, test_swapped_captions,
                test_chart_value_error, test_chart_missing_rows):
