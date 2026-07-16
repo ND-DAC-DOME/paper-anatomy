@@ -92,8 +92,20 @@ def main():
                               html, count=1, flags=re.MULTILINE)
     if count != 1:
         raise SystemExit(f"expected exactly one `const KG = ...;` line in {args.html}, found {count}")
+
+    # keep the displayed vocabulary version in lockstep with pax.ttl
+    m = re.search(r'owl:versionInfo\s+"([^"]+)"', (repo / "pax.ttl").read_text())
+    if not m:
+        raise SystemExit("owl:versionInfo not found in pax.ttl")
+    version = m.group(1)
+    new_html, count = re.subn(r'(<a id="vocab-version"[^>]*>)[^<]*(</a>)',
+                              rf"\g<1>PAX v{version}\g<2>", new_html, count=1)
+    if count != 1:
+        raise SystemExit(f'expected exactly one <a id="vocab-version"> element in {args.html}, found {count}')
+
     args.html.write_text(new_html)
-    print(f"Injected {len(payload) // 1024} KB ({len(data['nodes'])} nodes) into {args.html}")
+    print(f"Injected {len(payload) // 1024} KB ({len(data['nodes'])} nodes) "
+          f"+ version PAX v{version} into {args.html}")
 
 
 if __name__ == "__main__":
