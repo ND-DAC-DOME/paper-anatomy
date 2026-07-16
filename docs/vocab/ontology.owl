@@ -1,0 +1,763 @@
+<?xml version="1.0"?>
+<rdf:RDF xmlns="https://w3id.org/paper-anatomy/vocab#"
+     xml:base="https://w3id.org/paper-anatomy/vocab"
+     xmlns:owl="http://www.w3.org/2002/07/owl#"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:xml="http://www.w3.org/XML/1998/namespace"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:foaf="http://xmlns.com/foaf/0.1/"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     xmlns:skos="http://www.w3.org/2004/02/skos/core#"
+     xmlns:vann="http://purl.org/vocab/vann/"
+     xmlns:terms="http://purl.org/dc/terms/"
+     xmlns:schema="https://schema.org/">
+    <owl:Ontology rdf:about="https://w3id.org/paper-anatomy/vocab">
+        <owl:versionIRI rdf:resource="https://w3id.org/paper-anatomy/releases/0.2.0/vocab"/>
+        <terms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2026-07-08</terms:created>
+        <terms:creator rdf:resource="https://orcid.org/0009-0001-6047-385X"/>
+        <terms:description xml:lang="en">The Paper Anatomy Vocabulary (PAX): a small vocabulary complementing DoCO, DEO,
+FaBiO, the W3C Web Annotation model and PROV-O for describing the anatomy of a
+scientific paper — its structural, rhetorical, spatial and part–whole composition. It covers only what those vocabularies do not:
+AI-extracted figure semantics (figure type as a SKOS scheme, chart data payloads),
+the distinction between a page&apos;s sequence position and its printed page label,
+spatial-anchoring conveniences (an application profile over oa:ResourceSelection,
+deliberately not a conforming Web Annotation), and document components absent from
+DoCO (running page headers/footers, printed page-number marks, code blocks).
+
+Design rule: a term is added here ONLY when no suitable term exists in the reused
+community vocabularies. See the schema documentation for the full graph design.
+
+Status: testing — not yet registered at w3id.org; under review before publication.</terms:description>
+        <terms:language rdf:resource="http://id.loc.gov/vocabulary/iso639-1/en"/>
+        <terms:license rdf:resource="https://creativecommons.org/licenses/by/4.0/"/>
+        <terms:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2026-07-14</terms:modified>
+        <terms:publisher rdf:resource="https://w3id.org/paper-anatomy/org/dac-dome"/>
+        <terms:title xml:lang="en">Paper Anatomy Vocabulary (PAX)</terms:title>
+        <vann:preferredNamespacePrefix>pax</vann:preferredNamespacePrefix>
+        <vann:preferredNamespaceUri>https://w3id.org/paper-anatomy/vocab#</vann:preferredNamespaceUri>
+        <rdfs:seeAlso rdf:resource="https://github.com/ND-DAC-DOME/paper-anatomy"/>
+        <owl:versionInfo>0.2.0</owl:versionInfo>
+    </owl:Ontology>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Annotation properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+
+    
+
+
+    <!-- http://purl.org/dc/terms/created -->
+
+
+    <owl:AnnotationProperty rdf:about="http://purl.org/dc/terms/created"/>
+    
+
+
+    <!-- http://purl.org/dc/terms/creator -->
+
+
+    <owl:AnnotationProperty rdf:about="http://purl.org/dc/terms/creator"/>
+    
+
+
+    <!-- http://purl.org/dc/terms/description -->
+
+
+    <owl:AnnotationProperty rdf:about="http://purl.org/dc/terms/description"/>
+    
+
+
+    <!-- http://purl.org/dc/terms/language -->
+
+
+    <owl:AnnotationProperty rdf:about="http://purl.org/dc/terms/language"/>
+    
+
+
+    <!-- http://purl.org/dc/terms/license -->
+
+
+    <owl:AnnotationProperty rdf:about="http://purl.org/dc/terms/license"/>
+    
+
+
+    <!-- http://purl.org/dc/terms/modified -->
+
+
+    <owl:AnnotationProperty rdf:about="http://purl.org/dc/terms/modified"/>
+    
+
+
+    <!-- http://purl.org/dc/terms/publisher -->
+
+
+    <owl:AnnotationProperty rdf:about="http://purl.org/dc/terms/publisher"/>
+    
+
+
+    <!-- http://purl.org/dc/terms/title -->
+
+
+    <owl:AnnotationProperty rdf:about="http://purl.org/dc/terms/title"/>
+    
+
+
+    <!-- http://purl.org/vocab/vann/preferredNamespacePrefix -->
+
+
+    <owl:AnnotationProperty rdf:about="http://purl.org/vocab/vann/preferredNamespacePrefix"/>
+    
+
+
+    <!-- http://purl.org/vocab/vann/preferredNamespaceUri -->
+
+
+    <owl:AnnotationProperty rdf:about="http://purl.org/vocab/vann/preferredNamespaceUri"/>
+    
+
+
+    <!-- http://www.w3.org/2004/02/skos/core#prefLabel -->
+
+
+    <owl:AnnotationProperty rdf:about="http://www.w3.org/2004/02/skos/core#prefLabel"/>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Datatypes
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+
+    
+
+
+    <!-- http://www.w3.org/2001/XMLSchema#date -->
+
+
+    <rdfs:Datatype rdf:about="http://www.w3.org/2001/XMLSchema#date"/>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Object Properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+
+    
+
+
+    <!-- http://www.w3.org/2004/02/skos/core#inScheme -->
+
+
+    <owl:ObjectProperty rdf:about="http://www.w3.org/2004/02/skos/core#inScheme"/>
+    
+
+
+    <!-- https://schema.org/parentOrganization -->
+
+
+    <owl:ObjectProperty rdf:about="https://schema.org/parentOrganization"/>
+    
+
+
+    <!-- https://w3id.org/paper-anatomy/vocab#figureType -->
+
+
+    <owl:ObjectProperty rdf:about="https://w3id.org/paper-anatomy/vocab#figureType">
+        <rdfs:range rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
+        <rdfs:comment xml:lang="en">The visual kind of a doco:Figure, as classified by a vision model. Values are concepts in pax:FigureTypeScheme; each concept&apos;s skos:notation carries the pipeline&apos;s original string code.</rdfs:comment>
+        <rdfs:isDefinedBy rdf:resource="https://w3id.org/paper-anatomy/vocab"/>
+        <rdfs:label xml:lang="en">figure type</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- https://w3id.org/paper-anatomy/vocab#onPage -->
+
+
+    <owl:ObjectProperty rdf:about="https://w3id.org/paper-anatomy/vocab#onPage">
+        <rdfs:range rdf:resource="http://purl.org/spar/fabio/Page"/>
+        <rdfs:comment xml:lang="en">Links a document element to the fabio:Page it appears on. Redundant with the page reachable through pax:region / oa:hasSource, kept as a direct hop for query convenience.</rdfs:comment>
+        <rdfs:isDefinedBy rdf:resource="https://w3id.org/paper-anatomy/vocab"/>
+        <rdfs:label xml:lang="en">on page</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- https://w3id.org/paper-anatomy/vocab#region -->
+
+
+    <owl:ObjectProperty rdf:about="https://w3id.org/paper-anatomy/vocab#region">
+        <rdfs:range rdf:resource="http://www.w3.org/ns/oa#ResourceSelection"/>
+        <rdfs:comment xml:lang="en">Links a document element to an oa:ResourceSelection (source + FragmentSelector with a Media Fragments xywh value) anchoring it to a rectangular region of a page image. This is a compact APPLICATION PROFILE reusing Web Annotation vocabulary components; it is deliberately NOT a conforming oa:Annotation and will not be consumed as-is by generic annotation clients. A lossless transform to conforming Annotations is possible. One element may carry several regions when it spans columns or pages. Coordinates are in the pixel space whose dimensions are given by pax:pageImageWidth/Height on the page.</rdfs:comment>
+        <rdfs:isDefinedBy rdf:resource="https://w3id.org/paper-anatomy/vocab"/>
+        <rdfs:label xml:lang="en">region</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Data properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+
+    
+
+
+    <!-- http://www.w3.org/2004/02/skos/core#notation -->
+
+
+    <owl:DatatypeProperty rdf:about="http://www.w3.org/2004/02/skos/core#notation"/>
+    
+
+
+    <!-- http://xmlns.com/foaf/0.1/name -->
+
+
+    <owl:DatatypeProperty rdf:about="http://xmlns.com/foaf/0.1/name"/>
+    
+
+
+    <!-- https://w3id.org/paper-anatomy/vocab#chartData -->
+
+
+    <owl:DatatypeProperty rdf:about="https://w3id.org/paper-anatomy/vocab#chartData">
+        <rdfs:comment xml:lang="en">The structured data extracted from a chart-type figure (axes, series, data points, error bars), embedded verbatim as a JSON literal (rdf:JSON, JSON-LD 1.1 &apos;@json&apos;). Immutable extraction evidence — payload, not graph structure. No rdfs:range is declared: rdf:JSON is outside the OWL 2 datatype map, and a range axiom would push the vocabulary out of the DL profile. Normalized point nodes may complement (not replace) this when cross-paper SPARQL querying, per-point provenance, or unit alignment is required.</rdfs:comment>
+        <rdfs:isDefinedBy rdf:resource="https://w3id.org/paper-anatomy/vocab"/>
+        <rdfs:label xml:lang="en">chart data</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- https://w3id.org/paper-anatomy/vocab#level -->
+
+
+    <owl:DatatypeProperty rdf:about="https://w3id.org/paper-anatomy/vocab#level">
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <rdfs:comment xml:lang="en">The classified level of a heading: title, label, section, or subsection. Applies to doco:Section and doco:Label nodes.</rdfs:comment>
+        <rdfs:isDefinedBy rdf:resource="https://w3id.org/paper-anatomy/vocab"/>
+        <rdfs:label xml:lang="en">heading level</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- https://w3id.org/paper-anatomy/vocab#matter -->
+
+
+    <owl:DatatypeProperty rdf:about="https://w3id.org/paper-anatomy/vocab#matter">
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <rdfs:comment xml:lang="en">Which matter a heading belongs to: front, body, or back. Convenience mirror of containment in doco:FrontMatter / doco:BodyMatter / doco:BackMatter; applies to doco:Section and doco:Label nodes.</rdfs:comment>
+        <rdfs:isDefinedBy rdf:resource="https://w3id.org/paper-anatomy/vocab"/>
+        <rdfs:label xml:lang="en">matter</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- https://w3id.org/paper-anatomy/vocab#pageEnd -->
+
+
+    <owl:DatatypeProperty rdf:about="https://w3id.org/paper-anatomy/vocab#pageEnd">
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
+        <rdfs:comment xml:lang="en">Last page (sequence number) on which the section or label appears. Materialized projection; must agree with element containment and page membership.</rdfs:comment>
+        <rdfs:isDefinedBy rdf:resource="https://w3id.org/paper-anatomy/vocab"/>
+        <rdfs:label xml:lang="en">page end</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- https://w3id.org/paper-anatomy/vocab#pageImageHeight -->
+
+
+    <owl:DatatypeProperty rdf:about="https://w3id.org/paper-anatomy/vocab#pageImageHeight">
+        <rdfs:domain rdf:resource="http://purl.org/spar/fabio/Page"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
+        <rdfs:comment xml:lang="en">Pixel height of the rendered page image referenced by schema:image — the vertical extent of the coordinate space used by all xywh selectors on this page.</rdfs:comment>
+        <rdfs:isDefinedBy rdf:resource="https://w3id.org/paper-anatomy/vocab"/>
+        <rdfs:label xml:lang="en">page image height</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- https://w3id.org/paper-anatomy/vocab#pageImageWidth -->
+
+
+    <owl:DatatypeProperty rdf:about="https://w3id.org/paper-anatomy/vocab#pageImageWidth">
+        <rdfs:domain rdf:resource="http://purl.org/spar/fabio/Page"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
+        <rdfs:comment xml:lang="en">Pixel width of the rendered page image referenced by schema:image — the horizontal extent of the coordinate space used by all xywh selectors on this page.</rdfs:comment>
+        <rdfs:isDefinedBy rdf:resource="https://w3id.org/paper-anatomy/vocab"/>
+        <rdfs:label xml:lang="en">page image width</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- https://w3id.org/paper-anatomy/vocab#pageStart -->
+
+
+    <owl:DatatypeProperty rdf:about="https://w3id.org/paper-anatomy/vocab#pageStart">
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
+        <rdfs:comment xml:lang="en">First page (sequence number) on which the section or label appears. Materialized projection; must agree with element containment and page membership.</rdfs:comment>
+        <rdfs:isDefinedBy rdf:resource="https://w3id.org/paper-anatomy/vocab"/>
+        <rdfs:label xml:lang="en">page start</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- https://w3id.org/paper-anatomy/vocab#parsedContent -->
+
+
+    <owl:DatatypeProperty rdf:about="https://w3id.org/paper-anatomy/vocab#parsedContent">
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <rdfs:comment xml:lang="en">The OCR model&apos;s own parse of a figure or table (typically an HTML rendering of a table), preserved verbatim.</rdfs:comment>
+        <rdfs:isDefinedBy rdf:resource="https://w3id.org/paper-anatomy/vocab"/>
+        <rdfs:label xml:lang="en">parsed content</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- https://w3id.org/paper-anatomy/vocab#printedPageLabel -->
+
+
+    <owl:DatatypeProperty rdf:about="https://w3id.org/paper-anatomy/vocab#printedPageLabel">
+        <rdfs:domain rdf:resource="http://purl.org/spar/fabio/Page"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <rdfs:comment xml:lang="en">The page label exactly as printed on the page, as detected by a vision model. AUTHORITATIVE value; may be non-numeric (roman numerals, &apos;S12&apos;, &apos;266a&apos;). Distinct from schema:position (the page&apos;s 1-based sequence in the file).</rdfs:comment>
+        <rdfs:isDefinedBy rdf:resource="https://w3id.org/paper-anatomy/vocab"/>
+        <rdfs:label xml:lang="en">printed page label</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- https://w3id.org/paper-anatomy/vocab#printedPageNumber -->
+
+
+    <owl:DatatypeProperty rdf:about="https://w3id.org/paper-anatomy/vocab#printedPageNumber">
+        <rdfs:domain rdf:resource="http://purl.org/spar/fabio/Page"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
+        <rdfs:comment xml:lang="en">A numeric page identifier parsed from pax:printedPageLabel, when available. The label remains authoritative; this integer is a convenience for numeric comparison and may be derived from composite labels (e.g. the 1 in &apos;1 / 21&apos;).</rdfs:comment>
+        <rdfs:isDefinedBy rdf:resource="https://w3id.org/paper-anatomy/vocab"/>
+        <rdfs:label xml:lang="en">printed page number</rdfs:label>
+        <rdfs:seeAlso rdf:resource="https://w3id.org/paper-anatomy/vocab#printedPageLabel"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- https://w3id.org/paper-anatomy/vocab#printedPagePosition -->
+
+
+    <owl:DatatypeProperty rdf:about="https://w3id.org/paper-anatomy/vocab#printedPagePosition">
+        <rdfs:domain rdf:resource="http://purl.org/spar/fabio/Page"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <rdfs:comment xml:lang="en">Where on the page the printed page label appears: top, bottom, left, right.</rdfs:comment>
+        <rdfs:isDefinedBy rdf:resource="https://w3id.org/paper-anatomy/vocab"/>
+        <rdfs:label xml:lang="en">printed page position</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- https://w3id.org/paper-anatomy/vocab#rawType -->
+
+
+    <owl:DatatypeProperty rdf:about="https://w3id.org/paper-anatomy/vocab#rawType">
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <rdfs:comment xml:lang="en">The element-type string exactly as emitted by the OCR/layout model, preserved when it differs from (or cannot be mapped to) the RDF class chosen for the element.</rdfs:comment>
+        <rdfs:isDefinedBy rdf:resource="https://w3id.org/paper-anatomy/vocab"/>
+        <rdfs:label xml:lang="en">raw type</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Classes
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+
+    
+
+
+    <!-- http://purl.org/spar/fabio/Page -->
+
+
+    <owl:Class rdf:about="http://purl.org/spar/fabio/Page"/>
+    
+
+
+    <!-- http://purl.org/vocommons/voaf#Vocabulary -->
+
+
+    <owl:Class rdf:about="http://purl.org/vocommons/voaf#Vocabulary"/>
+    
+
+
+    <!-- http://www.w3.org/2004/02/skos/core#Concept -->
+
+
+    <owl:Class rdf:about="http://www.w3.org/2004/02/skos/core#Concept"/>
+    
+
+
+    <!-- http://www.w3.org/2004/02/skos/core#ConceptScheme -->
+
+
+    <owl:Class rdf:about="http://www.w3.org/2004/02/skos/core#ConceptScheme"/>
+    
+
+
+    <!-- http://www.w3.org/ns/oa#ResourceSelection -->
+
+
+    <owl:Class rdf:about="http://www.w3.org/ns/oa#ResourceSelection"/>
+    
+
+
+    <!-- http://xmlns.com/foaf/0.1/Organization -->
+
+
+    <owl:Class rdf:about="http://xmlns.com/foaf/0.1/Organization"/>
+    
+
+
+    <!-- http://xmlns.com/foaf/0.1/Person -->
+
+
+    <owl:Class rdf:about="http://xmlns.com/foaf/0.1/Person"/>
+    
+
+
+    <!-- https://w3id.org/paper-anatomy/vocab#CodeBlock -->
+
+
+    <owl:Class rdf:about="https://w3id.org/paper-anatomy/vocab#CodeBlock">
+        <rdfs:comment xml:lang="en">A block of source code or pseudo-code presented as a distinct layout element.</rdfs:comment>
+        <rdfs:isDefinedBy rdf:resource="https://w3id.org/paper-anatomy/vocab"/>
+        <rdfs:label xml:lang="en">code block</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- https://w3id.org/paper-anatomy/vocab#OtherElement -->
+
+
+    <owl:Class rdf:about="https://w3id.org/paper-anatomy/vocab#OtherElement">
+        <rdfs:comment xml:lang="en">Fallback class for layout elements whose OCR-reported type maps to no known class. The original type string is preserved via pax:rawType.</rdfs:comment>
+        <rdfs:isDefinedBy rdf:resource="https://w3id.org/paper-anatomy/vocab"/>
+        <rdfs:label xml:lang="en">other element</rdfs:label>
+        <rdfs:seeAlso rdf:resource="https://w3id.org/paper-anatomy/vocab#rawType"/>
+    </owl:Class>
+    
+
+
+    <!-- https://w3id.org/paper-anatomy/vocab#PageFooter -->
+
+
+    <owl:Class rdf:about="https://w3id.org/paper-anatomy/vocab#PageFooter">
+        <rdfs:comment xml:lang="en">A running footer at the bottom of a page (e.g. journal name, copyright line). Semantic source: TEI &lt;fw type=&apos;footer&apos;&gt;.</rdfs:comment>
+        <rdfs:isDefinedBy rdf:resource="https://w3id.org/paper-anatomy/vocab"/>
+        <rdfs:label xml:lang="en">page footer</rdfs:label>
+        <rdfs:seeAlso rdf:resource="https://tei-c.org/release/doc/tei-p5-doc/en/html/ref-fw.html"/>
+    </owl:Class>
+    
+
+
+    <!-- https://w3id.org/paper-anatomy/vocab#PageHeader -->
+
+
+    <owl:Class rdf:about="https://w3id.org/paper-anatomy/vocab#PageHeader">
+        <rdfs:comment xml:lang="en">A running header at the top of a page (e.g. abbreviated title, authors). Not covered by DoCO, whose orb:Header equivalence concerns front matter, not running heads. Semantic source: TEI &lt;fw type=&apos;header&apos;&gt;.</rdfs:comment>
+        <rdfs:isDefinedBy rdf:resource="https://w3id.org/paper-anatomy/vocab"/>
+        <rdfs:label xml:lang="en">page header</rdfs:label>
+        <rdfs:seeAlso rdf:resource="http://purl.org/spar/doco/FrontMatter"/>
+        <rdfs:seeAlso rdf:resource="https://tei-c.org/release/doc/tei-p5-doc/en/html/ref-fw.html"/>
+    </owl:Class>
+    
+
+
+    <!-- https://w3id.org/paper-anatomy/vocab#PageNumberMark -->
+
+
+    <owl:Class rdf:about="https://w3id.org/paper-anatomy/vocab#PageNumberMark">
+        <rdfs:comment xml:lang="en">The printed page-number glyph detected on a page, as a layout element. The label it denotes is recorded on the page node via pax:printedPageLabel; this class types the mark itself (its region on the page). Semantic source: TEI &lt;fw type=&apos;pageNum&apos;&gt;.</rdfs:comment>
+        <rdfs:isDefinedBy rdf:resource="https://w3id.org/paper-anatomy/vocab"/>
+        <rdfs:label xml:lang="en">page number mark</rdfs:label>
+        <rdfs:seeAlso rdf:resource="https://tei-c.org/release/doc/tei-p5-doc/en/html/ref-fw.html"/>
+        <rdfs:seeAlso rdf:resource="https://w3id.org/paper-anatomy/vocab#printedPageLabel"/>
+    </owl:Class>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Individuals
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+
+    
+
+
+    <!-- https://orcid.org/0009-0001-6047-385X -->
+
+
+    <owl:NamedIndividual rdf:about="https://orcid.org/0009-0001-6047-385X">
+        <rdf:type rdf:resource="http://xmlns.com/foaf/0.1/Person"/>
+        <foaf:name>Priscila Saboia Moreira</foaf:name>
+        <rdfs:label>Priscila Saboia Moreira</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- https://ror.org/00mkhxb43 -->
+
+
+    <owl:NamedIndividual rdf:about="https://ror.org/00mkhxb43">
+        <rdf:type rdf:resource="http://xmlns.com/foaf/0.1/Organization"/>
+        <foaf:name>University of Notre Dame</foaf:name>
+        <rdfs:label>University of Notre Dame</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- https://w3id.org/paper-anatomy/vocab -->
+
+
+    <owl:NamedIndividual rdf:about="https://w3id.org/paper-anatomy/vocab">
+        <rdf:type rdf:resource="http://purl.org/vocommons/voaf#Vocabulary"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- https://w3id.org/paper-anatomy/org/dac-dome -->
+
+
+    <owl:NamedIndividual rdf:about="https://w3id.org/paper-anatomy/org/dac-dome">
+        <rdf:type rdf:resource="http://xmlns.com/foaf/0.1/Organization"/>
+        <schema:parentOrganization rdf:resource="https://ror.org/00mkhxb43"/>
+        <foaf:name>DAC DOME (Data, Operations, Modeling, and Engineering)</foaf:name>
+        <rdfs:label>DAC DOME (Data, Operations, Modeling, and Engineering)</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- https://w3id.org/paper-anatomy/vocab#FigureTypeScheme -->
+
+
+    <owl:NamedIndividual rdf:about="https://w3id.org/paper-anatomy/vocab#FigureTypeScheme">
+        <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#ConceptScheme"/>
+        <terms:description xml:lang="en">Controlled values for pax:figureType, mirroring the pipeline&apos;s figure classification labels.</terms:description>
+        <terms:title xml:lang="en">Figure type scheme</terms:title>
+        <rdfs:label xml:lang="en">figure type scheme</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- https://w3id.org/paper-anatomy/vocab#barChart -->
+
+
+    <owl:NamedIndividual rdf:about="https://w3id.org/paper-anatomy/vocab#barChart">
+        <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
+        <skos:inScheme rdf:resource="https://w3id.org/paper-anatomy/vocab#FigureTypeScheme"/>
+        <skos:notation>bar_chart</skos:notation>
+        <rdfs:label xml:lang="en">bar chart</rdfs:label>
+        <skos:prefLabel xml:lang="en">bar chart</skos:prefLabel>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- https://w3id.org/paper-anatomy/vocab#boxplotFigure -->
+
+
+    <owl:NamedIndividual rdf:about="https://w3id.org/paper-anatomy/vocab#boxplotFigure">
+        <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
+        <skos:inScheme rdf:resource="https://w3id.org/paper-anatomy/vocab#FigureTypeScheme"/>
+        <skos:notation>boxplot</skos:notation>
+        <rdfs:label xml:lang="en">box plot</rdfs:label>
+        <skos:prefLabel xml:lang="en">box plot</skos:prefLabel>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- https://w3id.org/paper-anatomy/vocab#diagramFigure -->
+
+
+    <owl:NamedIndividual rdf:about="https://w3id.org/paper-anatomy/vocab#diagramFigure">
+        <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
+        <skos:inScheme rdf:resource="https://w3id.org/paper-anatomy/vocab#FigureTypeScheme"/>
+        <skos:notation>diagram</skos:notation>
+        <rdfs:label xml:lang="en">diagram</rdfs:label>
+        <skos:prefLabel xml:lang="en">diagram</skos:prefLabel>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- https://w3id.org/paper-anatomy/vocab#flowchartFigure -->
+
+
+    <owl:NamedIndividual rdf:about="https://w3id.org/paper-anatomy/vocab#flowchartFigure">
+        <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
+        <skos:inScheme rdf:resource="https://w3id.org/paper-anatomy/vocab#FigureTypeScheme"/>
+        <skos:notation>flowchart</skos:notation>
+        <rdfs:label xml:lang="en">flowchart</rdfs:label>
+        <skos:prefLabel xml:lang="en">flowchart</skos:prefLabel>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- https://w3id.org/paper-anatomy/vocab#heatmapFigure -->
+
+
+    <owl:NamedIndividual rdf:about="https://w3id.org/paper-anatomy/vocab#heatmapFigure">
+        <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
+        <skos:inScheme rdf:resource="https://w3id.org/paper-anatomy/vocab#FigureTypeScheme"/>
+        <skos:notation>heatmap</skos:notation>
+        <rdfs:label xml:lang="en">heatmap</rdfs:label>
+        <skos:prefLabel xml:lang="en">heatmap</skos:prefLabel>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- https://w3id.org/paper-anatomy/vocab#histogramFigure -->
+
+
+    <owl:NamedIndividual rdf:about="https://w3id.org/paper-anatomy/vocab#histogramFigure">
+        <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
+        <skos:inScheme rdf:resource="https://w3id.org/paper-anatomy/vocab#FigureTypeScheme"/>
+        <skos:notation>histogram</skos:notation>
+        <rdfs:label xml:lang="en">histogram</rdfs:label>
+        <skos:prefLabel xml:lang="en">histogram</skos:prefLabel>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- https://w3id.org/paper-anatomy/vocab#lineGraph -->
+
+
+    <owl:NamedIndividual rdf:about="https://w3id.org/paper-anatomy/vocab#lineGraph">
+        <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
+        <skos:inScheme rdf:resource="https://w3id.org/paper-anatomy/vocab#FigureTypeScheme"/>
+        <skos:notation>line_graph</skos:notation>
+        <rdfs:label xml:lang="en">line graph</rdfs:label>
+        <skos:prefLabel xml:lang="en">line graph</skos:prefLabel>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- https://w3id.org/paper-anatomy/vocab#mapFigure -->
+
+
+    <owl:NamedIndividual rdf:about="https://w3id.org/paper-anatomy/vocab#mapFigure">
+        <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
+        <skos:inScheme rdf:resource="https://w3id.org/paper-anatomy/vocab#FigureTypeScheme"/>
+        <skos:notation>map</skos:notation>
+        <rdfs:label xml:lang="en">map</rdfs:label>
+        <skos:prefLabel xml:lang="en">map</skos:prefLabel>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- https://w3id.org/paper-anatomy/vocab#micrograph -->
+
+
+    <owl:NamedIndividual rdf:about="https://w3id.org/paper-anatomy/vocab#micrograph">
+        <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
+        <skos:inScheme rdf:resource="https://w3id.org/paper-anatomy/vocab#FigureTypeScheme"/>
+        <skos:notation>micrograph</skos:notation>
+        <rdfs:label xml:lang="en">micrograph</rdfs:label>
+        <skos:prefLabel xml:lang="en">micrograph</skos:prefLabel>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- https://w3id.org/paper-anatomy/vocab#otherFigureType -->
+
+
+    <owl:NamedIndividual rdf:about="https://w3id.org/paper-anatomy/vocab#otherFigureType">
+        <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
+        <skos:inScheme rdf:resource="https://w3id.org/paper-anatomy/vocab#FigureTypeScheme"/>
+        <skos:notation>other</skos:notation>
+        <rdfs:label xml:lang="en">other</rdfs:label>
+        <skos:prefLabel xml:lang="en">other</skos:prefLabel>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- https://w3id.org/paper-anatomy/vocab#photograph -->
+
+
+    <owl:NamedIndividual rdf:about="https://w3id.org/paper-anatomy/vocab#photograph">
+        <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
+        <skos:inScheme rdf:resource="https://w3id.org/paper-anatomy/vocab#FigureTypeScheme"/>
+        <skos:notation>photograph</skos:notation>
+        <rdfs:label xml:lang="en">photograph</rdfs:label>
+        <skos:prefLabel xml:lang="en">photograph</skos:prefLabel>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- https://w3id.org/paper-anatomy/vocab#pieChart -->
+
+
+    <owl:NamedIndividual rdf:about="https://w3id.org/paper-anatomy/vocab#pieChart">
+        <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
+        <skos:inScheme rdf:resource="https://w3id.org/paper-anatomy/vocab#FigureTypeScheme"/>
+        <skos:notation>pie_chart</skos:notation>
+        <rdfs:label xml:lang="en">pie chart</rdfs:label>
+        <skos:prefLabel xml:lang="en">pie chart</skos:prefLabel>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- https://w3id.org/paper-anatomy/vocab#scatterPlot -->
+
+
+    <owl:NamedIndividual rdf:about="https://w3id.org/paper-anatomy/vocab#scatterPlot">
+        <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
+        <skos:inScheme rdf:resource="https://w3id.org/paper-anatomy/vocab#FigureTypeScheme"/>
+        <skos:notation>scatter_plot</skos:notation>
+        <rdfs:label xml:lang="en">scatter plot</rdfs:label>
+        <skos:prefLabel xml:lang="en">scatter plot</skos:prefLabel>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- https://w3id.org/paper-anatomy/vocab#schematicFigure -->
+
+
+    <owl:NamedIndividual rdf:about="https://w3id.org/paper-anatomy/vocab#schematicFigure">
+        <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
+        <skos:inScheme rdf:resource="https://w3id.org/paper-anatomy/vocab#FigureTypeScheme"/>
+        <skos:notation>schematic</skos:notation>
+        <rdfs:label xml:lang="en">schematic</rdfs:label>
+        <skos:prefLabel xml:lang="en">schematic</skos:prefLabel>
+    </owl:NamedIndividual>
+</rdf:RDF>
+
+
+
+<!-- Generated by the OWL API (version 5.1.18) https://github.com/owlcs/owlapi/ -->
+
+

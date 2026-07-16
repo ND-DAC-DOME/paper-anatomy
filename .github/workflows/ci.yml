@@ -1,0 +1,84 @@
+name: CI
+
+on:
+  push:
+    branches: [master]
+  pull_request:
+
+jobs:
+  validate:
+    name: Fast layer (RDF + SHACL + coverage)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: astral-sh/setup-uv@v5
+      - run: uv run --with rdflib --with pyshacl python validate.py
+
+  formal:
+    name: Slow layer (OWL 2 DL gate, HermiT, lint, JSON-LD)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-java@v4
+        with: { distribution: temurin, java-version: "17" }
+      - uses: astral-sh/setup-uv@v5
+      - name: Cache ROBOT
+        uses: actions/cache@v4
+        with:
+          path: ~/.cache/robot
+          key: robot-jar
+      - run: uv run --with rdflib --with pyld python formal_checks.py
+
+  docs:
+    name: Docs regeneration is drift-free
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-java@v4
+        with: { distribution: temurin, java-version: "17" }
+      - name: Cache Widoco
+        uses: actions/cache@v4
+        with:
+          path: ~/.cache/widoco
+          key: widoco-1.4.25
+      - name: Regenerate docs (pinned Widoco; no quality capture)
+        run: python3 scripts/build_docs.py
+      - name: Fail if committed docs/ drifted from sources
+        run: git diff --exit-code docs/
+      - name: Required published files exist
+        run: |
+          for f in docs/index.html docs/vocab/index.html docs/vocab/ontology.ttl \
+                   docs/vocab/ontology.jsonld docs/vocab/ontology.owl \
+                   docs/shapes/index.html docs/shapes/core.ttl docs/shapes/recommended.ttl \
+                   docs/shapes/diagnostic.ttl docs/releases/0.2.0/vocab.ttl \
+                   docs/resources/quality/0.2.0/validate.log; do
+            [ -f "$f" ] || { echo "MISSING: $f"; exit 1; }
+          done
+      - name: Expected terms and sections appear in the spec
+        run: |
+          for term in printedPageLabel chartData figureType region PageHeader \
+                      FigureTypeScheme pageImageWidth; do
+            grep -q "$term" docs/vocab/index.html || { echo "TERM MISSING FROM SPEC: $term"; exit 1; }
+          done
+          for section in "Cross-reference" "Description"; do
+            grep -q "$section" docs/vocab/index.html || { echo "SECTION MISSING: $section"; exit 1; }
+          done
+      - name: Internal links resolve (landing + shapes index)
+        run: |
+          python3 - <<'EOF'
+          import re, sys
+          from pathlib import Path
+          bad = []
+          for page in (Path("docs/index.html"), Path("docs/shapes/index.html")):
+              for href in re.findall(r'href="([^"#]+)"', page.read_text()):
+                  if href.startswith(("http", "mailto")):
+                      continue
+                  target = (page.parent / href).resolve()
+                  if target.is_dir():
+                      target = target / "index.html"
+                  if not target.exists():
+                      bad.append(f"{page}: {href}")
+          if bad:
+              print("BROKEN INTERNAL LINKS:\n" + "\n".join(bad)); sys.exit(1)
+          print("all internal links resolve")
+          EOF

@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Paper Anatomy Vocabulary (PAX)</title>
+<style>
+  :root { --bg:#f6f4ef; --panel:#fffdf9; --ink:#23241f; --muted:#6f6c62; --line:#e3dfd4;
+          --accent:#4059ad; --pax:#c04a3a; color-scheme: light dark; }
+  @media (prefers-color-scheme: dark) {
+    :root { --bg:#15171c; --panel:#1d2026; --ink:#e7e4dc; --muted:#9a968a; --line:#2c3038;
+            --accent:#7d93e0; --pax:#e07f70; }
+  }
+  * { box-sizing: border-box; }
+  body { margin:0; background:var(--bg); color:var(--ink);
+         font:16px/1.6 system-ui,-apple-system,"Segoe UI",sans-serif; }
+  main { max-width: 860px; margin: 0 auto; padding: 40px 24px 80px; }
+  h1 { font-family: Charter,Cambria,Georgia,serif; font-size: clamp(28px,5vw,40px); margin:6px 0 4px; }
+  h2 { font-family: Charter,Cambria,Georgia,serif; font-size: 22px; margin: 38px 0 10px;
+       border-bottom: 1px solid var(--line); padding-bottom: 6px; }
+  .eyebrow { font-size:12px; letter-spacing:.14em; text-transform:uppercase; color:var(--muted); }
+  .status { display:inline-block; font-size:12.5px; font-weight:600; color:var(--pax);
+            border:1px solid var(--pax); border-radius:999px; padding:2px 12px; margin:8px 0; }
+  p, li { max-width: 75ch; }
+  a { color: var(--accent); }
+  code { font-family: ui-monospace,"SF Mono",Consolas,monospace; font-size:.88em;
+         background: var(--panel); border:1px solid var(--line); border-radius:4px; padding:1px 5px; }
+  pre { background: var(--panel); border:1px solid var(--line); border-radius:8px;
+        padding:12px 16px; overflow-x:auto; font-size:13px; line-height:1.5; }
+  pre code { border:none; background:none; padding:0; }
+  ul.links { list-style:none; padding:0; }
+  ul.links li { margin: 6px 0; }
+  table { border-collapse: collapse; font-size: 14.5px; }
+  th, td { border:1px solid var(--line); padding: 6px 12px; text-align:left; }
+  th { background: var(--panel); }
+  .muted { color: var(--muted); font-size: 14px; }
+</style>
+</head>
+<body>
+<main>
+  <div class="eyebrow">ND‑DAC‑DOME · built on SPAR (DoCO · DEO · FaBiO · PO) and W3C (Web Annotation · PROV · SKOS)</div>
+  <h1>Paper Anatomy Vocabulary (PAX)</h1>
+  <div class="status">Testing release v0.2.0 — not yet formally published</div>
+  <p>A FAIR, ontology-grounded vocabulary and JSON-LD schema for the <strong>structural anatomy of a
+  scientific paper</strong> — section hierarchy, every element inside each section, captions, page-image
+  regions, and full processing provenance. PAX defines <em>only</em> what established community
+  vocabularies cannot express; everything else is typed directly with SPAR and W3C terms.</p>
+  <ul class="links">
+    <li>📄 <a href="vocab/">Ontology specification</a> (Widoco-generated; serializations:
+        <a href="vocab/ontology.ttl">Turtle</a> ·
+        <a href="vocab/ontology.jsonld">JSON-LD</a> ·
+        <a href="vocab/ontology.owl">RDF/XML</a> ·
+        <a href="vocab/ontology.nt">N-Triples</a>)</li>
+    <li>🔎 <a href="shapes/">SHACL validation profiles</a> (core · recommended · diagnostic)</li>
+    <li>🗄️ <a href="releases/0.2.0/vocab.ttl">Version snapshot 0.2.0</a> (the <code>owl:versionIRI</code> target)</li>
+    <li>💻 <a href="https://github.com/ND-DAC-DOME/paper-anatomy">Source repository</a></li>
+  </ul>
+
+  <h2>Status and conformance</h2>
+  <ul>
+    <li><strong>Canonical namespace</strong>: <code>https://w3id.org/paper-anatomy/vocab#</code>, preferred prefix <code>pax</code>.
+        Shapes namespace: <code>https://w3id.org/paper-anatomy/shapes#</code>, prefix <code>paxs</code>.
+        <span class="muted">(w3id registration pending — deferred until this site is publicly served.)</span></li>
+    <li><strong>The PAX ontology document is OWL 2 DL.</strong> The combined external-vocabulary closure is
+        <em>not</em> OWL 2 DL (≈1.1k violations inherited from legacy imports such as foaf and dcterms).
+        The claim is deliberately scoped to the document: PAX has no <code>owl:imports</code>, and the external
+        declarations in <code>pax.ttl</code> act as local OWL-category compatibility declarations.</li>
+    <li><strong>Normative</strong>: the OWL axioms and annotations in <a href="vocab/ontology.ttl">the vocabulary document</a>
+        and the constraints in the <a href="shapes/">core SHACL profile</a>.
+        <strong>Explanatory</strong>: this page, the README, examples, and the recommended/diagnostic profiles.</li>
+    <li>PAX deliberately has <strong>no upper-ontology grounding</strong>: for document structure the SPAR suite
+        <em>is</em> the community layer, and reuse of living vocabularies takes precedence — a considered
+        decision, not an omission.</li>
+  </ul>
+
+  <h2>SHACL profiles — severity contract</h2>
+  <table>
+    <tr><th>Profile</th><th>Severity</th><th>Meaning</th></tr>
+    <tr><td><a href="shapes/core.ttl">core</a></td><td>Violation</td>
+        <td>Structural conformance. <strong>Conformance to PAX = zero core violations.</strong></td></tr>
+    <tr><td><a href="shapes/recommended.ttl">recommended</a></td><td>Warning</td>
+        <td>Interoperability + materialized-projection consistency (<code>pax:matter</code>/<code>pageStart</code>/<code>pageEnd</code>
+            must agree with typing and containment).</td></tr>
+    <tr><td><a href="shapes/diagnostic.ttl">diagnostic</a></td><td>Info</td>
+        <td>Data-quality signals (e.g. text-less paragraphs) — surfaced, never blocking.</td></tr>
+  </table>
+  <p>Exact validation command (fast layer, includes all three profiles + term-coverage checks):</p>
+  <pre><code>uv run --with rdflib --with pyshacl python validate.py</code></pre>
+  <p class="muted">Scoring concerns — IoU between regions, coordinate tolerances, reading-order distance —
+  are <em>evaluation metrics</em> computed by a separate engine. SHACL severity has no tolerance semantics;
+  the profiles check conformance only.</p>
+
+  <h2>Imports and dependency policy</h2>
+  <ul>
+    <li>PAX declares <strong>no <code>owl:imports</code></strong>. External terms (DoCO, DEO, FaBiO, PO, OA, PROV,
+        SKOS, FRBR, DCTerms, FOAF) are reused <em>term-level</em>, with local category declarations to keep
+        OWLAPI tooling from guessing (anti-punning).</li>
+    <li>The <a href="https://github.com/ND-DAC-DOME/paper-anatomy/tree/master/imports">pinned dependency closure</a>
+        is a <strong>reproducibility artifact</strong> for the formal checks (HermiT consistency, profile gate) —
+        it is <em>not</em> the normative graph of those ontologies. Regenerate deliberately with
+        <code>fetch_imports.py</code> to bump the pins.</li>
+    <li>Slow layer (OWL 2 DL gate on the standalone document, HermiT over the transformed closure, ROBOT lint,
+        JSON-LD round-trip): <code>uv run --with rdflib --with pyld python formal_checks.py</code> (needs Java).</li>
+  </ul>
+
+  <h2>Versioning</h2>
+  <p>Term IRIs are <strong>stable and unversioned</strong>; releases are snapshotted under
+  <code>releases/&lt;version&gt;/</code> and referenced by <code>owl:versionIRI</code>
+  (current: <a href="releases/0.2.0/vocab.ttl"><code>…/releases/0.2.0/vocab</code></a>).
+  Deprecation uses <code>owl:deprecated</code> — terms are never deleted or reassigned.
+  Full policy: <a href="https://github.com/ND-DAC-DOME/paper-anatomy/blob/master/VERSIONING.md">VERSIONING.md</a>.</p>
+
+  <h2>Using PAX</h2>
+  <ul>
+    <li><strong>Worked example</strong>: <a href="https://github.com/ND-DAC-DOME/paper-anatomy/blob/master/examples/Mercadier2011.jsonld">Mercadier 2011</a> —
+        a complete 78-node export of a real 6-page paper (produced by the deepseek-ocr-experiments exporter;
+        instance IRIs minted under the producing application's namespace, default
+        <code>https://w3id.org/alexandria/paper/…</code>).</li>
+    <li><strong>JSON-LD context</strong>: <a href="https://github.com/ND-DAC-DOME/paper-anatomy/blob/master/context.jsonld">context.jsonld</a> — all prefixes + term shortcuts.</li>
+    <li><strong>Competency questions</strong> the graph is designed to answer (with SPARQL):
+        <a href="https://github.com/ND-DAC-DOME/paper-anatomy/blob/master/COMPETENCY_QUESTIONS.md">COMPETENCY_QUESTIONS.md</a>.</li>
+    <li><strong><code>pax:chartData</code> contract</strong>: an <code>rdf:JSON</code> literal holding extracted chart
+        payloads as immutable evidence. The OWL vocabulary deliberately carries no range axiom
+        (<code>rdf:JSON</code> is outside the OWL 2 datatype map); the datatype is enforced at the instance level
+        by <code>paxs:ChartDataShape</code>, which is negative-tested in CI.</li>
+    <li><strong>Materialized conveniences</strong>: <code>pax:level</code>, <code>pax:matter</code>,
+        <code>pax:pageStart/End</code> are classifier outputs (evaluation targets) materialized as flat properties;
+        the recommended profile checks they agree with the containment structure.</li>
+  </ul>
+
+  <h2>Quality evidence (v0.2.0)</h2>
+  <ul>
+    <li><a href="resources/quality/0.2.0/validate.log">Fast layer log</a> — RDF round-trip, term bijection,
+        region bounds, SHACL (0 violations / 0 warnings / 31 known info), README count guard.</li>
+    <li><a href="resources/quality/0.2.0/formal_checks.log">Formal layer log</a> — OWL 2 DL gate, HermiT
+        consistency, lint, JSON-LD round-trip.</li>
+    <li><a href="resources/quality/0.2.0/lint-report.tsv">ROBOT lint report</a> ·
+        <a href="resources/quality/0.2.0/profile-pax.txt">OWL 2 DL profile report</a></li>
+    <li>External design review: three ontologist review passes (2026-07); verdict
+        “ready as testing v0.2”.</li>
+    <li>OOPS! scan (2026-07-15): 0 critical; 6 pitfalls, each with a recorded disposition —
+        <a href="https://github.com/ND-DAC-DOME/paper-anatomy/blob/master/docs/resources/quality/0.2.0/oops-disposition.md">oops-disposition.md</a>
+        (raw report: <a href="resources/quality/0.2.0/oops-report.rdf">oops-report.rdf</a>).</li>
+  </ul>
+
+  <p class="muted" style="margin-top:48px">Priscila Saboia Moreira · DAC DOME (Data, Operations, Modeling,
+  and Engineering), University of Notre Dame · <a href="https://github.com/ND-DAC-DOME/paper-anatomy">GitHub</a></p>
+</main>
+</body>
+</html>

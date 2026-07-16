@@ -1,0 +1,122 @@
+@prefix sh:      <http://www.w3.org/ns/shacl#> .
+@prefix owl:     <http://www.w3.org/2002/07/owl#> .
+@prefix xsd:     <http://www.w3.org/2001/XMLSchema#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix schema:  <https://schema.org/> .
+@prefix doco:    <http://purl.org/spar/doco/> .
+@prefix po:      <http://www.essepuntato.it/2008/12/pattern#> .
+@prefix prov:    <http://www.w3.org/ns/prov#> .
+@prefix fabio:   <http://purl.org/spar/fabio/> .
+@prefix pax:     <https://w3id.org/paper-anatomy/vocab#> .
+@prefix paxs:     <https://w3id.org/paper-anatomy/shapes#> .
+
+##################################################################
+# RECOMMENDED profile — interoperability metadata + consistency of
+# MATERIALIZED PROJECTIONS (pax:matter, pax:pageStart/End duplicate
+# information carried by typing and containment; these constraints
+# ensure the copies agree). Severity: sh:Warning.
+##################################################################
+
+paxs:shapesOntology a owl:Ontology ;
+    sh:declare [ sh:prefix "po" ;      sh:namespace "http://www.essepuntato.it/2008/12/pattern#"^^xsd:anyURI ] ;
+    sh:declare [ sh:prefix "doco" ;    sh:namespace "http://purl.org/spar/doco/"^^xsd:anyURI ] ;
+    sh:declare [ sh:prefix "pax" ;     sh:namespace "https://w3id.org/paper-anatomy/vocab#"^^xsd:anyURI ] ;
+    sh:declare [ sh:prefix "schema" ;  sh:namespace "https://schema.org/"^^xsd:anyURI ] ;
+    sh:declare [ sh:prefix "dcterms" ; sh:namespace "http://purl.org/dc/terms/"^^xsd:anyURI ] .
+
+# --- projection consistency: section page range vs contained elements ---
+paxs:SectionPageRangeConsistencyShape a sh:NodeShape ;
+    sh:targetClass doco:Section ;
+    sh:severity sh:Warning ;
+    sh:sparql [
+        a sh:SPARQLConstraint ;
+        sh:message "Materialized pax:pageStart/pageEnd disagree with a contained element's page ({?pos})." ;
+        sh:prefixes paxs:shapesOntology ;
+        sh:select """
+            SELECT $this ?pos WHERE {
+                $this po:contains ?m .
+                FILTER NOT EXISTS { ?m a doco:Section }
+                { ?m pax:onPage ?p }
+                UNION
+                { ?m po:contains ?inner . ?inner pax:onPage ?p }
+                ?p schema:position ?pos .
+                $this pax:pageStart ?s ; pax:pageEnd ?e .
+                FILTER (?pos < ?s || ?pos > ?e)
+            }
+        """ ;
+    ] .
+
+# --- projection consistency: pax:matter vs actual matter container ---
+paxs:SectionMatterConsistencyShape a sh:NodeShape ;
+    sh:targetClass doco:Section ;
+    sh:severity sh:Warning ;
+    sh:sparql [
+        a sh:SPARQLConstraint ;
+        sh:message "Materialized pax:matter disagrees with the matter container holding this section." ;
+        sh:prefixes paxs:shapesOntology ;
+        sh:select """
+            SELECT $this WHERE {
+                $this pax:matter ?actual .
+                ?mc po:contains $this .
+                { ?mc a doco:FrontMatter . FILTER (?actual != "front") }
+                UNION
+                { ?mc a doco:BodyMatter . FILTER (?actual != "body") }
+                UNION
+                { ?mc a doco:BackMatter . FILTER (?actual != "back") }
+            }
+        """ ;
+    ] ;
+    sh:sparql [
+        a sh:SPARQLConstraint ;
+        sh:message "A subsection's pax:matter differs from its parent section's." ;
+        sh:prefixes paxs:shapesOntology ;
+        sh:select """
+            SELECT $this WHERE {
+                ?parent po:contains $this .
+                ?parent a doco:Section ; pax:matter ?pm .
+                $this pax:matter ?sm .
+                FILTER (?sm != ?pm)
+            }
+        """ ;
+    ] .
+
+# --- boxes: po:contains and dcterms:hasPart must list the same members ---
+paxs:BoxPartsAgreementShape a sh:NodeShape ;
+    sh:targetClass doco:FigureBox , doco:TableBox ;
+    sh:severity sh:Warning ;
+    sh:sparql [
+        a sh:SPARQLConstraint ;
+        sh:message "Box membership differs between po:contains and dcterms:hasPart." ;
+        sh:prefixes paxs:shapesOntology ;
+        sh:select """
+            SELECT $this ?x WHERE {
+                { $this po:contains ?x . FILTER NOT EXISTS { $this dcterms:hasPart ?x } }
+                UNION
+                { $this dcterms:hasPart ?x . FILTER NOT EXISTS { $this po:contains ?x } }
+            }
+        """ ;
+    ] .
+
+# --- elements should be spatially anchored ---
+paxs:ElementRegionRecommendedShape a sh:NodeShape ;
+    sh:targetClass doco:Paragraph , doco:Figure , doco:Table , doco:SectionTitle , doco:Title ;
+    sh:severity sh:Warning ;
+    sh:property [ sh:severity sh:Warning ; sh:path pax:region ;
+        sh:minCount 1 ;
+        sh:message "Element has no spatial region; viewers and IoU evaluation cannot anchor it." ] .
+
+# --- pages should declare their coordinate space ---
+paxs:PageDimsRecommendedShape a sh:NodeShape ;
+    sh:targetClass fabio:Page ;
+    sh:severity sh:Warning ;
+    sh:property [ sh:severity sh:Warning ; sh:path pax:pageImageWidth ; sh:minCount 1 ;
+        sh:message "Page lacks pageImageWidth; region bounds cannot be validated." ] ;
+    sh:property [ sh:severity sh:Warning ; sh:path pax:pageImageHeight ; sh:minCount 1 ;
+        sh:message "Page lacks pageImageHeight; region bounds cannot be validated." ] .
+
+# --- activities should be pinned to a pipeline version ---
+paxs:ActivityVersionRecommendedShape a sh:NodeShape ;
+    sh:targetClass prov:Activity ;
+    sh:severity sh:Warning ;
+    sh:property [ sh:severity sh:Warning ; sh:path schema:softwareVersion ; sh:minCount 1 ;
+        sh:message "Activity lacks a pipeline version (commit); the run is not reproducible." ] .

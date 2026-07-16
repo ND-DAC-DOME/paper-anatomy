@@ -167,7 +167,26 @@ Workflow: run candidate pipeline → export to this schema (via the deepseek-ocr
 | `fetch_imports.py` + `imports/` | **Pinned dependency closure** (DoCO, DEO, FaBiO, PO, OA, PROV, SKOS, FRBR, DCTerms, FOAF) so formal checks never depend on what the web serves today. Re-run the script deliberately to bump pins |
 | `examples/Mercadier2011.jsonld` | Real example generated from the Mercadier 2011 output of deepseek-ocr-experiments |
 | `releases/` | Version snapshots — `releases/0.2.0/vocab.ttl` + `releases/0.2.0/shapes/` are the `owl:versionIRI` targets |
-| `w3id/` | Draft `.htaccess` redirect maps for the future perma-id/w3id.org PR |
+| `docs/` | **Published documentation site** (GitHub Pages source): hand-authored landing + Widoco-generated spec under `vocab/` + shapes index + served copies of releases + per-release quality evidence (`resources/quality/`). Generated deterministically — see below |
+| `scripts/build_docs.py` | Docs builder: pinned Widoco 1.4.25 (sha256-verified) → `docs/vocab/`; syncs shapes + releases; `--quality` captures validation evidence |
+| `VERSIONING.md` | Versioning, compatibility, and deprecation policy (term IRIs stable; core SHACL profile is part of the compatibility surface) |
+| `COMPETENCY_QUESTIONS.md` | The questions the graph is designed to answer, with SPARQL — the grounding for every evaluation metric |
+| `w3id/` | Draft `.htaccess` redirect maps for the future perma-id/w3id.org PR (targets the GitHub Pages URLs) |
+| `.github/workflows/ci.yml` | CI: fast layer, formal layer, and the docs drift gate (regenerate with pinned Widoco → `git diff --exit-code docs/` → required-files, term-presence, and internal-link checks) |
+
+### Documentation site
+
+```bash
+python3 scripts/build_docs.py            # regenerate docs/vocab, sync shapes/releases
+python3 scripts/build_docs.py --quality  # + capture validation evidence (slow; needs Java)
+```
+
+The build is **byte-deterministic** (verified: Widoco 1.4.25 with these flags emits no
+wall-clock timestamps), so CI regenerates and fails on any drift between sources and the
+committed `docs/`. GitHub Pages serves from `/docs` — a file at `docs/vocab/index.html`
+is published as `…github.io/paper-anatomy/vocab/` (no `/docs/` in the URL). Content
+negotiation happens in the w3id `.htaccess` (GitHub Pages executes no `.htaccess`;
+the drafts in `w3id/` target the Pages URLs).
 
 ## Formal-check findings worth knowing
 
@@ -186,4 +205,5 @@ Workflow: run candidate pipeline → export to this schema (via the deepseek-ocr
 - The DEO mapping is heuristic; a curator should be able to override (that is the point of the reference graphs being editable).
 - The separate scoring engine for candidate-vs-reference comparison (IoU, Kendall-τ, tree edit distance) is still to be built.
 - Supplementary-material layer 3 (mention → target cross-references) not implemented; see [Supplementary material](#supplementary-material).
-- w3id registration + one-time OOPS! run + optional Widoco HTML docs before public release.
+- Publication path: make the repo public → enable GitHub Pages (from `/docs`) → w3id PR (`w3id/` drafts). The Widoco site and the archived OOPS! review (`docs/resources/quality/0.2.0/oops-disposition.md` — 0 critical, all findings dispositioned) are done.
+- v0.3 candidates: mutual `owl:disjointWith` among the five PAX element classes (OOPS P10, backward-compatible); LinkML on the evaluation-engine side (consumer models), not for vocabulary authoring.

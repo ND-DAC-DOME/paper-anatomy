@@ -1,0 +1,23 @@
+[1] pax.ttl
+  ✓ parses (227 triples)
+  ✓ 35 pax terms defined
+[2] examples/Mercadier2011.jsonld
+  ✓ parses as RDF (717 triples)
+[3] term coverage
+  ✓ all used terms defined (missing: none)
+  ✓ all defined terms exercised (unused: none)
+  ✓ sequenceNumber fully removed
+[4] region sanity (xywh well-formed, within page bounds)
+  ✓ 45 regions well-formed (0 malformed)
+  ✓ all regions within page bounds (0 outside)
+[5] SHACL (core=Violation, recommended=Warning, diagnostic=Info)
+  ✓ 0 violation(s): none
+  · 0 warning(s): none
+  · 31 info(s): 5× Caption has no text; caption/figure linking quality may be reduced.; 26× Paragraph carries no per-element text (content only in the page's raw 
+[6] README term counts match pax.ttl
+  ✓ classes: README says 5, pax.ttl declares 5
+  ✓ object properties: README says 3, pax.ttl declares 3
+  ✓ datatype properties: README says 12, pax.ttl declares 12
+  ✓ concepts: README says 14, pax.ttl declares 14
+
+ALL CHECKS PASSED

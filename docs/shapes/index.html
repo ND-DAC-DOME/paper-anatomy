@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>PAX SHACL profiles</title>
+<style>
+  :root { --bg:#f6f4ef; --panel:#fffdf9; --ink:#23241f; --muted:#6f6c62; --line:#e3dfd4;
+          --accent:#4059ad; color-scheme: light dark; }
+  @media (prefers-color-scheme: dark) {
+    :root { --bg:#15171c; --panel:#1d2026; --ink:#e7e4dc; --muted:#9a968a; --line:#2c3038; --accent:#7d93e0; }
+  }
+  body { margin:0; background:var(--bg); color:var(--ink);
+         font:16px/1.6 system-ui,-apple-system,"Segoe UI",sans-serif; }
+  main { max-width: 820px; margin:0 auto; padding: 40px 24px 80px; }
+  h1 { font-family: Charter,Cambria,Georgia,serif; }
+  a { color: var(--accent); }
+  code { font-family: ui-monospace,"SF Mono",Consolas,monospace; font-size:.88em;
+         background:var(--panel); border:1px solid var(--line); border-radius:4px; padding:1px 5px; }
+  pre { background:var(--panel); border:1px solid var(--line); border-radius:8px;
+        padding:12px 16px; overflow-x:auto; font-size:13px; }
+  pre code { border:none; background:none; padding:0; }
+  table { border-collapse:collapse; font-size:14.5px; margin:14px 0; }
+  th, td { border:1px solid var(--line); padding:6px 12px; text-align:left; vertical-align:top; }
+  th { background:var(--panel); }
+  .muted { color:var(--muted); font-size:14px; }
+</style>
+</head>
+<body>
+<main>
+  <h1>PAX SHACL validation profiles</h1>
+  <p>Namespace <code>https://w3id.org/paper-anatomy/shapes#</code> (prefix <code>paxs</code>) — one namespace
+  across all three profile documents. Severity is part of the contract:</p>
+  <table>
+    <tr><th>Profile</th><th>Severity</th><th>Purpose</th></tr>
+    <tr><td><a href="core.ttl"><code>core.ttl</code></a></td><td><code>sh:Violation</code></td>
+        <td>Structural requirements — a graph failing these is not a valid paper-structure KG.
+            <strong>Conformance to PAX = zero core violations.</strong> Includes
+            <code>paxs:ChartDataShape</code> (enforces the <code>rdf:JSON</code> datatype the OWL layer
+            deliberately leaves unstated).</td></tr>
+    <tr><td><a href="recommended.ttl"><code>recommended.ttl</code></a></td><td><code>sh:Warning</code></td>
+        <td>Interoperability + consistency of materialized projections: <code>pax:matter</code> must agree
+            with the containing matter node; <code>pax:pageStart/End</code> with actual containment;
+            <code>po:contains</code> ≡ <code>dcterms:hasPart</code> on boxes.</td></tr>
+    <tr><td><a href="diagnostic.ttl"><code>diagnostic.ttl</code></a></td><td><code>sh:Info</code></td>
+        <td>Data-quality signals (text-less paragraphs/captions, …) — surfaced honestly, never blocking.</td></tr>
+  </table>
+  <p>Run (from the repository root; validates the shipped example through all three profiles plus
+  term-coverage and region-bounds checks):</p>
+  <pre><code>uv run --with rdflib --with pyshacl python validate.py</code></pre>
+  <p class="muted">Scoring (IoU, coordinate tolerances, reading-order distance) is deliberately
+  <em>not</em> here — SHACL severity has no tolerance semantics; those are evaluation-engine metrics.
+  See the <a href="../">vocabulary landing page</a> for the full status and conformance statement.</p>
+</main>
+</body>
+</html>

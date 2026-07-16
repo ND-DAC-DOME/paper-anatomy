@@ -1,0 +1,39 @@
+@prefix sh:      <http://www.w3.org/ns/shacl#> .
+@prefix schema:  <https://schema.org/> .
+@prefix doco:    <http://purl.org/spar/doco/> .
+@prefix deo:     <http://purl.org/spar/deo/> .
+@prefix pax:     <https://w3id.org/paper-anatomy/vocab#> .
+@prefix paxs:     <https://w3id.org/paper-anatomy/shapes#> .
+
+##################################################################
+# DIAGNOSTIC profile — data-quality signals, not conformance.
+# Severity: sh:Info. These surface known pipeline limitations
+# (e.g. DeepSeek-OCR emitting text elements with no per-element
+# text) so downstream consumers know what they are getting.
+##################################################################
+
+paxs:ParagraphTextDiagnosticShape a sh:NodeShape ;
+    sh:targetClass doco:Paragraph ;
+    sh:severity sh:Info ;
+    sh:property [ sh:severity sh:Info ; sh:path schema:text ; sh:minCount 1 ;
+        sh:message "Paragraph carries no per-element text (content only in the page's raw markdown)." ] .
+
+paxs:CaptionTextDiagnosticShape a sh:NodeShape ;
+    sh:targetClass deo:Caption ;
+    sh:severity sh:Info ;
+    sh:property [ sh:severity sh:Info ; sh:path schema:text ; sh:minCount 1 ;
+        sh:message "Caption has no text; caption/figure linking quality may be reduced." ] .
+
+paxs:FigureClassifiedDiagnosticShape a sh:NodeShape ;
+    sh:targetClass doco:Figure ;
+    sh:severity sh:Info ;
+    sh:property [ sh:severity sh:Info ; sh:path pax:figureType ; sh:minCount 1 ;
+        sh:message "Figure was not classified (no pax:figureType)." ] ;
+    sh:property [ sh:severity sh:Info ; sh:path pax:region ; sh:minCount 1 ;
+        sh:message "Figure has no region." ] .
+
+paxs:PagePrintedLabelDiagnosticShape a sh:NodeShape ;
+    sh:targetClass <http://purl.org/spar/fabio/Page> ;
+    sh:severity sh:Info ;
+    sh:property [ sh:severity sh:Info ; sh:path pax:printedPageLabel ; sh:minCount 1 ;
+        sh:message "No printed page label detected on this page." ] .

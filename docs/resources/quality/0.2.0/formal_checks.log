@@ -1,0 +1,13 @@
+[M] merge pinned closure
+  ✓ 9862 triples (227 pax + closure; 12 owl:imports and 798 SWRL triples stripped)
+[P] OWL 2 DL profile (ROBOT/OWLAPI)
+  ✓ pax.ttl standalone is in OWL 2 DL
+  · informational: merged closure has ~1089 DL violations (inherited from legacy imports; see profile-closure.txt)
+[H] HermiT reasoning over the TRANSFORMED closure (SWRL stripped)
+  ✓ consistent; no unsatisfiable classes
+[L] ROBOT report (lint) on pax.ttl
+  ✓ lint: 5 info, 20 warn (full report: lint-report.tsv)
+[J] pyld JSON-LD expansion round-trip
+  ✓ expand/compact preserves node count (78 → 78)
+
+ALL FORMAL CHECKS PASSED
