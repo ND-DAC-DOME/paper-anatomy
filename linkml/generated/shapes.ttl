@@ -1,0 +1,528 @@
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix doco: <http://purl.org/spar/doco/> .
+@prefix fabio: <http://purl.org/spar/fabio/> .
+@prefix frbr: <http://purl.org/vocab/frbr/core#> .
+@prefix linkml: <https://w3id.org/linkml/> .
+@prefix oa: <http://www.w3.org/ns/oa#> .
+@prefix pax: <https://w3id.org/paper-anatomy/vocab#> .
+@prefix paxi: <https://w3id.org/paper-anatomy/linkml/pax-instance/> .
+@prefix po: <http://www.essepuntato.it/2008/12/pattern#> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix sdo: <https://schema.org/> .
+@prefix sh: <http://www.w3.org/ns/shacl#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+doco:FigureBox a sh:NodeShape ;
+    rdfs:comment "Figure/Table box grouping the body element and its caption." ;
+    sh:closed true ;
+    sh:ignoredProperties ( rdf:type ) ;
+    sh:property [ sh:class paxi:NodeBase ;
+            sh:nodeKind sh:IRI ;
+            sh:order 1 ;
+            sh:path dcterms:hasPart ],
+        [ sh:datatype xsd:string ;
+            sh:description "RDF types of the node (JSON-LD `@type`, compacted CURIEs)." ;
+            sh:nodeKind sh:Literal ;
+            sh:order 3 ;
+            sh:path paxi:category ],
+        [ sh:datatype xsd:string ;
+            sh:description "Node IRI (JSON-LD `@id`)." ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 2 ;
+            sh:path paxi:id ],
+        [ sh:class paxi:NodeBase ;
+            sh:nodeKind sh:IRI ;
+            sh:order 0 ;
+            sh:path po:contains ] ;
+    sh:targetClass doco:FigureBox .
+
+doco:Section a sh:NodeShape ;
+    rdfs:comment "A section or subsection; DEO discourse roles ride in `category`." ;
+    sh:closed true ;
+    sh:ignoredProperties ( rdf:type ) ;
+    sh:property [ sh:datatype xsd:string ;
+            sh:description "Node IRI (JSON-LD `@id`)." ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 6 ;
+            sh:path paxi:id ],
+        [ sh:datatype xsd:integer ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 4 ;
+            sh:path pax:pageEnd ],
+        [ sh:datatype xsd:string ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 1 ;
+            sh:path pax:level ],
+        [ sh:datatype xsd:string ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 0 ;
+            sh:path dcterms:title ],
+        [ sh:class paxi:NodeBase ;
+            sh:nodeKind sh:IRI ;
+            sh:order 5 ;
+            sh:path po:contains ],
+        [ sh:datatype xsd:string ;
+            sh:description "RDF types of the node (JSON-LD `@type`, compacted CURIEs)." ;
+            sh:nodeKind sh:Literal ;
+            sh:order 7 ;
+            sh:path paxi:category ],
+        [ sh:datatype xsd:string ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 2 ;
+            sh:path pax:matter ],
+        [ sh:datatype xsd:integer ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 3 ;
+            sh:path pax:pageStart ] ;
+    sh:targetClass doco:Section .
+
+fabio:JournalArticle a sh:NodeShape ;
+    rdfs:comment "The article Expression (FRBR) — the graph's document root." ;
+    sh:closed true ;
+    sh:ignoredProperties ( rdf:type ) ;
+    sh:property [ sh:class paxi:NodeBase ;
+            sh:nodeKind sh:IRI ;
+            sh:order 4 ;
+            sh:path po:contains ],
+        [ sh:datatype xsd:string ;
+            sh:description "Node IRI (JSON-LD `@id`)." ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 6 ;
+            sh:path paxi:id ],
+        [ sh:datatype xsd:string ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 0 ;
+            sh:path dcterms:title ],
+        [ sh:datatype xsd:string ;
+            sh:description "RDF types of the node (JSON-LD `@type`, compacted CURIEs)." ;
+            sh:nodeKind sh:Literal ;
+            sh:order 7 ;
+            sh:path paxi:category ],
+        [ sh:class fabio:DigitalManifestation ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:IRI ;
+            sh:order 3 ;
+            sh:path frbr:embodiment ],
+        [ sh:datatype xsd:string ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 1 ;
+            sh:path dcterms:identifier ],
+        [ sh:datatype xsd:integer ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 2 ;
+            sh:path fabio:hasPageCount ],
+        [ sh:class fabio:SupplementaryInformationFile ;
+            sh:nodeKind sh:IRI ;
+            sh:order 5 ;
+            sh:path frbr:supplement ] ;
+    sh:targetClass fabio:JournalArticle .
+
+prov:Activity a sh:NodeShape ;
+    sh:closed true ;
+    sh:ignoredProperties ( rdf:type ) ;
+    sh:property [ sh:datatype xsd:string ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 4 ;
+            sh:path prov:startedAtTime ],
+        [ sh:datatype xsd:string ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 5 ;
+            sh:path dcterms:source ],
+        [ sh:datatype xsd:string ;
+            sh:nodeKind sh:Literal ;
+            sh:order 2 ;
+            sh:path prov:wasAssociatedWith ],
+        [ sh:datatype xsd:string ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 0 ;
+            sh:path sdo:name ],
+        [ sh:datatype xsd:string ;
+            sh:description "Node IRI (JSON-LD `@id`)." ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 6 ;
+            sh:path paxi:id ],
+        [ sh:datatype xsd:string ;
+            sh:description "RDF types of the node (JSON-LD `@type`, compacted CURIEs)." ;
+            sh:nodeKind sh:Literal ;
+            sh:order 7 ;
+            sh:path paxi:category ],
+        [ sh:datatype xsd:string ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 3 ;
+            sh:path sdo:softwareVersion ],
+        [ sh:datatype xsd:string ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 1 ;
+            sh:path prov:used ] ;
+    sh:targetClass prov:Activity .
+
+prov:SoftwareAgent a sh:NodeShape ;
+    sh:closed true ;
+    sh:ignoredProperties ( rdf:type ) ;
+    sh:property [ sh:datatype xsd:string ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 1 ;
+            sh:path sdo:softwareVersion ],
+        [ sh:datatype xsd:string ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 2 ;
+            sh:path dcterms:description ],
+        [ sh:datatype xsd:string ;
+            sh:description "Node IRI (JSON-LD `@id`)." ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 3 ;
+            sh:path paxi:id ],
+        [ sh:datatype xsd:string ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 0 ;
+            sh:path sdo:name ],
+        [ sh:datatype xsd:string ;
+            sh:description "RDF types of the node (JSON-LD `@type`, compacted CURIEs)." ;
+            sh:nodeKind sh:Literal ;
+            sh:order 4 ;
+            sh:path paxi:category ] ;
+    sh:targetClass prov:SoftwareAgent .
+
+sdo:Dataset a sh:NodeShape ;
+    rdfs:comment "The extracted-graph node — carries provenance and the KG license." ;
+    sh:closed true ;
+    sh:ignoredProperties ( rdf:type ) ;
+    sh:property [ sh:datatype xsd:string ;
+            sh:description "RDF types of the node (JSON-LD `@type`, compacted CURIEs)." ;
+            sh:nodeKind sh:Literal ;
+            sh:order 6 ;
+            sh:path paxi:category ],
+        [ sh:datatype xsd:string ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 1 ;
+            sh:path dcterms:license ],
+        [ sh:datatype xsd:string ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 0 ;
+            sh:path sdo:name ],
+        [ sh:datatype xsd:string ;
+            sh:description "Node IRI (JSON-LD `@id`)." ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 5 ;
+            sh:path paxi:id ],
+        [ sh:datatype xsd:string ;
+            sh:nodeKind sh:Literal ;
+            sh:order 4 ;
+            sh:path prov:wasGeneratedBy ],
+        [ sh:datatype xsd:string ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 2 ;
+            sh:path sdo:about ],
+        [ sh:datatype xsd:string ;
+            sh:nodeKind sh:Literal ;
+            sh:order 3 ;
+            sh:path prov:wasDerivedFrom ] ;
+    sh:targetClass sdo:Dataset .
+
+paxi:DocumentElement a sh:NodeShape ;
+    rdfs:comment "Leaf element on a page (paragraph, figure, table, caption, formula, …); the concrete doco/deo/pax type lives in `category`." ;
+    sh:closed true ;
+    sh:ignoredProperties ( rdf:type ) ;
+    sh:property [ sh:datatype xsd:string ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 3 ;
+            sh:path sdo:text ],
+        [ sh:datatype xsd:string ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 8 ;
+            sh:path pax:rawType ],
+        [ sh:datatype linkml:Any ;
+            sh:description "Extracted chart payload — rdf:JSON literal in the graph. LinkML (like OWL 2) has no rdf:JSON datatype; modeled as Any, mirroring the vocabulary's own decision to leave the range unstated." ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 6 ;
+            sh:path pax:chartData ],
+        [ sh:datatype xsd:string ;
+            sh:description "RDF types of the node (JSON-LD `@type`, compacted CURIEs)." ;
+            sh:nodeKind sh:Literal ;
+            sh:order 10 ;
+            sh:path paxi:category ],
+        [ sh:datatype xsd:string ;
+            sh:description "Node IRI (JSON-LD `@id`)." ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 9 ;
+            sh:path paxi:id ],
+        [ sh:datatype xsd:string ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 1 ;
+            sh:path pax:onPage ],
+        [ sh:datatype xsd:string ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 7 ;
+            sh:path pax:parsedContent ],
+        [ sh:datatype xsd:string ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 5 ;
+            sh:path pax:figureType ],
+        [ sh:datatype xsd:integer ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 0 ;
+            sh:path sdo:position ],
+        [ sh:class oa:ResourceSelection ;
+            sh:nodeKind sh:IRI ;
+            sh:order 2 ;
+            sh:path pax:region ],
+        [ sh:datatype xsd:string ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 4 ;
+            sh:path dcterms:description ] ;
+    sh:targetClass paxi:DocumentElement .
+
+paxi:Matter a sh:NodeShape ;
+    rdfs:comment "Front/body/back matter container (the concrete doco type lives in `category`)." ;
+    sh:closed true ;
+    sh:ignoredProperties ( rdf:type ) ;
+    sh:property [ sh:class paxi:NodeBase ;
+            sh:nodeKind sh:IRI ;
+            sh:order 0 ;
+            sh:path po:contains ],
+        [ sh:datatype xsd:string ;
+            sh:description "Node IRI (JSON-LD `@id`)." ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 1 ;
+            sh:path paxi:id ],
+        [ sh:datatype xsd:string ;
+            sh:description "RDF types of the node (JSON-LD `@type`, compacted CURIEs)." ;
+            sh:nodeKind sh:Literal ;
+            sh:order 2 ;
+            sh:path paxi:category ] ;
+    sh:targetClass paxi:Matter .
+
+fabio:DigitalManifestation a sh:NodeShape ;
+    rdfs:comment "The PDF manifestation; its parts are the pages." ;
+    sh:closed true ;
+    sh:ignoredProperties ( rdf:type ) ;
+    sh:property [ sh:class fabio:Page ;
+            sh:nodeKind sh:IRI ;
+            sh:order 2 ;
+            sh:path frbr:part ],
+        [ sh:datatype xsd:string ;
+            sh:description "RDF types of the node (JSON-LD `@type`, compacted CURIEs)." ;
+            sh:nodeKind sh:Literal ;
+            sh:order 4 ;
+            sh:path paxi:category ],
+        [ sh:datatype xsd:string ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 0 ;
+            sh:path sdo:name ],
+        [ sh:datatype xsd:string ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 1 ;
+            sh:path frbr:embodimentOf ],
+        [ sh:datatype xsd:string ;
+            sh:description "Node IRI (JSON-LD `@id`)." ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 3 ;
+            sh:path paxi:id ] ;
+    sh:targetClass fabio:DigitalManifestation .
+
+fabio:Page a sh:NodeShape ;
+    sh:closed true ;
+    sh:ignoredProperties ( rdf:type ) ;
+    sh:property [ sh:datatype xsd:integer ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 0 ;
+            sh:path sdo:position ],
+        [ sh:datatype xsd:string ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 1 ;
+            sh:path sdo:image ],
+        [ sh:datatype xsd:string ;
+            sh:description "Node IRI (JSON-LD `@id`)." ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 7 ;
+            sh:path paxi:id ],
+        [ sh:datatype xsd:string ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 4 ;
+            sh:path pax:printedPagePosition ],
+        [ sh:datatype xsd:integer ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 6 ;
+            sh:path pax:pageImageHeight ],
+        [ sh:datatype xsd:integer ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 5 ;
+            sh:path pax:pageImageWidth ],
+        [ sh:datatype xsd:integer ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 3 ;
+            sh:path pax:printedPageNumber ],
+        [ sh:datatype xsd:string ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 2 ;
+            sh:path pax:printedPageLabel ],
+        [ sh:datatype xsd:string ;
+            sh:description "RDF types of the node (JSON-LD `@type`, compacted CURIEs)." ;
+            sh:nodeKind sh:Literal ;
+            sh:order 8 ;
+            sh:path paxi:category ] ;
+    sh:targetClass fabio:Page .
+
+fabio:SupplementaryInformationFile a sh:NodeShape ;
+    sh:closed true ;
+    sh:ignoredProperties ( rdf:type ) ;
+    sh:property [ sh:datatype xsd:string ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 1 ;
+            sh:path dcterms:title ],
+        [ sh:datatype xsd:string ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 0 ;
+            sh:path sdo:name ],
+        [ sh:datatype xsd:string ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 3 ;
+            sh:path dcterms:description ],
+        [ sh:datatype xsd:string ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 2 ;
+            sh:path dcterms:identifier ],
+        [ sh:datatype xsd:string ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 5 ;
+            sh:path frbr:supplementOf ],
+        [ sh:class paxi:NodeBase ;
+            sh:nodeKind sh:IRI ;
+            sh:order 4 ;
+            sh:path po:contains ],
+        [ sh:datatype xsd:string ;
+            sh:description "RDF types of the node (JSON-LD `@type`, compacted CURIEs)." ;
+            sh:nodeKind sh:Literal ;
+            sh:order 7 ;
+            sh:path paxi:category ],
+        [ sh:datatype xsd:string ;
+            sh:description "Node IRI (JSON-LD `@id`)." ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 6 ;
+            sh:path paxi:id ] ;
+    sh:targetClass fabio:SupplementaryInformationFile .
+
+oa:FragmentSelector a sh:NodeShape ;
+    sh:closed true ;
+    sh:ignoredProperties ( rdf:type ) ;
+    sh:property [ sh:datatype xsd:string ;
+            sh:description "RDF types of the node (JSON-LD `@type`, compacted CURIEs)." ;
+            sh:nodeKind sh:Literal ;
+            sh:order 3 ;
+            sh:path paxi:category ],
+        [ sh:datatype xsd:string ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 1 ;
+            sh:path dcterms:conformsTo ],
+        [ sh:datatype xsd:string ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 0 ;
+            sh:path rdf:value ],
+        [ sh:datatype xsd:string ;
+            sh:description "Node IRI (JSON-LD `@id`)." ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 2 ;
+            sh:path paxi:id ] ;
+    sh:targetClass oa:FragmentSelector .
+
+oa:ResourceSelection a sh:NodeShape ;
+    sh:closed true ;
+    sh:ignoredProperties ( rdf:type ) ;
+    sh:property [ sh:datatype xsd:string ;
+            sh:description "RDF types of the node (JSON-LD `@type`, compacted CURIEs)." ;
+            sh:nodeKind sh:Literal ;
+            sh:order 3 ;
+            sh:path paxi:category ],
+        [ sh:class oa:FragmentSelector ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:IRI ;
+            sh:order 1 ;
+            sh:path oa:hasSelector ],
+        [ sh:datatype xsd:string ;
+            sh:description "Node IRI (JSON-LD `@id`)." ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 2 ;
+            sh:path paxi:id ],
+        [ sh:datatype xsd:string ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 0 ;
+            sh:path oa:hasSource ] ;
+    sh:targetClass oa:ResourceSelection .
+
+paxi:NodeBase a sh:NodeShape ;
+    rdfs:comment "Common identity of every node in the graph." ;
+    sh:closed false ;
+    sh:ignoredProperties ( pax:printedPageLabel sdo:text po:contains pax:pageImageWidth dcterms:hasPart pax:region sdo:image dcterms:conformsTo dcterms:description pax:chartData dcterms:identifier pax:onPage pax:pageImageHeight pax:pageStart pax:matter pax:rawType prov:startedAtTime prov:wasGeneratedBy dcterms:source pax:printedPagePosition dcterms:title oa:hasSelector frbr:supplementOf sdo:name frbr:embodiment frbr:supplement pax:pageEnd pax:printedPageNumber pax:level frbr:part oa:hasSource prov:used pax:figureType prov:wasAssociatedWith fabio:hasPageCount sdo:about rdf:value prov:wasDerivedFrom pax:parsedContent dcterms:license sdo:position rdf:type sdo:softwareVersion frbr:embodimentOf ) ;
+    sh:property [ sh:datatype xsd:string ;
+            sh:description "RDF types of the node (JSON-LD `@type`, compacted CURIEs)." ;
+            sh:nodeKind sh:Literal ;
+            sh:order 1 ;
+            sh:path paxi:category ],
+        [ sh:datatype xsd:string ;
+            sh:description "Node IRI (JSON-LD `@id`)." ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 0 ;
+            sh:path paxi:id ] ;
+    sh:targetClass paxi:NodeBase .
+
+
