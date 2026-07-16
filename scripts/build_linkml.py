@@ -10,6 +10,7 @@ Usage:  python3 scripts/build_linkml.py
 """
 
 import json
+import re
 import subprocess
 import sys
 from pathlib import Path
@@ -49,6 +50,19 @@ def main():
     ctx.pop("comments", None)
     ctx_path.write_text(json.dumps(ctx, indent=2) + "\n")
     print("  context.jsonld normalized (generation stamp stripped)")
+
+    # determinism ACROSS MACHINES: gen-pydantic embeds the schema's ABSOLUTE
+    # path in linkml_meta.source_file (caught by the CI drift gate on its
+    # first run — local /mnt/... vs runner /home/runner/...); rewrite it
+    # repo-relative
+    py_path = OUT / "pax_instance.py"
+    src = py_path.read_text()
+    src, n = re.subn(r"'source_file': '[^']*'",
+                     "'source_file': 'linkml/pax-instance.yaml'", src)
+    if n != 1:
+        sys.exit(f"expected exactly one source_file entry in pax_instance.py, found {n}")
+    py_path.write_text(src)
+    print("  pax_instance.py normalized (source_file made repo-relative)")
     print("linkml/generated/ build complete")
 
 
