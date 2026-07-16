@@ -11,7 +11,7 @@ consumer/producer side, ahead of the paper-atomizer adapter? (The v0.2 decision 
 | **Pydantic models** (`gen-pydantic`) | **78/78 nodes** of the real Mercadier graph parse through the generated models; validation is real (rejects a non-integer `position` and unknown fields — `extra="forbid"`) | **✅ Adopt for the adapter.** This is the artifact we lacked: typed, validating models to *build* graphs with. |
 | **JSON-LD context** (`gen-jsonld-context`) | **38/38 shared terms** expand to the same IRIs as the hand-authored `context.jsonld`; 0 terms missing | **✅ Usable as drift guard** — a CI check comparing generated vs hand-authored context catches divergence. Not (yet) a replacement: swapping the published context is a breaking change governed by VERSIONING.md. |
 | **JSON Schema** (`gen-json-schema`) | generated cleanly; not independently exercised | ◽ Nice-to-have for non-Python consumers; no current need. |
-| **SHACL** (`gen-shacl`) | 28 shape constructs, **0** patterns / hasValue / SPARQL constraints / severity levels / targetSubjectsOf — vs the hand-authored profiles' 64 constructs with 26 such features | **❌ Cannot own our shapes.** The severity contract, the projection-consistency SPARQL, the xywh pattern, and the ChartDataShape are inexpressible in LinkML's generator. Hand-authored profiles stay. |
+| **SHACL** (`gen-shacl`) | 28 shape constructs, **0** patterns / hasValue / SPARQL constraints / severity levels / targetSubjectsOf — vs the hand-authored profiles' 64 constructs with 26 such features; output also proved **non-deterministic across runs** (unordered `sh:ignoredProperties`) | **❌ Cannot own our shapes.** The severity contract, the projection-consistency SPARQL, the xywh pattern, and the ChartDataShape are inexpressible; not even committed (would break the drift gate). Hand-authored profiles stay. |
 
 ## What the spike surfaced (its real payoff)
 
@@ -47,9 +47,10 @@ consumer/producer side, ahead of the paper-atomizer adapter? (The v0.2 decision 
 ## Regenerating
 
 ```bash
-uv run --with linkml gen-pydantic       linkml/pax-instance.yaml > linkml/generated/pax_instance.py
-uv run --with linkml gen-jsonld-context linkml/pax-instance.yaml > linkml/generated/context.jsonld
-uv run --with linkml gen-json-schema    linkml/pax-instance.yaml > linkml/generated/schema.json
-uv run --with linkml gen-shacl          linkml/pax-instance.yaml > linkml/generated/shapes.ttl
+python3 scripts/build_linkml.py                          # pinned linkml==1.11.1, deterministic
 uv run --with pydantic python linkml/test_roundtrip.py   # fidelity gates
 ```
+
+The build pins LinkML 1.11.1 (gen-pydantic output is not stable across releases) and
+strips the context generator's `generation_date` stamp; double-build verified
+byte-deterministic, so CI regenerates and fails on any drift of `linkml/generated/`.
