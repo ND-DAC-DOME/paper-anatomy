@@ -21,6 +21,14 @@ jobs:
       - uses: actions/checkout@v4
       - run: python3 eval/test_evaluate.py
 
+  adapter:
+    name: paper-atomizer adapter
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: astral-sh/setup-uv@v5
+      - run: uv run --with pydantic python adapters/test_paper_atomizer.py
+
   linkml:
     name: LinkML instance model (drift gate + fidelity)
     runs-on: ubuntu-latest
