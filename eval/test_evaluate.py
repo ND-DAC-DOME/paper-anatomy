@@ -74,6 +74,11 @@ def test_identity():
     check(r["hierarchy"]["tree_edit_distance"] == 0, "tree edit distance = 0")
     check(r["rhetorical"]["role_accuracy"] == 1 and r["rhetorical"]["matter_accuracy"] == 1
           and r["rhetorical"]["level_accuracy"] == 1, "rhetorical accuracies = 1")
+    check(r["rhetorical"].get("sections_with_matter", 0) > 0
+          and r["rhetorical"].get("sections_with_level", 0) > 0,
+          "matter/level accuracies computed over REAL values, not vacuous None==None "
+          f"(matter values: {r['rhetorical'].get('sections_with_matter', 0)}, "
+          f"level values: {r['rhetorical'].get('sections_with_level', 0)})")
     check(r["caption_linking"]["precision"] == 1 and r["caption_linking"]["recall"] == 1,
           "caption links P=R=1")
     check(r["chart_data"]["row_diff"] == 0 and r["chart_data"]["value_mae"] == 0,
@@ -165,7 +170,9 @@ def test_dropped_rhetorical_type():
 def test_wrong_matter():
     print("[8] section matter flipped → matter accuracy drops")
     def m(kg, nodes):
-        nodes[f"{E}/section/8"]["matter"] = "back"
+        # mutate the key the exporter actually emits (prefixed CURIE form)
+        assert "pax:matter" in nodes[f"{E}/section/8"], "fixture drifted: pax:matter key gone"
+        nodes[f"{E}/section/8"]["pax:matter"] = "back"
     r = run(m)
     check(r["rhetorical"]["matter_accuracy"] < 1,
           f"matter accuracy {r['rhetorical']['matter_accuracy']:.3f} < 1")

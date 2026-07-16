@@ -215,6 +215,14 @@ def zss_distance(t1, t2) -> int:
 
 # ---------------------------------------------------------------- metric 5: rhetorical
 
+def pget(node, term):
+    """Read a pax term that exporters may emit either as a context shortcut
+    ('matter') or as a prefixed CURIE key ('pax:matter') — both are valid
+    compactions; the shipped context defines no shortcut for these, so the
+    prefixed form is what real data carries."""
+    return node.get(term, node.get(f"pax:{term}"))
+
+
 def sections_by_title(nodes: dict) -> dict:
     out = {}
     for i, n in nodes.items():
@@ -342,13 +350,16 @@ def evaluate(ref_path: Path, cand_path: Path, threshold: float = 0.5) -> dict:
     rs, cs = sections_by_title(ref_nodes), sections_by_title(cand_nodes)
     shared = sorted(set(rs) & set(cs))
     role_ok = sum(1 for k in shared if role_set(rs[k]) == role_set(cs[k]))
-    matter_ok = sum(1 for k in shared if rs[k].get("matter") == cs[k].get("matter"))
-    level_ok = sum(1 for k in shared if rs[k].get("level") == cs[k].get("level"))
+    matter_ok = sum(1 for k in shared if pget(rs[k], "matter") == pget(cs[k], "matter"))
+    level_ok = sum(1 for k in shared if pget(rs[k], "level") == pget(cs[k], "level"))
     n = len(shared)
     rhetorical = {"sections_compared": n,
                   "role_accuracy": role_ok / n if n else None,
                   "matter_accuracy": matter_ok / n if n else None,
-                  "level_accuracy": level_ok / n if n else None}
+                  "level_accuracy": level_ok / n if n else None,
+                  # vacuousness guards: how many compared sections carry real values
+                  "sections_with_matter": sum(1 for k in shared if pget(rs[k], "matter") is not None),
+                  "sections_with_level": sum(1 for k in shared if pget(rs[k], "level") is not None)}
 
     # 6. caption linking
     ref_links, cand_links = caption_links(ref_nodes), caption_links(cand_nodes)
