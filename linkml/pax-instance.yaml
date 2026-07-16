@@ -1,0 +1,177 @@
+# LinkML schema for PAX INSTANCE DATA (spike — see linkml/FINDINGS.md).
+#
+# Scope: the producer/consumer-side data model of a PAX paper-structure graph —
+# what an adapter (paper-atomizer, Alexandria) needs to BUILD one and what the
+# evaluation engine reads. This is deliberately NOT a source of truth for the
+# vocabulary: pax.ttl stays hand-authored (reviewer-approved v0.2 decision);
+# every class_uri/slot_uri here points at the EXISTING community IRIs.
+id: https://w3id.org/paper-anatomy/linkml/pax-instance
+name: pax-instance
+description: >-
+  Instance-data model for Paper Anatomy (PAX) knowledge graphs: the node kinds
+  and slots of the compacted JSON-LD produced by exporters and consumed by the
+  evaluation engine.
+license: https://creativecommons.org/licenses/by/4.0/
+prefixes:
+  linkml: https://w3id.org/linkml/
+  pax: https://w3id.org/paper-anatomy/vocab#
+  paxi: https://w3id.org/paper-anatomy/linkml/pax-instance/
+  doco: http://purl.org/spar/doco/
+  deo: http://purl.org/spar/deo/
+  fabio: http://purl.org/spar/fabio/
+  po: http://www.essepuntato.it/2008/12/pattern#
+  oa: http://www.w3.org/ns/oa#
+  prov: http://www.w3.org/ns/prov#
+  frbr: http://purl.org/vocab/frbr/core#
+  dcterms: http://purl.org/dc/terms/
+  rdf: http://www.w3.org/1999/02/22-rdf-syntax-ns#
+  sdo: https://schema.org/
+default_prefix: paxi
+default_range: string
+imports:
+  - linkml:types
+
+classes:
+
+  NodeBase:
+    abstract: true
+    description: Common identity of every node in the graph.
+    slots: [id, category]
+
+  PaperExpression:
+    is_a: NodeBase
+    class_uri: fabio:JournalArticle
+    description: The article Expression (FRBR) — the graph's document root.
+    slots: [title, identifier, pageCount, embodiment, contains, supplement]
+
+  Manifestation:
+    is_a: NodeBase
+    class_uri: fabio:DigitalManifestation
+    description: The PDF manifestation; its parts are the pages.
+    slots: [name, embodimentOf, part]
+
+  Page:
+    is_a: NodeBase
+    class_uri: fabio:Page
+    slots: [position, image, printedPageLabel, printedPageNumber,
+            printedPagePosition, pageImageWidth, pageImageHeight]
+
+  Matter:
+    is_a: NodeBase
+    description: Front/body/back matter container (the concrete doco type lives in `category`).
+    slots: [contains]
+
+  Section:
+    is_a: NodeBase
+    class_uri: doco:Section
+    description: A section or subsection; DEO discourse roles ride in `category`.
+    slots: [title, level, matter, pageStart, pageEnd, contains]
+
+  DocumentElement:
+    is_a: NodeBase
+    description: >-
+      Leaf element on a page (paragraph, figure, table, caption, formula, …);
+      the concrete doco/deo/pax type lives in `category`.
+    slots: [position, onPage, region, text, description, figureType,
+            chartData, parsedContent, rawType]
+
+  Box:
+    is_a: NodeBase
+    class_uri: doco:FigureBox
+    description: Figure/Table box grouping the body element and its caption.
+    slots: [contains, hasPart]
+
+  Region:
+    is_a: NodeBase
+    class_uri: oa:ResourceSelection
+    slots: [hasSource, hasSelector]
+
+  FragmentSelector:
+    is_a: NodeBase
+    class_uri: oa:FragmentSelector
+    slots: [value, conformsTo]
+
+  Dataset:
+    is_a: NodeBase
+    class_uri: sdo:Dataset
+    description: The extracted-graph node — carries provenance and the KG license.
+    slots: [name, license, about, wasDerivedFrom, wasGeneratedBy]
+
+  Activity:
+    is_a: NodeBase
+    class_uri: prov:Activity
+    slots: [name, used, wasAssociatedWith, softwareVersion, startedAtTime, source]
+
+  SoftwareAgent:
+    is_a: NodeBase
+    class_uri: prov:SoftwareAgent
+    slots: [name, softwareVersion, description]
+
+  Supplement:
+    is_a: NodeBase
+    class_uri: fabio:SupplementaryInformationFile
+    slots: [label, title, identifier, description, contains, supplementOf]
+
+slots:
+  id:
+    identifier: true
+    description: Node IRI (JSON-LD `@id`).
+  category:
+    multivalued: true
+    description: RDF types of the node (JSON-LD `@type`, compacted CURIEs).
+  title: {slot_uri: dcterms:title}
+  identifier: {slot_uri: dcterms:identifier}
+  label: {slot_uri: sdo:name}
+  name: {slot_uri: sdo:name}
+  description: {slot_uri: dcterms:description}
+  pageCount: {slot_uri: fabio:hasPageCount, range: integer}
+  embodiment: {slot_uri: frbr:embodiment, range: Manifestation, inlined: false}
+  embodimentOf: {slot_uri: frbr:embodimentOf}
+  part: {slot_uri: frbr:part, multivalued: true, inlined: false, range: Page}
+  contains: {slot_uri: po:contains, multivalued: true, inlined: false, range: NodeBase}
+  hasPart: {slot_uri: dcterms:hasPart, multivalued: true, inlined: false, range: NodeBase}
+  supplement: {slot_uri: frbr:supplement, multivalued: true, inlined: false, range: Supplement}
+  position: {slot_uri: sdo:position, range: integer}
+  image: {slot_uri: sdo:image}
+  printedPageLabel: {slot_uri: pax:printedPageLabel}
+  printedPageNumber: {slot_uri: pax:printedPageNumber, range: integer}
+  printedPagePosition: {slot_uri: pax:printedPagePosition}
+  pageImageWidth: {slot_uri: pax:pageImageWidth, range: integer}
+  pageImageHeight: {slot_uri: pax:pageImageHeight, range: integer}
+  level: {slot_uri: pax:level}
+  matter: {slot_uri: pax:matter}
+  pageStart: {slot_uri: pax:pageStart, range: integer}
+  pageEnd: {slot_uri: pax:pageEnd, range: integer}
+  onPage: {slot_uri: pax:onPage}
+  region: {slot_uri: pax:region, multivalued: true, inlined_as_list: true, range: Region}
+  hasSource: {slot_uri: oa:hasSource}
+  hasSelector: {slot_uri: oa:hasSelector, range: FragmentSelector, inlined: true}
+  value: {slot_uri: rdf:value}
+  conformsTo: {slot_uri: dcterms:conformsTo}
+  text: {slot_uri: sdo:text}
+  figureType: {slot_uri: pax:figureType}
+  chartData:
+    slot_uri: pax:chartData
+    range: Any
+    description: >-
+      Extracted chart payload — rdf:JSON literal in the graph. LinkML (like
+      OWL 2) has no rdf:JSON datatype; modeled as Any, mirroring the
+      vocabulary's own decision to leave the range unstated.
+  parsedContent: {slot_uri: pax:parsedContent}
+  rawType: {slot_uri: pax:rawType}
+  license: {slot_uri: dcterms:license}
+  about: {slot_uri: sdo:about}
+  used: {slot_uri: prov:used}
+  wasDerivedFrom: {slot_uri: prov:wasDerivedFrom, multivalued: true}
+  wasGeneratedBy: {slot_uri: prov:wasGeneratedBy, multivalued: true}
+  wasAssociatedWith: {slot_uri: prov:wasAssociatedWith, multivalued: true}
+  softwareVersion: {slot_uri: sdo:softwareVersion}
+  startedAtTime: {slot_uri: prov:startedAtTime}
+  source: {slot_uri: dcterms:source}
+  supplementOf: {slot_uri: frbr:supplementOf}
+
+types:
+  Any:
+    uri: linkml:Any
+    base: Any
+    description: arbitrary JSON payload

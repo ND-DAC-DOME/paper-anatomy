@@ -196,6 +196,7 @@ Elements are matched greedily within (page, type) groups by descending IoU; dete
 | `VERSIONING.md` | Versioning, compatibility, and deprecation policy (term IRIs stable; core SHACL profile is part of the compatibility surface) |
 | `COMPETENCY_QUESTIONS.md` | The questions the graph is designed to answer, with SPARQL — the grounding for every evaluation metric |
 | `eval/` | **Evaluation engine**: `evaluate.py` graph-diffs a candidate PAX JSON-LD against a reference across the seven metrics below (stdlib only); `test_evaluate.py` is a perturbation suite — each metric is observed degrading on a targeted corruption of the real example before its pass counts |
+| `linkml/` | **Instance-data model** (LinkML) for the producer/consumer side: generates the validating Pydantic models adapters build graphs with (78/78 real nodes parse) + a context used as a drift guard. **NOT a source of truth for the vocabulary** — `pax.ttl` stays hand-authored; measured verdict in `linkml/FINDINGS.md`. Regenerate with `scripts/build_linkml.py` (pinned `linkml==1.11.1`, deterministic, CI-gated) |
 | `w3id/` | Draft `.htaccess` redirect maps for the future perma-id/w3id.org PR (targets the GitHub Pages URLs) |
 | `.github/workflows/ci.yml` | CI: fast layer, formal layer, and the docs drift gate (regenerate with pinned Widoco → `git diff --exit-code docs/` → required-files, term-presence, and internal-link checks) |
 

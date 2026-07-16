@@ -21,6 +21,19 @@ jobs:
       - uses: actions/checkout@v4
       - run: python3 eval/test_evaluate.py
 
+  linkml:
+    name: LinkML instance model (drift gate + fidelity)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: astral-sh/setup-uv@v5
+      - name: Regenerate with pinned LinkML
+        run: python3 scripts/build_linkml.py
+      - name: Fail if committed linkml/generated/ drifted
+        run: git diff --exit-code linkml/generated/
+      - name: Fidelity gates (real-graph parse + context equivalence)
+        run: uv run --with pydantic python linkml/test_roundtrip.py
+
   formal:
     name: Slow layer (OWL 2 DL gate, HermiT, lint, JSON-LD)
     runs-on: ubuntu-latest

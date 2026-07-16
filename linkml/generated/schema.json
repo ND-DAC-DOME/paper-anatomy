@@ -1,0 +1,751 @@
+{
+    "$defs": {
+        "Activity": {
+            "additionalProperties": false,
+            "description": "",
+            "properties": {
+                "category": {
+                    "description": "RDF types of the node (JSON-LD `@type`, compacted CURIEs).",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "id": {
+                    "description": "Node IRI (JSON-LD `@id`).",
+                    "type": "string"
+                },
+                "name": {
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "softwareVersion": {
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "source": {
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "startedAtTime": {
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "used": {
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "wasAssociatedWith": {
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                }
+            },
+            "required": [
+                "id"
+            ],
+            "title": "Activity",
+            "type": "object"
+        },
+        "Box": {
+            "additionalProperties": false,
+            "description": "Figure/Table box grouping the body element and its caption.",
+            "properties": {
+                "category": {
+                    "description": "RDF types of the node (JSON-LD `@type`, compacted CURIEs).",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "contains": {
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "hasPart": {
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "id": {
+                    "description": "Node IRI (JSON-LD `@id`).",
+                    "type": "string"
+                }
+            },
+            "required": [
+                "id"
+            ],
+            "title": "Box",
+            "type": "object"
+        },
+        "Dataset": {
+            "additionalProperties": false,
+            "description": "The extracted-graph node \u2014 carries provenance and the KG license.",
+            "properties": {
+                "about": {
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "category": {
+                    "description": "RDF types of the node (JSON-LD `@type`, compacted CURIEs).",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "id": {
+                    "description": "Node IRI (JSON-LD `@id`).",
+                    "type": "string"
+                },
+                "license": {
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "name": {
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "wasDerivedFrom": {
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "wasGeneratedBy": {
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                }
+            },
+            "required": [
+                "id"
+            ],
+            "title": "Dataset",
+            "type": "object"
+        },
+        "DocumentElement": {
+            "additionalProperties": false,
+            "description": "Leaf element on a page (paragraph, figure, table, caption, formula, \u2026); the concrete doco/deo/pax type lives in `category`.",
+            "properties": {
+                "category": {
+                    "description": "RDF types of the node (JSON-LD `@type`, compacted CURIEs).",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "chartData": {
+                    "description": "Extracted chart payload \u2014 rdf:JSON literal in the graph. LinkML (like OWL 2) has no rdf:JSON datatype; modeled as Any, mirroring the vocabulary's own decision to leave the range unstated.",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "description": {
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "figureType": {
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "id": {
+                    "description": "Node IRI (JSON-LD `@id`).",
+                    "type": "string"
+                },
+                "onPage": {
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "parsedContent": {
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "position": {
+                    "type": [
+                        "integer",
+                        "null"
+                    ]
+                },
+                "rawType": {
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "region": {
+                    "items": {
+                        "$ref": "#/$defs/Region"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "text": {
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                }
+            },
+            "required": [
+                "id"
+            ],
+            "title": "DocumentElement",
+            "type": "object"
+        },
+        "FragmentSelector": {
+            "additionalProperties": false,
+            "description": "",
+            "properties": {
+                "category": {
+                    "description": "RDF types of the node (JSON-LD `@type`, compacted CURIEs).",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "conformsTo": {
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "id": {
+                    "description": "Node IRI (JSON-LD `@id`).",
+                    "type": "string"
+                },
+                "value": {
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                }
+            },
+            "required": [
+                "id"
+            ],
+            "title": "FragmentSelector",
+            "type": "object"
+        },
+        "Manifestation": {
+            "additionalProperties": false,
+            "description": "The PDF manifestation; its parts are the pages.",
+            "properties": {
+                "category": {
+                    "description": "RDF types of the node (JSON-LD `@type`, compacted CURIEs).",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "embodimentOf": {
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "id": {
+                    "description": "Node IRI (JSON-LD `@id`).",
+                    "type": "string"
+                },
+                "name": {
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "part": {
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                }
+            },
+            "required": [
+                "id"
+            ],
+            "title": "Manifestation",
+            "type": "object"
+        },
+        "Matter": {
+            "additionalProperties": false,
+            "description": "Front/body/back matter container (the concrete doco type lives in `category`).",
+            "properties": {
+                "category": {
+                    "description": "RDF types of the node (JSON-LD `@type`, compacted CURIEs).",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "contains": {
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "id": {
+                    "description": "Node IRI (JSON-LD `@id`).",
+                    "type": "string"
+                }
+            },
+            "required": [
+                "id"
+            ],
+            "title": "Matter",
+            "type": "object"
+        },
+        "NodeBase": {
+            "additionalProperties": false,
+            "description": "Common identity of every node in the graph.",
+            "properties": {
+                "category": {
+                    "description": "RDF types of the node (JSON-LD `@type`, compacted CURIEs).",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "id": {
+                    "description": "Node IRI (JSON-LD `@id`).",
+                    "type": "string"
+                }
+            },
+            "required": [
+                "id"
+            ],
+            "title": "NodeBase",
+            "type": "object"
+        },
+        "Page": {
+            "additionalProperties": false,
+            "description": "",
+            "properties": {
+                "category": {
+                    "description": "RDF types of the node (JSON-LD `@type`, compacted CURIEs).",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "id": {
+                    "description": "Node IRI (JSON-LD `@id`).",
+                    "type": "string"
+                },
+                "image": {
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "pageImageHeight": {
+                    "type": [
+                        "integer",
+                        "null"
+                    ]
+                },
+                "pageImageWidth": {
+                    "type": [
+                        "integer",
+                        "null"
+                    ]
+                },
+                "position": {
+                    "type": [
+                        "integer",
+                        "null"
+                    ]
+                },
+                "printedPageLabel": {
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "printedPageNumber": {
+                    "type": [
+                        "integer",
+                        "null"
+                    ]
+                },
+                "printedPagePosition": {
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                }
+            },
+            "required": [
+                "id"
+            ],
+            "title": "Page",
+            "type": "object"
+        },
+        "PaperExpression": {
+            "additionalProperties": false,
+            "description": "The article Expression (FRBR) \u2014 the graph's document root.",
+            "properties": {
+                "category": {
+                    "description": "RDF types of the node (JSON-LD `@type`, compacted CURIEs).",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "contains": {
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "embodiment": {
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "id": {
+                    "description": "Node IRI (JSON-LD `@id`).",
+                    "type": "string"
+                },
+                "identifier": {
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "pageCount": {
+                    "type": [
+                        "integer",
+                        "null"
+                    ]
+                },
+                "supplement": {
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "title": {
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                }
+            },
+            "required": [
+                "id"
+            ],
+            "title": "PaperExpression",
+            "type": "object"
+        },
+        "Region": {
+            "additionalProperties": false,
+            "description": "",
+            "properties": {
+                "category": {
+                    "description": "RDF types of the node (JSON-LD `@type`, compacted CURIEs).",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "hasSelector": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/FragmentSelector"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ]
+                },
+                "hasSource": {
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "id": {
+                    "description": "Node IRI (JSON-LD `@id`).",
+                    "type": "string"
+                }
+            },
+            "required": [
+                "id"
+            ],
+            "title": "Region",
+            "type": "object"
+        },
+        "Section": {
+            "additionalProperties": false,
+            "description": "A section or subsection; DEO discourse roles ride in `category`.",
+            "properties": {
+                "category": {
+                    "description": "RDF types of the node (JSON-LD `@type`, compacted CURIEs).",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "contains": {
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "id": {
+                    "description": "Node IRI (JSON-LD `@id`).",
+                    "type": "string"
+                },
+                "level": {
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "matter": {
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "pageEnd": {
+                    "type": [
+                        "integer",
+                        "null"
+                    ]
+                },
+                "pageStart": {
+                    "type": [
+                        "integer",
+                        "null"
+                    ]
+                },
+                "title": {
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                }
+            },
+            "required": [
+                "id"
+            ],
+            "title": "Section",
+            "type": "object"
+        },
+        "SoftwareAgent": {
+            "additionalProperties": false,
+            "description": "",
+            "properties": {
+                "category": {
+                    "description": "RDF types of the node (JSON-LD `@type`, compacted CURIEs).",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "description": {
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "id": {
+                    "description": "Node IRI (JSON-LD `@id`).",
+                    "type": "string"
+                },
+                "name": {
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "softwareVersion": {
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                }
+            },
+            "required": [
+                "id"
+            ],
+            "title": "SoftwareAgent",
+            "type": "object"
+        },
+        "Supplement": {
+            "additionalProperties": false,
+            "description": "",
+            "properties": {
+                "category": {
+                    "description": "RDF types of the node (JSON-LD `@type`, compacted CURIEs).",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "contains": {
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "description": {
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "id": {
+                    "description": "Node IRI (JSON-LD `@id`).",
+                    "type": "string"
+                },
+                "identifier": {
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "label": {
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "supplementOf": {
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "title": {
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                }
+            },
+            "required": [
+                "id"
+            ],
+            "title": "Supplement",
+            "type": "object"
+        }
+    },
+    "$id": "https://w3id.org/paper-anatomy/linkml/pax-instance",
+    "$schema": "https://json-schema.org/draft/2019-09/schema",
+    "additionalProperties": true,
+    "metamodel_version": "1.11.0",
+    "title": "pax-instance",
+    "type": "object",
+    "version": null
+}
+
