@@ -9,6 +9,8 @@ Layout produced (reviewer-approved, 2026-07-15):
   docs/
   ├── index.html          ← hand-authored landing (NOT touched by this script)
   ├── vocab/              ← Widoco-generated spec + serializations
+  ├── explorer/           ← interactive explorer (hand-authored UI; the inlined
+  │                         `const KG = …` data line is re-injected each build)
   ├── shapes/             ← index.html (hand-authored, NOT touched) + copied *.ttl
   ├── releases/           ← copied from the repo-root releases/ (source of truth)
   └── resources/quality/  ← per-release validation evidence (captured at release
@@ -68,6 +70,15 @@ def build_vocab():
     print(f"  vocab/ generated (Widoco {WIDOCO_VERSION})")
 
 
+def inject_explorer():
+    """Re-inject the example graph into the interactive explorer (deterministic)."""
+    res = subprocess.run([sys.executable, str(REPO / "scripts" / "build_explorer.py")],
+                         capture_output=True, text=True)
+    if res.returncode != 0:
+        sys.exit(f"build_explorer failed:\n{res.stderr[-1000:]}")
+    print("  explorer/ data injected")
+
+
 def sync_shapes():
     """Copy the SHACL profiles next to their hand-authored index page."""
     out = DOCS / "shapes"
@@ -111,6 +122,7 @@ def capture_quality():
 def main():
     DOCS.mkdir(exist_ok=True)
     build_vocab()
+    inject_explorer()
     sync_shapes()
     sync_releases()
     if "--quality" in sys.argv:

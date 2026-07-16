@@ -54,7 +54,7 @@ jobs:
         run: git diff --exit-code docs/
       - name: Required published files exist
         run: |
-          for f in docs/index.html docs/vocab/index.html docs/vocab/ontology.ttl \
+          for f in docs/index.html docs/explorer/index.html docs/vocab/index.html docs/vocab/ontology.ttl \
                    docs/vocab/ontology.jsonld docs/vocab/ontology.owl \
                    docs/shapes/index.html docs/shapes/core.ttl docs/shapes/recommended.ttl \
                    docs/shapes/diagnostic.ttl docs/releases/0.2.0/vocab.ttl \
