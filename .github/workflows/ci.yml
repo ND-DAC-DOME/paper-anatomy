@@ -14,6 +14,13 @@ jobs:
       - uses: astral-sh/setup-uv@v5
       - run: uv run --with rdflib --with pyshacl python validate.py
 
+  eval-engine:
+    name: Evaluation engine (perturbation tests)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - run: python3 eval/test_evaluate.py
+
   formal:
     name: Slow layer (OWL 2 DL gate, HermiT, lint, JSON-LD)
     runs-on: ubuntu-latest

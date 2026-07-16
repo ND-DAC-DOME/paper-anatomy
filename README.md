@@ -153,7 +153,13 @@ The graph gives you typed nodes + typed edges + spatial anchors, which decompose
 | Caption linking | Precision/recall of FigureBox/TableBox membership edges |
 | Chart extraction | Downstream comparison of `pax:chartData` payloads (point-count, value error) |
 
-Workflow: run candidate pipeline → export to this schema (via the deepseek-ocr-experiments exporter or an adapter for the pipeline's native schema) → graph-diff against the curated reference JSON-LD of the same paper. Since both sides use the same context, the comparison is schema-free.
+Workflow: run candidate pipeline → export to this schema (via the deepseek-ocr-experiments exporter or an adapter for the pipeline's native schema) → graph-diff against the curated reference JSON-LD of the same paper. Since both sides use the same context, the comparison is schema-free:
+
+```bash
+python3 eval/evaluate.py reference.jsonld candidate.jsonld -o report.json [--iou 0.5]
+```
+
+Elements are matched greedily within (page, type) groups by descending IoU; detection counts matches at the IoU threshold, and the remaining metrics are computed over those matches (localization, reading order) or over titles/boxes/payloads (hierarchy, rhetorical, caption links, chart data). Every metric was verified against a targeted perturbation of the real example (`eval/test_evaluate.py`).
 
 ## Files
 
@@ -171,6 +177,7 @@ Workflow: run candidate pipeline → export to this schema (via the deepseek-ocr
 | `scripts/build_docs.py` | Docs builder: pinned Widoco 1.4.25 (sha256-verified) → `docs/vocab/`; syncs shapes + releases; `--quality` captures validation evidence |
 | `VERSIONING.md` | Versioning, compatibility, and deprecation policy (term IRIs stable; core SHACL profile is part of the compatibility surface) |
 | `COMPETENCY_QUESTIONS.md` | The questions the graph is designed to answer, with SPARQL — the grounding for every evaluation metric |
+| `eval/` | **Evaluation engine**: `evaluate.py` graph-diffs a candidate PAX JSON-LD against a reference across the seven metrics below (stdlib only); `test_evaluate.py` is a perturbation suite — each metric is observed degrading on a targeted corruption of the real example before its pass counts |
 | `w3id/` | Draft `.htaccess` redirect maps for the future perma-id/w3id.org PR (targets the GitHub Pages URLs) |
 | `.github/workflows/ci.yml` | CI: fast layer, formal layer, and the docs drift gate (regenerate with pinned Widoco → `git diff --exit-code docs/` → required-files, term-presence, and internal-link checks) |
 
@@ -203,7 +210,7 @@ the drafts in `w3id/` target the Pages URLs).
 ## Known limitations / next steps
 
 - The DEO mapping is heuristic; a curator should be able to override (that is the point of the reference graphs being editable).
-- The separate scoring engine for candidate-vs-reference comparison (IoU, Kendall-τ, tree edit distance) is still to be built.
+- The scoring engine (`eval/evaluate.py`) covers the seven metrics; so far it has only been exercised against perturbations of one reference graph — the paper-atomizer adapter will provide the first real cross-pipeline comparison.
 - Supplementary-material layer 3 (mention → target cross-references) not implemented; see [Supplementary material](#supplementary-material).
 - Publication path: make the repo public → enable GitHub Pages (from `/docs`) → w3id PR (`w3id/` drafts). The Widoco site and the archived OOPS! review (`docs/resources/quality/0.2.0/oops-disposition.md` — 0 critical, all findings dispositioned) are done.
 - v0.3 candidates: mutual `owl:disjointWith` among the five PAX element classes (OOPS P10, backward-compatible); LinkML on the evaluation-engine side (consumer models), not for vocabulary authoring.
