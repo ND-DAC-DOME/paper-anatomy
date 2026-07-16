@@ -85,6 +85,24 @@ Key modelling decisions:
 7. **Provenance sits on the KG dataset node, not the article**: the pipeline generated the *extracted graph*, not the scholarly work. A `schema:Dataset`/`prov:Entity` node carries `prov:wasGeneratedBy` (activity: pipeline commit + every model version) and the dataset license, and is `schema:about` the article. Generated nodes are **run-scoped** (`…/run/<run-id>/…`) because element segmentation is not stable across reruns; article/manifestation/SI IRIs stay stable.
 8. **`chart_data` embedded as a JSON literal** (`"@type": "@json"`, JSON-LD 1.1) — extracted chart points are payload, not graph structure. Consumers that care can parse; graph tools can ignore.
 
+### Named design patterns (ODPs)
+
+The decisions above are instances of recurring, checkable patterns — named here so a reader
+(or an agent) can recognize them wherever they recur, in the spirit of Modular Ontology
+Modeling. Formal OPLa annotations on the vocabulary itself are a v0.3 candidate.
+
+| Pattern | Instantiated as | Source / precedent |
+|---|---|---|
+| **Box grouping** | `doco:FigureBox`/`doco:TableBox` containing the figure/table *and* its caption (`po:contains` + `dcterms:hasPart`) | published DoCO example |
+| **Rhetorical double-typing** | `doco:Section` + `deo:Introduction`/`deo:Results`/… on the same node | canonical SPAR pattern |
+| **Compact application profile** | `pax:region` → `oa:ResourceSelection` + `oa:FragmentSelector` (Media Fragments `xywh`), deliberately **not** a conforming `oa:Annotation` | W3C Web Annotation, profiled |
+| **FRBR strata** | Expression root (`fabio:JournalArticle`) → `frbr:embodiment` → PDF `fabio:DigitalManifestation` → pages as `frbr:part`; Work node optional | FaBiO / FRBR |
+| **Dataset-scoped provenance** | a `schema:Dataset`+`prov:Entity` node carries `prov:wasGeneratedBy` and the license; activities carry `prov:used`; the article stays clean | PROV-O; separates the extracted graph from the scholarly work |
+| **Run-scoped minting** | regenerable nodes under `…/run/<id>/…`; work-level IRIs (paper, manifestation, SI) stay stable | segmentation is unstable across reruns |
+| **SKOS controlled list** | `pax:FigureTypeScheme` (14 concepts; `skos:notation` preserves pipeline codes) | SKOS best practice for closed value sets |
+| **Materialized projections** | `pax:level`/`matter`/`pageStart`/`pageEnd` as flat classifier outputs, consistency-guarded by the recommended SHACL profile | evaluation targets, not reasoning shortcuts |
+| **Layered supplements** | the SI *description section* ≠ the SI *artifact* (`fabio:SupplementaryInformationFile` + `frbr:supplementOf`); processed SI recurses into a full graph | FRBR + DataCite `IsSupplementTo` practice |
+
 ## Element type mapping
 
 | Pipeline `element_type` | RDF type | Notes |
@@ -213,4 +231,4 @@ the drafts in `w3id/` target the Pages URLs).
 - The scoring engine (`eval/evaluate.py`) covers the seven metrics; so far it has only been exercised against perturbations of one reference graph — the paper-atomizer adapter will provide the first real cross-pipeline comparison.
 - Supplementary-material layer 3 (mention → target cross-references) not implemented; see [Supplementary material](#supplementary-material).
 - Publication path: make the repo public → enable GitHub Pages (from `/docs`) → w3id PR (`w3id/` drafts). The Widoco site and the archived OOPS! review (`docs/resources/quality/0.2.0/oops-disposition.md` — 0 critical, all findings dispositioned) are done.
-- v0.3 candidates: mutual `owl:disjointWith` among the five PAX element classes (OOPS P10, backward-compatible); LinkML on the evaluation-engine side (consumer models), not for vocabulary authoring.
+- v0.3 candidates: mutual `owl:disjointWith` among the five PAX element classes (OOPS P10, backward-compatible); formal OPLa annotations for the named design patterns; LinkML on the evaluation-engine side (consumer models), not for vocabulary authoring.

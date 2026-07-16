@@ -128,6 +128,34 @@
         the recommended profile checks they agree with the containment structure.</li>
   </ul>
 
+  <h2>Named design patterns</h2>
+  <p>PAX assembles recurring, checkable patterns rather than bespoke modelling — named here so
+  readers and tools can recognize them wherever they recur (formal OPLa annotations are a v0.3
+  candidate):</p>
+  <table>
+    <tr><th>Pattern</th><th>Instantiated as</th></tr>
+    <tr><td><strong>Box grouping</strong> <span class="muted">(DoCO)</span></td>
+        <td><code>doco:FigureBox</code>/<code>TableBox</code> contains figure/table <em>and</em> caption
+            (<code>po:contains</code> + <code>dcterms:hasPart</code>)</td></tr>
+    <tr><td><strong>Rhetorical double-typing</strong> <span class="muted">(SPAR)</span></td>
+        <td><code>doco:Section</code> + <code>deo:Introduction/Results/…</code> on the same node</td></tr>
+    <tr><td><strong>Compact application profile</strong> <span class="muted">(W3C WA)</span></td>
+        <td><code>pax:region</code> → <code>oa:ResourceSelection</code> + Media-Fragments selector —
+            deliberately not a conforming <code>oa:Annotation</code></td></tr>
+    <tr><td><strong>FRBR strata</strong> <span class="muted">(FaBiO)</span></td>
+        <td>Expression root → PDF Manifestation → pages as <code>frbr:part</code>; Work optional</td></tr>
+    <tr><td><strong>Dataset-scoped provenance</strong> <span class="muted">(PROV-O)</span></td>
+        <td>the extracted-graph node carries <code>prov:wasGeneratedBy</code> + license; the article stays clean</td></tr>
+    <tr><td><strong>Run-scoped minting</strong></td>
+        <td>regenerable nodes under <code>…/run/&lt;id&gt;/…</code>; work-level IRIs stay stable</td></tr>
+    <tr><td><strong>SKOS controlled list</strong></td>
+        <td><code>pax:FigureTypeScheme</code>, <code>skos:notation</code> preserving pipeline codes</td></tr>
+    <tr><td><strong>Materialized projections</strong></td>
+        <td><code>pax:level/matter/pageStart/pageEnd</code> as classifier outputs, guarded by the recommended profile</td></tr>
+    <tr><td><strong>Layered supplements</strong> <span class="muted">(FRBR/DataCite)</span></td>
+        <td>SI description section ≠ SI artifact (<code>frbr:supplementOf</code>); processed SI recurses into a full graph</td></tr>
+  </table>
+
   <h2>Quality evidence (v0.2.0)</h2>
   <ul>
     <li><a href="resources/quality/0.2.0/validate.log">Fast layer log</a> — RDF round-trip, term bijection,
